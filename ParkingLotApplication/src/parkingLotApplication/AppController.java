@@ -9,7 +9,7 @@ public class AppController {
 		this.password = password;
 	}
 	
-	public void changeInformation(String id, String password) {
+	public void changeInfo(String id, String password) {
 		this.id = id;
 		this.password = password;
 	}
