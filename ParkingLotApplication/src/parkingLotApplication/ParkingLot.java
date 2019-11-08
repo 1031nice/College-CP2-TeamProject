@@ -1,7 +1,12 @@
 package parkingLotApplication;
 
-import java.util.ArrayList;
-
 public class ParkingLot { // 주차장
-	private ArrayList<ArrayList<ParkingSpace>> space;
+	
+	private static final int DEFAULT_SIZE = 1;
+	
+	private ParkingSpace [] spaces;
+	
+	public ParkingLot() {
+		spaces = new ParkingSpace [DEFAULT_SIZE];
+	}
 }
