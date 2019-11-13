@@ -1,7 +1,7 @@
 package parkingLotApplication;
 
 public interface AppController {
-	public void resister();
+	public void register();
 	public void changeInfo();
 	
 }
