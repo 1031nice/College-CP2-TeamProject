@@ -1,4 +1,4 @@
-package parkingLotApplication;
+package parkingLotApplication.model;
 
 public class Manager {
 
