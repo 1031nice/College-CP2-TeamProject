@@ -1,4 +1,4 @@
-package parkingLotApplication;
+package parkingLotApplication.model;
 
 public class ParkingLot { // 주차장
 	
