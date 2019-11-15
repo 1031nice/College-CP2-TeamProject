@@ -9,7 +9,6 @@ public class ManagerController extends AppController {
 		String id;
 		String password;
 		
-		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("회원가입");
 		System.out.print("아이디: ");

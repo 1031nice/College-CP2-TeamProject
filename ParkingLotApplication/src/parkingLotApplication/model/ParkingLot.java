@@ -1,12 +1,25 @@
 package parkingLotApplication.model;
 
+import java.util.ArrayList;
+
 public class ParkingLot { // 주차장
 	
-	private static final int DEFAULT_SIZE = 1;
+	private ArrayList<ParkingSpace> _spaces;
 	
-	private ParkingSpace [] spaces;
-	
-	public ParkingLot() {
-		spaces = new ParkingSpace [DEFAULT_SIZE];
+	public ParkingLot(ArrayList<ParkingSpace> spaces) {
+		setSpaces(spaces);
 	}
+	public ParkingLot() {
+		setSpaces(new ArrayList<ParkingSpace>());
+	}
+
+	public ArrayList<ParkingSpace> getSpaces() {
+		return _spaces;
+	}
+
+	public void setSpaces(ArrayList<ParkingSpace> spaces) {
+		this._spaces = spaces;
+	}
+	
+	
 }

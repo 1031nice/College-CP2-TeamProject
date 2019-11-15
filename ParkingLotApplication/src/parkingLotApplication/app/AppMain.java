@@ -1,3 +1,4 @@
+package parkingLotApplication.app;
 
 import javafx.application.Application;
 import javafx.fxml.*;

@@ -2,13 +2,13 @@ package parkingLotApplication.app;
 
 import java.util.Scanner;
 
-import parkingLotApplication.model.Client;
+import parkingLotApplication.model.AppClient;
 
 public class ClientController extends AppController {
 	
 	@Override
 	public void signUp() {
-		Client c = new Client();
+		AppClient c = new AppClient();
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("회원가입");
 		System.out.print("아이디: ");
