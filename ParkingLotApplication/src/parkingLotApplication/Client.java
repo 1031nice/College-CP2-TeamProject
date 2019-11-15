@@ -2,12 +2,16 @@ package parkingLotApplication;
 
 public class Client {
 	
+	private String id;
+	private String password;
 	private boolean nonperson;			//사회적 약자
 	private String name;
 	private int age;
 	private int phoneNumber;
 
 	public Client(String name, int age, int phoneNumber, boolean nonperson) {
+		this.id = id;
+		this.password = password;
 		this.nonperson = nonperson;
 		this.name = name;
 		this.age = age;
