@@ -7,7 +7,7 @@ public class Client {
 	private int age;
 	private int phoneNumber;
 
-	public Client(boolean nonperson, String name, int age, int phoneNumber) {
+	public Client(String name, int age, int phoneNumber, boolean nonperson) {
 		this.nonperson = nonperson;
 		this.name = name;
 		this.age = age;
