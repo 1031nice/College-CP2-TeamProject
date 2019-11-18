@@ -6,11 +6,11 @@ public class AppClient {
 	private String _password;
 	private String _name;
 	private int _age;
-	private int _phoneNumber;
+	private String _phoneNumber;
 
 	public AppClient() {}
 	
-	public AppClient(String id, String password, String name, int age, int phoneNumber) {
+	public AppClient(String id, String password, String name, int age, String phoneNumber) {
 		setId(id);
 		setPassword(password);
 		setName(name);
@@ -32,7 +32,7 @@ public class AppClient {
 	public void setAge(int age) {
 		this._age = age;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this._phoneNumber = phoneNumber;
 	}
 
@@ -45,7 +45,7 @@ public class AppClient {
 	public int getAge() {
 		return _age;
 	}
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return _phoneNumber;
 	}
 	public String getId() {
