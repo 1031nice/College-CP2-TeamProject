@@ -7,17 +7,6 @@ public class AppClient {
 	private String _name;
 	private int _age;
 	private String _phoneNumber;
-	private String _carNumber;
-
-	public AppClient() {}
-	
-	public AppClient(String id, String password, String name, int age, String phoneNumber) {
-		setId(id);
-		setPassword(password);
-		setName(name);
-		setAge(age);
-		setPhoneNumber(phoneNumber);
-	}
 	
 	// setters
 	public void setId(String id) {
