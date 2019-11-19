@@ -16,43 +16,43 @@
          <children>
             <HBox prefHeight="75.0" prefWidth="450.0">
                <children>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;" />
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;" />
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
@@ -61,43 +61,43 @@
             </HBox>
             <HBox layoutY="125.0" prefHeight="75.0" prefWidth="450.0">
                <children>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;" />
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;" />
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
@@ -106,54 +106,54 @@
             </HBox>
             <HBox layoutY="200.0" prefHeight="75.0" prefWidth="450.0">
                <children>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endX="50.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
-                     <children>
-                        <Line endY="75.0" strokeWidth="3.0" />
-                        <Line endX="50.0" strokeWidth="3.0" />
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                         <Line endX="50.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                         <Line endX="50.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                         <Line endX="50.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                         <Line endX="50.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                         <Line endX="50.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                         <Line endX="50.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
+                     <children>
+                        <Line endY="75.0" strokeWidth="3.0" />
+                        <Line endX="50.0" strokeWidth="3.0" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                         <Line endX="50.0" strokeWidth="3.0" />
@@ -163,43 +163,43 @@
             </HBox>
             <HBox layoutY="325.0" prefHeight="75.0" prefWidth="450.0">
                <children>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;" />
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;" />
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: red;">
+                  <Pane prefHeight="75.0" prefWidth="50.0" style="-fx-background-color: green;">
                      <children>
                         <Line endY="75.0" strokeWidth="3.0" />
                      </children>
