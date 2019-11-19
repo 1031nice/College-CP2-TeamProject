@@ -7,6 +7,7 @@ public class AppClient {
 	private String _name;
 	private int _age;
 	private String _phoneNumber;
+	private String _carNumber;
 
 	public AppClient() {}
 	
@@ -35,10 +36,12 @@ public class AppClient {
 	public void setPhoneNumber(String phoneNumber) {
 		this._phoneNumber = phoneNumber;
 	}
+	public void setCarNumber(String carNumber) {
+		this._carNumber = carNumber;
+	}
 
 	
 	// getters
-
 	public String getName() {
 		return _name;
 	}
