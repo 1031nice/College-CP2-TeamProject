@@ -21,5 +21,4 @@ public class ParkingLot { // 주차장
 		this._spaces = spaces;
 	}
 	
-	
 }
