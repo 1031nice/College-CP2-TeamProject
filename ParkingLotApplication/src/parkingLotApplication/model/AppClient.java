@@ -25,10 +25,12 @@ public class AppClient {
 	public void setPhoneNumber(String phoneNumber) {
 		this._phoneNumber = phoneNumber;
 	}
+	public void setCarNumber(String carNumber) {
+		this._carNumber = carNumber;
+	}
 
 	
 	// getters
-
 	public String getName() {
 		return _name;
 	}
