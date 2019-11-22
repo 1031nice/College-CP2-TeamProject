@@ -7,6 +7,7 @@ public class AppClient {
 	private String _name;
 	private int _age;
 	private String _phoneNumber;
+	private String _carNumber;
 	
 	// setters
 	public void setId(String id) {
@@ -45,5 +46,8 @@ public class AppClient {
 	}
 	public String getPassword() {
 		return _password;
+	}
+	public String getCarNumber() {
+		return _carNumber;
 	}
 }

@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="50.0" layoutY="50.0" prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: silver;">
          <children>
@@ -49,14 +48,20 @@
             <RadioButton layoutX="275.0" layoutY="215.0" mnemonicParsing="false" text="관리자" />
             <VBox layoutX="275.0" layoutY="50.0" prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="30.0" prefWidth="200.0" text="사회적약자" />
+                  <Label prefHeight="30.0" prefWidth="200.0" text="사회적약자">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></Label>
                   <HBox prefHeight="30.0" prefWidth="200.0">
                      <children>
                         <RadioButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="true" HBox.hgrow="ALWAYS" />
                         <RadioButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="false" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
-                  <Label prefHeight="30.0" prefWidth="200.0" text="CarNumber" />
+                  <Label prefHeight="30.0" prefWidth="200.0" text="CarNumber">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></Label>
                   <TextField prefHeight="30.0" prefWidth="200.0" />
                </children>
             </VBox>
