@@ -5,47 +5,51 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parkingLotApplication.GUI.SignUpController">
    <children>
       <AnchorPane layoutX="50.0" layoutY="50.0" prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: silver;">
          <children>
             <VBox layoutX="25.0" layoutY="30.0" prefHeight="340.0" prefWidth="200.0">
                <children>
                   <Label prefHeight="30.0" prefWidth="200.0" text="ID" />
-                  <TextField prefHeight="30.0" prefWidth="200.0">
+                  <TextField fx:id="id" prefHeight="30.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </TextField>
                   <Label prefHeight="30.0" prefWidth="200.0" text="PASSWORD" />
-                  <TextField prefHeight="30.0" prefWidth="200.0">
+                  <TextField fx:id="pw" prefHeight="30.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </TextField>
                   <Label prefHeight="30.0" prefWidth="200.0" text="NAME" />
-                  <TextField prefHeight="30.0" prefWidth="200.0">
+                  <TextField fx:id="name" prefHeight="30.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </TextField>
                   <Label prefHeight="30.0" prefWidth="200.0" text="AGE" />
-                  <TextField prefHeight="30.0" prefWidth="200.0">
+                  <TextField fx:id="age" prefHeight="30.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </TextField>
                   <Label prefHeight="30.0" prefWidth="200.0" text="PHONE NUMBER" />
-                  <TextField maxWidth="200.0" prefHeight="30.0" prefWidth="200.0" />
+                  <TextField fx:id="phonenumber" maxWidth="200.0" prefHeight="30.0" prefWidth="200.0" />
                </children>
             </VBox>
-            <RadioButton layoutX="275.0" layoutY="30.0" mnemonicParsing="false" text="고객" />
-            <RadioButton layoutX="275.0" layoutY="215.0" mnemonicParsing="false" text="관리자" />
+            <RadioButton layoutX="275.0" layoutY="30.0" mnemonicParsing="false" text="고객">
+               <toggleGroup>
+                  <ToggleGroup fx:id="userposition" />
+               </toggleGroup></RadioButton>
+            <RadioButton layoutX="275.0" layoutY="215.0" mnemonicParsing="false" text="관리자" toggleGroup="$userposition" />
             <VBox layoutX="275.0" layoutY="50.0" prefHeight="150.0" prefWidth="200.0">
                <children>
                   <Label prefHeight="30.0" prefWidth="200.0" text="사회적약자">
@@ -54,23 +58,26 @@
                      </VBox.margin></Label>
                   <HBox prefHeight="30.0" prefWidth="200.0">
                      <children>
-                        <RadioButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="true" HBox.hgrow="ALWAYS" />
-                        <RadioButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="false" HBox.hgrow="ALWAYS" />
+                        <RadioButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="true" HBox.hgrow="ALWAYS">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="nonperson" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="false" toggleGroup="$nonperson" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                   <Label prefHeight="30.0" prefWidth="200.0" text="CarNumber">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin></Label>
-                  <TextField prefHeight="30.0" prefWidth="200.0" />
+                  <TextField fx:id="carnumber" prefHeight="30.0" prefWidth="200.0" />
                </children>
             </VBox>
             <VBox layoutX="275.0" layoutY="235.0" prefHeight="150.0" prefWidth="200.0">
                <children>
                   <Label prefHeight="30.0" prefWidth="200.0" text="주차장위치" />
-                  <TextField prefHeight="30.0" prefWidth="200.0" />
+                  <TextField fx:id="parkinglotposition" prefHeight="30.0" prefWidth="200.0" />
                   <Label prefHeight="30.0" prefWidth="200.0" text="주차장 수" />
-                  <TextField prefHeight="30.0" prefWidth="200.0" />
+                  <TextField fx:id="parkinglotnum" prefHeight="30.0" prefWidth="200.0" />
                </children>
             </VBox>
          </children>
@@ -80,7 +87,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="222.0" layoutY="464.0" mnemonicParsing="false" text="돌아가기" />
-      <Button layoutX="315.0" layoutY="464.0" mnemonicParsing="false" text="회원가입" />
+      <Button layoutX="222.0" layoutY="464.0" mnemonicParsing="false" onAction="#backbutton" text="돌아가기" />
+      <Button layoutX="315.0" layoutY="464.0" mnemonicParsing="false" onAction="#signup" text="회원가입" />
    </children>
 </AnchorPane>
