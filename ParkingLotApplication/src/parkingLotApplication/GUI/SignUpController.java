@@ -42,9 +42,9 @@ public class SignUpController {
 		String Name = name.getText();
 		String Age = age.getText();
 		String PhoneNumber = phonenumber.getText();
-		if(빈문자열체크) {
+		if(토글 관리자 사람) {
 			
-			if() {
+			if(빈문자열체크) {
 				if() {
 				
 				}else if() {
