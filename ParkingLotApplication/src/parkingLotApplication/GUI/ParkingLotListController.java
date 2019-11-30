@@ -14,8 +14,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.fxml.*;
-import javafx.scene.*;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
@@ -35,7 +37,7 @@ public class ParkingLotListController implements Initializable {
 	ObjectInputStream ois = null;
 	
 	
-	@FXML public void enterButtonAction() throws Exception{
+	@FXML public void enterButtonAction() throws IOException{
 		int regionSelectedIndex = locationListView.getSelectionModel().getSelectedIndex();
 		int parkingLotSelectedIndex = parkingLotListView.getSelectionModel().getSelectedIndex();
 		if(regionSelectedIndex < 0 || parkingLotSelectedIndex < 0) {
@@ -47,7 +49,7 @@ public class ParkingLotListController implements Initializable {
 		}
 	}
 	
-	@FXML public void logoutButtonAction() throws Exception{
+	@FXML public void logoutButtonAction() throws IOException{
 		Parent login = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
 		anchorPane.getChildren().add(login);
 	}
@@ -73,7 +75,7 @@ public class ParkingLotListController implements Initializable {
 		bis.close();
 		ois.close();
 		}  catch (IOException e) {} catch (ClassNotFoundException e) {}
-		//thread처리
+		
 		Thread parkingLotListThread = new Thread(new Runnable() {
 			@Override
 			public void run() {
