@@ -73,11 +73,17 @@ public class ParkingLotListController implements Initializable {
 		bis.close();
 		ois.close();
 		}  catch (IOException e) {} catch (ClassNotFoundException e) {}
-		
-		for(int i = 0; i < list.size(); i++) {
-			locationList.add(list.get(i).getLocation());
-			parkingLotList.add(list.get(i).getName());
-		}
+		//thread처리
+		Thread parkingLotListThread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				for(int i = 0; i < list.size(); i++) {
+					locationList.add(list.get(i).getLocation());
+					parkingLotList.add(list.get(i).getName());
+				}
+			}	
+		});
+		parkingLotListThread.start();
 	}
 
 }
