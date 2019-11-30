@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" style="-fx-background-color:silver; -fx-border-color:black; -fx-border-width:5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parkingLotApplication.GUI.AddParkingLotController">
+<VBox fx:id="addParkingLotVbox" alignment="CENTER" spacing="20.0" style="-fx-background-color:silver; -fx-border-color:black; -fx-border-width:5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parkingLotApplication.GUI.AddParkingLotController">
    <children>
       <Label text="주차장 등록" textAlignment="CENTER">
          <font>

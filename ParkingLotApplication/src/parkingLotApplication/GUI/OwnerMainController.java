@@ -23,9 +23,6 @@ public class OwnerMainController implements Initializable{
 		//ParkingLotInfo에서 ParkingLotList를 가져와 오너의 아이디랑 일치한 주차장만
 		//ParkingLotListView에 띄운다.
 		//ListView vs Tableview(지역이랑 주차장이름을 가져와 2열로 만든다.) 고민중
-
-		//버튼 이벤트핸들러
-		//button.addEventHandler(MouseEvent.MOUSE_ENTERED, new MyButtonEventHandler());
 	}
 	
 	@FXML public void addParkinglotAction() throws Exception{
@@ -36,17 +33,24 @@ public class OwnerMainController implements Initializable{
 		 popup.show(parkinglotList.getScene().getWindow());		 
 	}
 	
+	@FXML public void ParkingotListAction() throws Exception{
+		Parent ownerMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/OwnerMain.fxml"));
+		anchorPane.getChildren().add(ownerMain);
+	}
+	
 	@FXML public void enterParkinglotAction() throws Exception{
-		Parent parkingLot = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/ParkingLot.fxml"));
-		anchorPane2.getChildren().add(parkingLot);
+		//Owner가 선택한 주차장이 가지고 있는 레이아웃 필드를 anchorpane에 띄운다.
+		
 	}
 
 	@FXML public void deleteParkinglotAction() {
+		//ListView에서 해당 주차장을 지운다.
 		
 	}
 	
 	@FXML public void changeInfoAction() throws Exception{
-		
+		Parent ownerChangeInfo = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/OwnerChangeInfo.fxml"));
+		anchorPane2.getChildren().add(ownerChangeInfo);
 	}
 
 	@FXML public void logoutAction() throws Exception{
