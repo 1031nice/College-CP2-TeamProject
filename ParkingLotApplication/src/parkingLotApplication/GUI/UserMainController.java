@@ -3,7 +3,7 @@ package parkingLotApplication.GUI;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class ClientController {
+public class UserMainController {
 
 	@FXML Button reservationButton;
 	@FXML Button returnButton;
