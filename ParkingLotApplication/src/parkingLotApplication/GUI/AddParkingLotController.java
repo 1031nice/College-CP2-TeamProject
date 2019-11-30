@@ -37,6 +37,7 @@ public class AddParkingLotController implements Initializable {
 		parkingLot.setSpaces(parkingSpaceList);
 		parkingLot.setFeeForTenMin(Integer.parseInt(feeForTenMinField.getText()));
 		parkingLot.setLocation(parkingLotLocationField.getText());
+		parkingLot.setRegion(regionChoiceBox.getValue());
 		
 		//오너의 아이디는 로그인한 Owner의 ID를 가져와 넘겨줌
 		//parkingLot.setownerID();
