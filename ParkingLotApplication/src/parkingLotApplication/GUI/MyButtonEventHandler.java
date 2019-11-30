@@ -12,10 +12,7 @@ public class MyButtonEventHandler implements EventHandler<MouseEvent> {
 		Object obj = ME.getSource();
 		// 모든 버튼을 포함하는 상위 클래스인 ButtonBase를 사용
 	    ButtonBase button = (ButtonBase) obj;
-	    button.setCursor(Cursor.HAND);
-		
+	    button.setCursor(Cursor.HAND);	
 	}
-
-
 
 }

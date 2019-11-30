@@ -23,8 +23,8 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ListView fx:id="regionList" layoutX="30.0" layoutY="80.0" prefHeight="350.0" prefWidth="220.0" />
-      <ListView fx:id="parkingLotList" layoutX="270.0" layoutY="80.0" prefHeight="350.0" prefWidth="300.0" />
+      <ListView fx:id="locationListView" layoutX="30.0" layoutY="80.0" prefHeight="350.0" prefWidth="220.0" />
+      <ListView fx:id="parkingLotListView" layoutX="270.0" layoutY="80.0" prefHeight="350.0" prefWidth="300.0" />
       <Button layoutX="470.0" layoutY="440.0" mnemonicParsing="false" onAction="#enterButtonAction" prefHeight="50.0" prefWidth="100.0" text="들어가기" />
       <Button layoutX="30.0" layoutY="440.0" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="50.0" prefWidth="100.0" text="로그아웃" />
       <Button layoutX="150.0" layoutY="440.0" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="50.0" prefWidth="100.0" text="종료" />

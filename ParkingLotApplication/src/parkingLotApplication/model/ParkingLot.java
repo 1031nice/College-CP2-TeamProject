@@ -6,8 +6,8 @@ public class ParkingLot { // 주차장
 	
 	private String ownerID;
 	private String name;
-	private String region;
-	private String location;
+	private String region;			
+	private String location;			//주차장지역
 	private String feeForTenMin;
 	private ArrayList<ParkingSpace> _spaces;
 	
