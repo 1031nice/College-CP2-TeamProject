@@ -24,6 +24,8 @@ public class SignUpController {
 	@FXML TextField parkinglotposition;
 	@FXML TextField parkinglotnum;
 	@FXML AnchorPane anchorPane;
+	
+	// 돌아가기 버튼을 누를 경우 다시 Login.fxml로
 	@FXML public void backbutton() throws Exception{
 		Parent Login = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
 		anchorPane.getChildren().add(Login);
@@ -36,30 +38,20 @@ public class SignUpController {
 		timeline.getKeyFrames().add(keyFrame);
 		timeline.play();
 	}
+	
 	@FXML public void signup() {
+		
+		// 입력받고
 		String ID = id.getText();
 		String PW = pw.getText();
 		String Name = name.getText();
 		String Age = age.getText();
 		String PhoneNumber = phonenumber.getText();
-		if(빈문자열체크) {
-			
-			if() {
-				if() {
-				
-				}else if() {
-				
-				}
-			}else if{
-				if() {
-				
-				}else if() {
-				
-				}
-			}
-		}else {
-			
-		}
+		
+		// 예외처리도 해야하고
+		
+		// 파일에 저장해야 함 그리고는 다시 Login.fxml로
+
 	}
 
 }

@@ -1,12 +1,11 @@
 package parkingLotApplication.app;
 
-import java.io.*;
-
 public class Test { 
-	//이 클래스는 텍스트파일에 회원정보들이 잘 입력되는지 테스트해보는 클래스입니다.
+	
+	public void A() throws Exception {
+		throw new Exception();
+	}
 	
 	public static void main(String[] args) {
-		ClientController control = new ClientController();
-		control.signUp();
 	}
 }
