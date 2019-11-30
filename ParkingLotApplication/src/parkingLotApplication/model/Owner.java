@@ -1,5 +1,6 @@
 package parkingLotApplication.model;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class Owner extends AppClient {

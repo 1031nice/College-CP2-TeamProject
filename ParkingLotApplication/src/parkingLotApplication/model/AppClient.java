@@ -1,12 +1,15 @@
 package parkingLotApplication.model;
 
-public class AppClient {
-	
+import java.io.*;
+
+public class AppClient implements Serializable {
+
+	private static final long serialVersionUID = 1042650382560984791L;
 	private String _id;
 	private String _password;
 	private String _name;
 	private String  _age;
-	private String _phoneNumber;
+	private String _AccountNumber;
 	
 	// setters
 	public void setId(String id) {
@@ -21,8 +24,8 @@ public class AppClient {
 	public void setAge(String age) {
 		this._age = age;
 	}
-	public void setPhoneNumber(String phoneNumber) {
-		this._phoneNumber = phoneNumber;
+	public void setAccountNumber(String _AccountNumber) {
+		this._AccountNumber = _AccountNumber;
 	}
 	
 	// getters
@@ -32,13 +35,14 @@ public class AppClient {
 	public String getAge() {
 		return _age;
 	}
-	public String getPhoneNumber() {
-		return _phoneNumber;
-	}
 	public String getId() {
 		return _id;
 	}
 	public String getPassword() {
 		return _password;
 	}
+	public String getAccountNumber() {
+		return _AccountNumber;
+	}
+
 }
