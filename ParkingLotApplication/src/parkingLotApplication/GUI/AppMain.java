@@ -39,8 +39,6 @@ public class AppMain extends Application {
 		String[] array;
 		while((line = bufferedReader.readLine()) != null) {
 			array = line.split(" ");
-			System.out.println("사용자 입력 id:" + id + "이고");
-			System.out.println("진짜 id:" + array[0] + "이다");
 			if(array[0].equals(id)) {
 				password = array[1];
 				reader.close();

@@ -33,7 +33,6 @@ public class LoginController {
 
 		if(type.getSelectedToggle().getUserData().equals("고객")) {
 			String password = AppMain.findId(inputId, "UserInfo");
-			System.out.println(password);
 			if(inputPassword.equals(password)) {
 				Parent ParkingLotList = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/ParkingLotList.fxml"));
 				anchorPane.getChildren().add(ParkingLotList);

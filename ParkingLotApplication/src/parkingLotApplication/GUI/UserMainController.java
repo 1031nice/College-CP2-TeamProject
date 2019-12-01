@@ -51,7 +51,7 @@ public class UserMainController implements Initializable{
 		anchorPane.getChildren().add(changeInfo);
 	}
 	@FXML public void logoutAction() throws IOException {
-		findName.interrupt();
+//		findName.interrupt();
 		Parent login = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
 		anchorPane.getChildren().add(login);
 	}
@@ -73,17 +73,17 @@ public class UserMainController implements Initializable{
 		
 	}
 	
-	Thread findName = new Thread(new Runnable() {
-		@Override
-		public void run() {
-			for(int i = 0; i < list.size(); i++) {
-				if(user.getName().equls(list.get(i).getName())) {
-					userName.setText(user.getName());
-				}
-				if(parkingLot.getName().equls(list.get(i).getName())) {
-					parkingLotName.setText(parkingLot.getName());
-				}
-			}
-		}	
-	});
+//	Thread findName = new Thread(new Runnable() {
+//		@Override
+//		public void run() {
+//			for(int i = 0; i < list.size(); i++) {
+////				if(user.getName().equls(list.get(i).getName())) {
+////					userName.setText(user.getName());
+////				}
+////				if(parkingLot.getName().equls(list.get(i).getName())) {
+////					parkingLotName.setText(parkingLot.getName());
+//				}
+//			}
+//		}	
+//	});
 }

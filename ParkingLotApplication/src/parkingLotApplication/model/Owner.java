@@ -9,7 +9,7 @@ public class Owner extends AppClient {
 		super(id, password, name, age, accountNumber);
 	}
 	
-	ArrayList<ParkingLot> _parkingLots; // 회원 가입 후 입력 받을 예정
+	ArrayList<ParkingLot> _parkingLots = new ArrayList<ParkingLot>(); // 회원 가입 후 입력 받을 예정
 	
 	// getters
 	public ArrayList<ParkingLot> getParkingLots() {
