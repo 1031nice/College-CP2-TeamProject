@@ -1,5 +1,10 @@
 package parkingLotApplication.GUI;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,5 +29,25 @@ public class AppMain extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public static String findId(String id, String fileName) throws IOException {
+		Reader reader = new FileReader("./src/data/" + fileName +".txt");
+		BufferedReader bufferedReader = new BufferedReader(reader);
+		String password;
+		String line = "";
+		String[] array;
+		while((line = bufferedReader.readLine()) != null) {
+			array = line.split(" ");
+			if(array[0].equals(id)) {
+				password = array[1];
+				reader.close();
+				bufferedReader.close();
+				return password;
+			}
+		}
+		reader.close();
+		bufferedReader.close();
+		return null;
 	}
 }
