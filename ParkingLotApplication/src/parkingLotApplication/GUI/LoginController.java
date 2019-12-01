@@ -23,6 +23,7 @@ public class LoginController {
 	@FXML ToggleGroup type;
 	@FXML RadioButton owner;
 	@FXML StackPane stackPane;
+	@FXML AnchorPane anchorPane;
 	
 	@FXML public void loginButtonAction() throws Exception {
 
@@ -33,6 +34,7 @@ public class LoginController {
 			String password = AppMain.findId(inputId, "UserInfo");
 			if(inputPassword.equals(password)) {
 				Parent ParkingLotList = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/ParkingLotList.fxml"));
+				stackPane.getChildren().remove(anchorPane);
 				stackPane.getChildren().add(ParkingLotList);
 			}
 			else {
@@ -43,6 +45,7 @@ public class LoginController {
 			String password = AppMain.findId(inputId, "OwnerInfo");
 			if(inputPassword.equals(password)) {
 				Parent ownerMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/OwnerMain.fxml"));
+				stackPane.getChildren().remove(anchorPane);
 				stackPane.getChildren().add(ownerMain);
 			}
 			else {

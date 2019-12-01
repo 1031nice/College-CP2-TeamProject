@@ -49,13 +49,16 @@ public class OwnerMainController implements Initializable{
 	}
 	
 	@FXML public void changeInfoAction() throws Exception{
+		StackPane root = (StackPane) anchorPane.getScene().getRoot();
 		Parent ownerChangeInfo = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/OwnerChangeInfo.fxml"));
-		anchorPane2.getChildren().add(ownerChangeInfo);
+		root.getChildren().add(ownerChangeInfo);
 	}
 
 	@FXML public void logoutAction() throws Exception{
-		Parent login = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
-		anchorPane.getChildren().add(login);
+		StackPane root = (StackPane) anchorPane.getScene().getRoot();
+		Parent logout = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
+		root.getChildren().remove(anchorPane);
+		root.getChildren().add(logout);
 	}
 
 	@FXML public void exitAction() {Platform.exit();}

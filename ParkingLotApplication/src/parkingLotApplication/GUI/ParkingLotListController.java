@@ -36,7 +36,7 @@ public class ParkingLotListController implements Initializable {
 	private ObservableList<String> locationList;
 	private ObservableList<String> parkingLotList;
 	private ArrayList<ParkingLot> list;
-	private ArrayList<String> idList;
+	private ArrayList<String> idList = new ArrayList<>();;
 	
 	@FXML public void enterButtonAction() throws IOException{
 		int parkingLotSelectedIndex = parkingLotListView.getSelectionModel().getSelectedIndex();
@@ -44,15 +44,19 @@ public class ParkingLotListController implements Initializable {
 			new Alert(Alert.AlertType.WARNING, "항목을 선택하세요.", ButtonType.CLOSE).show();
 			return ;
 		}else {
+			StackPane root = (StackPane) anchorPane.getScene().getRoot();
 			Parent userMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/UserMain.fxml"));
-			anchorPane.getChildren().add(userMain);
+			root.getChildren().remove(anchorPane);
+			root.getChildren().add(userMain);
 		}
 	}
 	
 	@FXML public void logoutButtonAction() throws IOException{
 		AppMain.user = null;
 		StackPane root = (StackPane) anchorPane.getScene().getRoot();
+		Parent logout = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
 		root.getChildren().remove(anchorPane);
+		root.getChildren().add(logout);
 	}
 	
 	@FXML public void exitButtonAction() {
@@ -72,6 +76,7 @@ public class ParkingLotListController implements Initializable {
 	Thread parkingLotListThread = new Thread(new Runnable() {
 		@Override
 		public void run(){
+			
 			try {
 				BufferedReader ownerIdReader = new BufferedReader(new FileReader("./src/data/OwnerInfo.txt"));
 				String ownerIdLine = "";
@@ -79,6 +84,7 @@ public class ParkingLotListController implements Initializable {
 				while((ownerIdLine = ownerIdReader.readLine()) != null) {
 					ownerIdArray = ownerIdLine.split(" ");
 					idList.add(ownerIdArray[0]);
+					System.out.println(ownerIdArray[0]);
 				}
 				ownerIdReader.close();
 				
@@ -90,7 +96,7 @@ public class ParkingLotListController implements Initializable {
 						parkingLotArray = parkingLotLine.split(" ");
 						parkingLotList.add(parkingLotArray[0]);
 						locationList.add(parkingLotArray[1]);
-						System.out.println(parkingLotArray[0] + parkingLotArray[1]);
+						System.out.println(parkingLotArray[0] + "" +parkingLotArray[1]);
 					}
 					parkingLotReader.close();
 				}
