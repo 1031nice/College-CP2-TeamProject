@@ -70,13 +70,13 @@ public class UserMainController implements Initializable{
 			ois.close();
 		}  catch (IOException e) {} catch (ClassNotFoundException e) {}
 		
-		for(int i = 0; i < list.size(); i++) {
-			if(user.getName().equls(list.get(i).getName())) {
-				userName.setText(user.getName());
-			}
-			if() {
-				
-			}
-		}
+//		for(int i = 0; i < list.size(); i++) {
+//			if(user.getName().equls(list.get(i).getName())) {
+//				userName.setText(user.getName());
+//			}
+//			if() {
+//				
+//			}
+//		}
 	}
 }
