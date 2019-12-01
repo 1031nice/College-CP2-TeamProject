@@ -13,18 +13,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import javafx.scene.layout.StackPane;
 
 public class LoginController {
 
-	@FXML Button loginButton;
 	@FXML TextField idTextField;
 	@FXML PasswordField pwTextField;
 	@FXML RadioButton appClient;
 	@FXML ToggleGroup type;
 	@FXML RadioButton owner;
-	@FXML Button exitButton;
-	@FXML Button signUpButton;
-	@FXML AnchorPane anchorPane;
+	@FXML StackPane stackPane;
 	
 	@FXML public void loginButtonAction() throws Exception {
 
@@ -35,7 +33,7 @@ public class LoginController {
 			String password = AppMain.findId(inputId, "UserInfo");
 			if(inputPassword.equals(password)) {
 				Parent ParkingLotList = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/ParkingLotList.fxml"));
-				anchorPane.getChildren().add(ParkingLotList);
+				stackPane.getChildren().add(ParkingLotList);
 			}
 			else {
 				System.out.println("사용자의 로그인 정보가 일치하지 않습니다.");
@@ -45,7 +43,7 @@ public class LoginController {
 			String password = AppMain.findId(inputId, "OwnerInfo");
 			if(inputPassword.equals(password)) {
 				Parent ownerMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/OwnerMain.fxml"));
-				anchorPane.getChildren().add(ownerMain);
+				stackPane.getChildren().add(ownerMain);
 			}
 			else {
 				System.out.println("관리자의 로그인 정보가 일치하지 않습니다.");
@@ -54,17 +52,8 @@ public class LoginController {
 	}
 
 	@FXML public void signUpButtonAction() throws Exception {
-		// sign up button을 누르면 signUp.fxml로 이동
 		Parent signUp = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/signUp.fxml"));
-		anchorPane.getChildren().add(signUp);
-
-		signUp.setTranslateX(signUp.getLayoutX());
-
-		Timeline timeline = new Timeline();
-		KeyValue keyValue = new KeyValue(signUp.translateXProperty(), 0);
-		KeyFrame keyFrame = new KeyFrame(Duration.millis(500), keyValue);
-		timeline.getKeyFrames().add(keyFrame);
-		timeline.play();
+		stackPane.getChildren().add(signUp);
 	}
 
 
