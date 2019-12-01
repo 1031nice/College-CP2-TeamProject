@@ -1,6 +1,8 @@
 package parkingLotApplication.model;
 
-public class ParkingSpace { // 주차장 속 하나하나의 공간
+import java.io.*;
+
+public class ParkingSpace implements Serializable  { // 주차장 속 하나하나의 공간
 	
 	private static final int OCCUPIED = 1;
 	private static final int EMPTY = 0;

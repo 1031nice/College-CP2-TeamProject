@@ -67,7 +67,7 @@ public class LoginController {
 			anchorPane.getChildren().add(ownerMain);
 		}
 		//로그인이 정상적으로 되기까지 화면이동을 위해 만든 임시코드입니다.
-		
+		//로그인하고 나서 사용자 객체 생성해주세요. 고객은 user, 관리자는 client
 		/*
 		if(type.getSelectedToggle().getUserData().equals("고객")) {
 			

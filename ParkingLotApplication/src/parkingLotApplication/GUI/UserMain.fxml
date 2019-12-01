@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parkingLotApplication.GUI.UserMainController">
+<AnchorPane fx:id="anchorPane" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parkingLotApplication.GUI.UserMainController">
    <children>
       <AnchorPane layoutX="20.0" layoutY="70.0" prefHeight="400.0" prefWidth="450.0" style="-fx-background-color: silver;">
          <children>
@@ -17,7 +17,7 @@
          </children></AnchorPane>
       <HBox layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="350.0">
          <children>
-            <Label maxWidth="1.7976931348623157E308" text="ooo" HBox.hgrow="ALWAYS">
+            <Label fx:id="userName" maxWidth="1.7976931348623157E308" text="ooo" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="24.0" />
                </font>
@@ -61,12 +61,12 @@
       </VBox>
       <HBox layoutX="385.0" layoutY="11.0" prefHeight="18.0" prefWidth="200.0">
          <children>
-            <Label maxWidth="1.7976931348623157E308" text="ooo" HBox.hgrow="ALWAYS">
+            <Label fx:id="parkingLotName" maxWidth="1.7976931348623157E308" text="ooo" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="parkingLotNameLabel" maxWidth="1.7976931348623157E308" text="주차장" HBox.hgrow="ALWAYS">
+            <Label maxWidth="1.7976931348623157E308" text="주차장" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="14.0" />
                </font>

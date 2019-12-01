@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" style="-fx-background-color:silver; -fx-border-color:black; -fx-border-width:5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parkingLotApplication.GUI.AddParkingLotController">
+<VBox fx:id="addParkingLotVbox" alignment="CENTER" spacing="20.0" style="-fx-background-color:silver; -fx-border-color:black; -fx-border-width:5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parkingLotApplication.GUI.AddParkingLotController">
    <children>
       <Label text="주차장 등록" textAlignment="CENTER">
          <font>
@@ -38,9 +38,9 @@
             <VBox alignment="CENTER" spacing="10.0">
                <children>
                   <TextField fx:id="parkinglotNameField" />
-                  <ChoiceBox fx:id="regionChoice" prefWidth="200.0" />
+                  <ChoiceBox fx:id="regionChoiceBox" prefWidth="200.0" />
                   <TextField fx:id="parkingLotLocationField" />
-                  <TextField fx:id="numOfParkinglotField" />
+                  <TextField fx:id="numOfParkingSpaceField" />
                   <TextField fx:id="feeForTenMinField" />
                </children>
             </VBox>
