@@ -42,7 +42,6 @@ public class LoginController {
 	boolean isCorrectID = false;					//아이디는 맞고 비밀번호는 틀린경우 true
 	
 	@FXML public void loginButtonAction() throws Exception {
-<<<<<<< HEAD
 		/*
 		 *  1. idTextField와 pwTextField에서 값을 읽어온다
 		 *  2. 사용자/관리자 계정이 들어 있는 파일에 접근하여 값을 비교한다
@@ -60,10 +59,6 @@ public class LoginController {
 		 *  Q 프로그램 전체에서 사용되야 할 정보는 어디서 저장하는가
 		 *  Q controller는 객체를 생성하지 않고 action이 일어낭메 따라 실행되므로 static class 같은 개념인가
 		 */
-=======
-		if(type.getSelectedToggle()==null)
-			//"앱 사용자 종류를 선택해주세요" 경고창
-			return;
 		if(type.getSelectedToggle().getUserData().equals("고객")) {
 			Parent ParkingLotList = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/ParkingLotList.fxml"));
 			anchorPane.getChildren().add(ParkingLotList);
@@ -135,8 +130,6 @@ public class LoginController {
 			}
 		}
 		*/
-		
->>>>>>> dfecc9c4b21c4fd379f249aa09990f594630d479
 	}
 	
 
