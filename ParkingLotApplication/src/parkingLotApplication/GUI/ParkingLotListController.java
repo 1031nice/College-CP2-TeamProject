@@ -32,7 +32,6 @@ public class ParkingLotListController implements Initializable {
 	private ObservableList<String> locationList;
 	private ObservableList<String> parkingLotList;
 	private ArrayList<ParkingLot> list;
-	ParkingLot parkingLot;
 	FileInputStream fis = null;
 	BufferedInputStream bis = null;
 	ObjectInputStream ois = null;
@@ -45,7 +44,7 @@ public class ParkingLotListController implements Initializable {
 			new Alert(Alert.AlertType.WARNING, "항목을 선택하세요.", ButtonType.CLOSE).show();
 			return ;
 		}else {
-			parkingLot = list.get(parkingLotSelectedIndex);
+			user.setParkingLot() = list.get(parkingLotSelectedIndex);
 			parkingLotListThread.interrupt();
 			Parent userMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/UserMain.fxml"));
 			anchorPane.getChildren().add(userMain);
