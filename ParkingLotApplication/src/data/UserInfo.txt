@@ -1,0 +1,8 @@
+﻿apple 1234  닥 123 124213 ㅌㄴ123 false
+banana 1234  닥 123 124213 ㅌㄴ123 false
+chair 1234  닥 123 124213 ㅌㄴ123 false
+desk 1234  닥 123 124213 ㅌㄴ123 false
+eagle 1234  닥 123 124213 ㅌㄴ123 false
+fire 1234  닥 123 124213 ㅌㄴ123 false
+1031nice 1031 강동훈 24 6050123 12324ㅁㄴㅁ true
+asdf 123 asf 123 125 as523 false

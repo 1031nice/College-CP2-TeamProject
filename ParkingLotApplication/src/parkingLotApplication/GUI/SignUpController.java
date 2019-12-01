@@ -28,10 +28,9 @@ public class SignUpController implements Initializable{
 	@FXML RadioButton falsebtn;
 	@FXML AnchorPane anchorPane;
 	@FXML RadioButton isuser;
-	OwnerController oc = new OwnerController();
-	UserController uc = new UserController();
-	ArrayList<String> idList = new ArrayList<>();  // 아이디 중복 확인을 위한 아이디저장리스트
-	boolean signUpFlag; //아이디가 중복이 안됐으면 true를 리턴해 회원가입을 정상적으로 실행
+
+	OwnerController ownerController = new OwnerController();
+	UserController userController = new UserController();
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -66,68 +65,67 @@ public class SignUpController implements Initializable{
 	}
 	
 	@FXML public void signup() {
-		String ID = id.getText();
-		String PW = pw.getText();
-		String Name = name.getText();
-		String Age = age.getText();
-		String AccountNumber = accountnumber.getText();
 		
-		for(String id : idList) {                 //아이디 중복 검사
-			if(id.equals(ID)) {
-				signUpFlag=false;
+		// 입력받고
+		String inputId = id.getText();
+		String inputPassword = pw.getText();
+		String inputName = name.getText();
+		String inputAge = age.getText();
+		String inputAccountNumber = accountnumber.getText();
+		String inputCarNumber = carnumber.getText();
+		boolean isNonPerson = nonperson.getSelectedToggle().getUserData().equals("true");
+		
+		// 사용자일 경우
+		if(isuser.isSelected()) {
+			// 아이디 중복 검사
+			boolean isIdExist = false;
+			try {
+				isIdExist = userController.findId(inputId);
+			} catch (IOException e1) {
+				System.out.println("아이디를 찾는 도중 오류가 발생했습니다.");
 			}
-		}
-		if(!signUpFlag) {
-			//"아이디가 중복됐습니다. 다른 아이디를 입력해주세요." 경고창 실행 
-		}else {
-			if(isuser.isSelected()) { 						
-				User user = new User();
-				user.setId(ID);
-				user.setPassword(PW);
-				user.setName(Name);
-				user.setAge(Age);
-				user.setAccountNumber(AccountNumber);
-				user.setCarNumber(carnumber.getText());
-				if(nonperson.getSelectedToggle().getUserData().equals("true")) { user.setNonperson(true); } 
-				else { user.setNonperson(false); }
-				
+			// 아이디가 중복되지 않았으면 User 객체 생성후 userController 객체에 전달
+			if(!isIdExist) {
+				System.out.println("아이디가 없으니까 만들겠습니다.");
+				User user = new User(inputId, inputPassword, inputName, inputAge, inputAccountNumber, inputCarNumber, isNonPerson);
 				try {
-					uc.signUp(user);
+					userController.signUp(user);
+					System.out.println("만들었습니다.");
+					Parent login = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
+					anchorPane.getChildren().add(login);
 				} catch (ClassNotFoundException e) {
-					
 					e.printStackTrace();
 				} catch (FileNotFoundException e) {
-					
 					e.printStackTrace();
 				} catch (IOException e) {
-					
 					e.printStackTrace();
 				}
-				
-	
-			} else {
-				Owner owner = new Owner();
-				owner.setId(ID);
-				owner.setPassword(PW);
-				owner.setName(Name);
-				owner.setAge(Age);
-				owner.setAccountNumber(AccountNumber);
-						
-				try {
-					oc.signUp(owner);
-				} catch (ClassNotFoundException e) {
-					
-					e.printStackTrace();
-				} catch (FileNotFoundException e) {
-					
-					e.printStackTrace();
-				} catch (IOException e) {
-					
-					e.printStackTrace();
-				}
-				
+			}
+			else { // 중복됐으면
+				// 경고창
+				System.out.println("아이디가 이미 존재합니다. 다시 입력해주세요");
 			}
 		}
-
+		
+		// 관리자일 경우 경우
+		else {
+			// 아이디 중복 검사
+			// 아이디가 중복됐으면 경고창 실행 후 재입력
+			// 아이디가 중복되지 않았으면 Owner 객체 생성후 ownerController 객체에 전달
+			/*
+			 * 	Owner owner = new Owner(inputId, inputPassword, inputName, inputAge, inputAccountNumber, inputCarNumber, isNonPerson);
+				try {
+					ownerController.signUp(owner);
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			 */
+			
+		}
+		
 	}
 }

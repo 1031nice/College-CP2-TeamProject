@@ -9,8 +9,8 @@ import parkingLotApplication.model.*;
 
 public class AppMain extends Application {
 
-	User user;
-	Owner owner;
+	public static User user;
+	public static Owner owner;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
