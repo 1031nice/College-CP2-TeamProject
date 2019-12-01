@@ -46,6 +46,7 @@ public class ParkingLotListController implements Initializable {
 			return ;
 		}else {
 			parkingLot = list.get(parkingLotSelectedIndex);
+			parkingLotListThread.interrupt();
 			Parent userMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/UserMain.fxml"));
 			anchorPane.getChildren().add(userMain);
 		}
@@ -78,16 +79,16 @@ public class ParkingLotListController implements Initializable {
 		ois.close();
 		}  catch (IOException e) {} catch (ClassNotFoundException e) {}
 		
-		Thread parkingLotListThread = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				for(int i = 0; i < list.size(); i++) {
-					locationList.add(list.get(i).getLocation());
-					parkingLotList.add(list.get(i).getName());
-				}
-			}	
-		});
 		parkingLotListThread.start();
 	}
-
+	
+	Thread parkingLotListThread = new Thread(new Runnable() {
+		@Override
+		public void run() {
+			for(int i = 0; i < list.size(); i++) {
+				locationList.add(list.get(i).getLocation());
+				parkingLotList.add(list.get(i).getName());
+			}
+		}	
+	});
 }
