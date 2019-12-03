@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import parkingLotApplication.model.*;
 
 public class AppMain extends Application {
@@ -19,6 +20,14 @@ public class AppMain extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+//		FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+//		Parent load = loader.load();
+//		loader.setControllerFactory(new Callback<Class<?>, Object>() {
+//			@Override
+//			public Object call(Class<?> arg0) {
+//				return new LoginController("Hello");
+//			}
+//		});
 		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("ParkingLot.css").toString());

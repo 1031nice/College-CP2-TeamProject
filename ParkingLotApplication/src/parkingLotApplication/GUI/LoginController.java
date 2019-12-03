@@ -26,6 +26,11 @@ public class LoginController {
 	@FXML Button signUpButton;
 	@FXML AnchorPane anchorPane;
 	
+	private String name;
+	public LoginController(String name) {
+		this.name = name;
+	}
+	
 	@FXML public void loginButtonAction() throws Exception {
 
 		String inputId = idTextField.getText();
