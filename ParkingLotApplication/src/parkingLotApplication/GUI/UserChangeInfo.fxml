@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parkingLotApplication.GUI.UserChangeInfoController">
+<AnchorPane fx:id="anchorPane" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parkingLotApplication.GUI.UserChangeInfoController">
    <children>
       <AnchorPane layoutX="20.0" layoutY="70.0" prefHeight="400.0" prefWidth="450.0" style="-fx-background-color: silver;">
          <children>
@@ -38,7 +38,7 @@
                   <TextField prefHeight="30.0" prefWidth="200.0" />
                </children>
             </VBox>
-            <Button layoutX="200.0" layoutY="350.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="변경" />
+            <Button onAction="#changeInfo" layoutX="200.0" layoutY="350.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="변경" />
             <VBox layoutX="240.0" layoutY="30.0" prefHeight="150.0" prefWidth="200.0">
                <children>
                   <Label prefHeight="30.0" prefWidth="200.0" text="사회적약자">
@@ -71,8 +71,6 @@
             </Label>
          </children>
       </HBox>
-      <Button layoutX="450.0" layoutY="40.0" mnemonicParsing="false" text="&gt;" />
-      <Button layoutX="420.0" layoutY="40.0" mnemonicParsing="false" text="&lt;" />
       <HBox layoutX="370.0" layoutY="11.0" prefHeight="18.0" prefWidth="215.0">
          <children>
             <Label maxWidth="1.7976931348623157E308" text="000" HBox.hgrow="ALWAYS">
@@ -89,17 +87,17 @@
       </HBox>
       <VBox layoutX="485.0" layoutY="70.0" prefHeight="400.0" prefWidth="100.0">
          <children>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="예약" VBox.vgrow="ALWAYS">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#userMain" prefHeight="50.0" text="예약" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="반납">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#userMain" prefHeight="50.0" text="반납">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="결제">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#userMain" prefHeight="50.0" text="결제">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
@@ -109,12 +107,12 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="로그아웃">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logoutAction" prefHeight="50.0" text="로그아웃">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" text="종료" VBox.vgrow="ALWAYS" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exitAction" prefHeight="50.0" text="종료" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </children>

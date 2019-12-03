@@ -12,8 +12,53 @@
    <children>
       <AnchorPane layoutX="20.0" layoutY="70.0" prefHeight="400.0" prefWidth="450.0" style="-fx-background-color: silver;">
          <children>
-            <HBox prefHeight="75.0" prefWidth="450.0" />
-            <HBox layoutY="322.0" prefHeight="78.0" prefWidth="450.0" />
+            <HBox prefHeight="150.0" prefWidth="450.0">
+               <children>
+                  <Button fx:id="P1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p1" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="P2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p2" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="P3"maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p3" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="P4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p4" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+               </children></HBox>
+            <HBox layoutY="249.0" prefHeight="150.0" prefWidth="450.0">
+               <children>
+                  <Button fx:id="P5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p5" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="P6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p6" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="P7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p7" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="P8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p8" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </children></AnchorPane>
       <HBox layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="350.0">
          <children>
@@ -31,32 +76,32 @@
       </HBox>
       <VBox layoutX="485.0" layoutY="70.0" prefHeight="400.0" prefWidth="100.0">
          <children>
-            <Button fx:id="reservationButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#reservationAction" prefHeight="50.0" text="예약" VBox.vgrow="ALWAYS">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#reservationAction" prefHeight="50.0" text="예약" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="returnButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#returnAction" prefHeight="50.0" text="반납">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#returnAction" prefHeight="50.0" text="반납">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="paymentButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#paymentAction" prefHeight="50.0" text="결제">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#paymentAction" prefHeight="50.0" text="결제">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="changeInfoButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeInfoAction" prefHeight="50.0" text="정보변경">
+            <Button  maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeInfoAction" prefHeight="50.0" text="정보변경">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="logoutButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logoutAction" prefHeight="50.0" text="돌아가기">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logoutAction" prefHeight="50.0" text="로그아웃">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="exitButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exitAction" prefHeight="50.0" text="종료" VBox.vgrow="ALWAYS" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exitAction" prefHeight="50.0" text="종료" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
       <HBox layoutX="385.0" layoutY="11.0" prefHeight="18.0" prefWidth="200.0">

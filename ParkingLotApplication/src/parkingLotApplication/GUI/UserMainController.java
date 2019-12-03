@@ -23,16 +23,19 @@ import javafx.scene.control.Label;
 
 public class UserMainController implements Initializable{
 
-	@FXML Button reservationButton;
-	@FXML Button returnButton;
-	@FXML Button paymentButton;
-	@FXML Button changeInfoButton;
-	@FXML Button logoutButton;
-	@FXML Button exitButton;
 	@FXML AnchorPane anchorPane;
 	@FXML Label userName;
 	@FXML Label parkingLotName;
-	private ArrayList<ParkingLot> list;
+	@FXML Button P1;
+	@FXML Button P2;
+	@FXML Button P3;
+	@FXML Button P4;
+	@FXML Button P5;
+	@FXML Button P6;
+	@FXML Button P7;
+	@FXML Button P8;
+	
+	private ArrayList<ParkingLot> list = new ArrayList<>();
 	FileInputStream fis = null;
 	BufferedInputStream bis = null;
 	ObjectInputStream ois = null;
@@ -65,21 +68,9 @@ public class UserMainController implements Initializable{
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		//userName.setText(AppMain.user.getName());
+		//parkingLotName.setText(AppMain.user.getParkingLot().getName());
 		
 	}
-	
-//	Thread findName = new Thread(new Runnable() {
-//		@Override
-//		public void run() {
-//			for(int i = 0; i < list.size(); i++) {
-////				if(user.getName().equls(list.get(i).getName())) {
-////					userName.setText(user.getName());
-////				}
-////				if(parkingLot.getName().equls(list.get(i).getName())) {
-////					parkingLotName.setText(parkingLot.getName());
-//				}
-//			}
-//		}	
-//	});
+
 }

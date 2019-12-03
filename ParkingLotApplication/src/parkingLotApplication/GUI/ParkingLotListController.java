@@ -3,6 +3,7 @@ package parkingLotApplication.GUI;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -36,7 +37,8 @@ public class ParkingLotListController implements Initializable {
 	private ObservableList<String> locationList;
 	private ObservableList<String> parkingLotList;
 	private ArrayList<ParkingLot> list;
-	private ArrayList<String> idList = new ArrayList<>();;
+	private ArrayList<String> idList = new ArrayList<>();
+	private int parkingLotSelectedIndex;
 	
 	@FXML public void enterButtonAction() throws IOException{
 		int parkingLotSelectedIndex = parkingLotListView.getSelectionModel().getSelectedIndex();
@@ -44,6 +46,8 @@ public class ParkingLotListController implements Initializable {
 			new Alert(Alert.AlertType.WARNING, "항목을 선택하세요.", ButtonType.CLOSE).show();
 			return ;
 		}else {
+			AppMain.user.setParkingLotName(parkingLotList.get(parkingLotSelectedIndex));
+			AppMain.user.setParkingLot(parkingLotFile);
 			StackPane root = (StackPane) anchorPane.getScene().getRoot();
 			Parent userMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/UserMain.fxml"));
 			root.getChildren().remove(anchorPane);
