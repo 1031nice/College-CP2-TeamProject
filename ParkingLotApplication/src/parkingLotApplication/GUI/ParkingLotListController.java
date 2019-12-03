@@ -69,11 +69,11 @@ public class ParkingLotListController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		System.out.println(AppMain.user.getId());
 		parkingLotList = FXCollections.observableArrayList();
 		parkingLotListView.setItems(parkingLotList);
 		locationList = FXCollections.observableArrayList();
 		locationListView.setItems(locationList);
-		
 		parkingLotListThread.start();
 	}
 	

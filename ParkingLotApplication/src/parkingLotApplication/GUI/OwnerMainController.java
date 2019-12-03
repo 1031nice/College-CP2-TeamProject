@@ -27,6 +27,7 @@ public class OwnerMainController extends AppMain implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		System.out.println(AppMain.owner.getAccountNumber());
 		//오너가 소지한 주차장들의 이름을 리스트에 나열합니다.
 		ownerParkingLotList = FXCollections.observableArrayList();
 		ownerParkingLotListView.setItems(ownerParkingLotList);
