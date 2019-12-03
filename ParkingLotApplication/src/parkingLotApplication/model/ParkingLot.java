@@ -19,7 +19,6 @@ public class ParkingLot implements Serializable  { // 주차장
 	public ParkingLot() {
 		setSpaces(new ArrayList<ParkingSpace>());
 	}
-
 	public ArrayList<ParkingSpace> getSpaces() {
 		return _spaces;
 	}
