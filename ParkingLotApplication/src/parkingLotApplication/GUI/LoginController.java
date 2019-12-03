@@ -24,11 +24,11 @@ public class LoginController {
 	@FXML RadioButton owner;
 	@FXML StackPane stackPane;
 	@FXML AnchorPane anchorPane;
-	
 	private String name;
-	public LoginController(String name) {
-		this.name = name;
-	}
+	
+//	public LoginController(String name) {
+//		this.name = name;
+//	}
 	
 	@FXML public void loginButtonAction() throws Exception {
 
@@ -38,6 +38,7 @@ public class LoginController {
 		if(type.getSelectedToggle().getUserData().equals("고객")) {
 			String password = AppMain.findId(inputId, "UserInfo");
 			if(inputPassword.equals(password)) {
+				AppMain.getAppClientDataFromFile(inputId, "User");
 				Parent ParkingLotList = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/ParkingLotList.fxml"));
 				stackPane.getChildren().remove(anchorPane);
 				stackPane.getChildren().add(ParkingLotList);
@@ -49,6 +50,7 @@ public class LoginController {
 		else {
 			String password = AppMain.findId(inputId, "OwnerInfo");
 			if(inputPassword.equals(password)) {
+				AppMain.getAppClientDataFromFile(inputId, "Owner");
 				Parent ownerMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/OwnerMain.fxml"));
 				stackPane.getChildren().remove(anchorPane);
 				stackPane.getChildren().add(ownerMain);

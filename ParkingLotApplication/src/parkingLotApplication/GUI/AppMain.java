@@ -17,17 +17,17 @@ public class AppMain extends Application {
 
 	public static User user;
 	public static Owner owner;
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-//		FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
-//		Parent load = loader.load();
-//		loader.setControllerFactory(new Callback<Class<?>, Object>() {
-//			@Override
-//			public Object call(Class<?> arg0) {
-//				return new LoginController("Hello");
-//			}
-//		});
+		//		FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+		//		Parent load = loader.load();
+		//		loader.setControllerFactory(new Callback<Class<?>, Object>() {
+		//			@Override
+		//			public Object call(Class<?> arg0) {
+		//				return new LoginController("Hello");
+		//			}
+		//		});
 		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 		Scene scene = new Scene(root);
 		//scene.getStylesheets().add(getClass().getResource("ParkingLot.css").toString());
@@ -39,7 +39,7 @@ public class AppMain extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	public static String findId(String id, String fileName) throws IOException {
 		Reader reader = new FileReader("./src/data/" + fileName +".txt");
 		BufferedReader bufferedReader = new BufferedReader(reader);
@@ -58,5 +58,38 @@ public class AppMain extends Application {
 		reader.close();
 		bufferedReader.close();
 		return null;
+	}
+
+	public static void getAppClientDataFromFile(String id, String appClient) throws IOException {
+		if(appClient.equals("User")) {
+			Reader reader = new FileReader("./src/data/" + "UserInfo.txt");
+			BufferedReader bufferedReader = new BufferedReader(reader);
+			String line = "";
+			String[] array;
+			while((line = bufferedReader.readLine()) != null) {
+				array = line.split(" ");
+				if(array[0].equals(id)) {
+					AppMain.user = new User(array[0], array[1], array[2], array[3], array[4], array[5], Boolean.parseBoolean(array[6]));
+					break;
+				}
+			}			
+			reader.close();
+			bufferedReader.close();
+		}
+		else if(appClient.equals("Owner")) {
+			Reader reader = new FileReader("./src/data/" + "OwnerInfo.txt");
+			BufferedReader bufferedReader = new BufferedReader(reader);
+			String line = "";
+			String[] array;
+			while((line = bufferedReader.readLine()) != null) {
+				array = line.split(" ");
+				if(array[0].equals(id)) {
+					AppMain.owner = new Owner(array[0], array[1], array[2], array[3], array[4]);
+					break;
+				}
+			}
+			reader.close();
+			bufferedReader.close();
+		}
 	}
 }
