@@ -19,6 +19,7 @@ public class OwnerMainController extends AppMain implements Initializable{
 	@FXML ListView<String> ownerParkingLotListView;
 	@FXML AnchorPane bigAnchorPane;
 	@FXML AnchorPane smallAnchorPane;
+	@FXML Label banner;
 	
 	private ObservableList<String> ownerParkingLotList;
 	String ownerParkingLotInfo="";
@@ -27,14 +28,14 @@ public class OwnerMainController extends AppMain implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println(AppMain.owner.getAccountNumber());
+		banner.setText(owner.getName() + "님 환영합니다!");
 		//오너가 소지한 주차장들의 이름을 리스트에 나열합니다.
 		ownerParkingLotList = FXCollections.observableArrayList();
 		ownerParkingLotListView.setItems(ownerParkingLotList);
 		try {
-			//BufferedReader br = new BufferedReader(new FileReader("./src/data/ParkingLotInfo_"+AppMain.owner.getId() +".txt"));		
+			BufferedReader br = new BufferedReader(new FileReader("./src/data/ParkingLotInfo_"+AppMain.owner.getId() +".txt"));		
 			//테스트를 위한 임시 코드
-			BufferedReader br = new BufferedReader(new FileReader("./src/data/ParkingLotInfo_"+"sun" +".txt"));	
+//			BufferedReader br = new BufferedReader(new FileReader("./src/data/ParkingLotInfo_"+"sun" +".txt"));	
 			while((ownerParkingLotInfo = br.readLine()) != null) {
 				infoArr = ownerParkingLotInfo.split(" ");
 				ownerParkingLotList.add(infoArr[0]);			

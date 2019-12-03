@@ -13,12 +13,7 @@
    <children>
       <HBox layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="350.0">
          <children>
-            <Label maxWidth="1.7976931348623157E308" text="ooo" HBox.hgrow="ALWAYS">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="192.0" text="관리자님 환영합니다." HBox.hgrow="ALWAYS">
+            <Label fx:id="banner" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="192.0" text="관리자님 환영합니다." HBox.hgrow="ALWAYS">
                <font>
                   <Font size="24.0" />
                </font>
@@ -64,15 +59,7 @@
             </Button>
          </children>
       </VBox>
-      <HBox layoutX="370.0" layoutY="11.0" prefHeight="18.0" prefWidth="215.0">
-         <children>
-            <Label maxWidth="1.7976931348623157E308" text="000" HBox.hgrow="ALWAYS">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
+      <HBox layoutX="370.0" layoutY="11.0" prefHeight="18.0" prefWidth="215.0" />
       <AnchorPane fx:id="smallAnchorPane" layoutX="20.0" layoutY="70.0" prefHeight="400.0" prefWidth="450.0">
          <children>
             <ListView fx:id="ownerParkingLotListView" prefHeight="400.0" prefWidth="450.0" />
