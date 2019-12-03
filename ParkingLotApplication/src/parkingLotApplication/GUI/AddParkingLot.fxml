@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
@@ -25,28 +24,26 @@
                         <Font size="11.0" />
                      </font>
                   </Label>
-                  <Label text="지역" />
                   <Label text="주차장  위치">
                      <font>
                         <Font size="11.0" />
                      </font>
                   </Label>
-                  <Label text="주차공간 개수" />
                   <Label text="10분당 요금" />
+                  <Label text="주차공간 개수" />
                </children>
             </VBox>
             <VBox alignment="CENTER" spacing="10.0">
                <children>
                   <TextField fx:id="parkinglotNameField" />
-                  <ChoiceBox fx:id="regionChoiceBox" prefWidth="200.0" />
                   <TextField fx:id="parkingLotLocationField" />
-                  <TextField fx:id="numOfParkingSpaceField" />
                   <TextField fx:id="feeForTenMinField" />
+                  <TextField fx:id="numOfParkingSpaceField" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#parkingLotAddAction" text="등록" />
+      <Button mnemonicParsing="false" onAction="#addParkingLotAction" text="등록" />
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color:white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parkingLotApplication.GUI.OwnerMainController">
+<AnchorPane fx:id="bigAnchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color:white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parkingLotApplication.GUI.OwnerMainController">
    <children>
       <HBox layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="350.0">
          <children>
@@ -27,17 +27,17 @@
       </HBox>
       <VBox layoutX="485.0" layoutY="70.0" prefHeight="400.0" prefWidth="100.0">
          <children>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#ParkingotListAction" prefHeight="50.0" text="주차장 목록">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addParkinglotAction" prefHeight="50.0" text="주차장 등록" VBox.vgrow="ALWAYS">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#ParkingLotListAction" prefHeight="50.0" text="주차장 목록">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#enterParkinglotAction" prefHeight="50.0" text="주차장 입장">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addParkinglotAction" prefHeight="50.0" text="주차장 등록">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
@@ -73,9 +73,9 @@
             </Label>
          </children>
       </HBox>
-      <AnchorPane fx:id="anchorPane2" layoutX="20.0" layoutY="70.0" prefHeight="400.0" prefWidth="450.0">
+      <AnchorPane fx:id="smallAnchorPane" layoutX="20.0" layoutY="70.0" prefHeight="400.0" prefWidth="450.0">
          <children>
-            <ListView fx:id="parkinglotList" prefHeight="400.0" prefWidth="450.0" />
+            <ListView fx:id="ownerParkingLotListView" prefHeight="400.0" prefWidth="450.0" />
          </children>
       </AnchorPane>
    </children>
