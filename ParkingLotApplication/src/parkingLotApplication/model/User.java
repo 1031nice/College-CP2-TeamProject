@@ -3,7 +3,8 @@ package parkingLotApplication.model;
 public class User extends AppClient {
 	
 	private String _carNumber;
-	private boolean _nonperson;			//사회적 약자
+	private boolean _nonperson;		//사회적 약자
+	ParkingLot _parkingLot;			//user가 현재 위치하는 주차장
 		
 	public User(String id, String password, String name, String age, String accountNumber, String carNumber, boolean nonPerson) {
 		super(id, password, name, age, accountNumber);
@@ -18,6 +19,9 @@ public class User extends AppClient {
 	public String getCarNumber() {
 		return _carNumber;
 	}
+	public ParkingLot getParkingLot() {
+		return _parkingLot;
+	}
 	
 	// setters
 	public void setNonperson(boolean nonperson) {
@@ -26,5 +30,7 @@ public class User extends AppClient {
 	public void setCarNumber(String carNumber) {
 		this._carNumber = carNumber;
 	}
-
+	public void setParkingLot(ParkingLot parkingLot) {
+		this._parkingLot = parkingLot;
+	}
 }

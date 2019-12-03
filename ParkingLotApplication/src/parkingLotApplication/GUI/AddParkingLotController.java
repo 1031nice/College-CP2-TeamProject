@@ -14,20 +14,29 @@ import parkingLotApplication.model.*;
 public class AddParkingLotController implements Initializable {
 
 	@FXML TextField parkinglotNameField;
-	@FXML TextField feeForTenMinField;
 	@FXML TextField parkingLotLocationField;
-	@FXML ChoiceBox<String> regionChoiceBox;
+	@FXML TextField feeForTenMinField;
 	@FXML TextField numOfParkingSpaceField;
 	@FXML VBox addParkingLotVbox;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ObservableList<String> regionComboList = FXCollections.observableArrayList("수도권", "강원도", "충청도", "전라도", "경상도", "제주도");
-		regionChoiceBox.setItems(regionComboList);	
+		
 	}
 	
-	@FXML public void parkingLotAddAction() {
+	@FXML public void addParkingLotAction() {
+		//해당 정보들을 오너주차장 정보 텍스트파일에 넣는다.
+		
+		
+		
+		
+		//주차장목록으로 가는코드
+		
+		
+		
+		//보류 코드
 		//오너가 입력한 정보를 가지고 ParkingLot객체 생성
+		/*
 		ParkingLot parkingLot = new ParkingLot();
 		
 		parkingLot.setName(parkinglotNameField.getText());	
@@ -73,7 +82,6 @@ public class AddParkingLotController implements Initializable {
 		
 		ParkingLotController pc = new ParkingLotController();
 		
-		/*
 		try {
 			pc.addParkingLot(parkingLot);
 		} catch (ClassNotFoundException e) {
@@ -88,7 +96,6 @@ public class AddParkingLotController implements Initializable {
 		}
 		*/
 		
-		//주차장목록으로 가는코드
 	}
 
 }

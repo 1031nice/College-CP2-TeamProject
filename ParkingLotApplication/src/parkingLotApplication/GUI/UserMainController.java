@@ -17,6 +17,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import parkingLotApplication.model.ParkingLot;
 import javafx.scene.control.Label;
 
@@ -47,29 +48,24 @@ public class UserMainController implements Initializable{
 		Optional<ButtonType> ok = alert.showAndWait();
 	}
 	@FXML public void changeInfoAction() throws IOException {
+		StackPane root = (StackPane) anchorPane.getScene().getRoot();
 		Parent changeInfo = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/UserChangeInfo.fxml"));
-		anchorPane.getChildren().add(changeInfo);
+		root.getChildren().remove(anchorPane);
+		root.getChildren().add(changeInfo);
 	}
 	@FXML public void logoutAction() throws IOException {
-//		findName.interrupt();
-		Parent login = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
-		anchorPane.getChildren().add(login);
+		AppMain.user = null;
+		StackPane root = (StackPane) anchorPane.getScene().getRoot();
+		Parent logout = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
+		root.getChildren().remove(anchorPane);
+		root.getChildren().add(logout);
 	}
 	@FXML public void exitAction() {
 		System.exit(1);
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		try {
-			fis  = new FileInputStream("./src/parkingLotApplication/app/ClientInfo.txt");
-			bis = new BufferedInputStream(fis);
-			ois = new ObjectInputStream(bis);
-			list = (ArrayList<ParkingLot>) ois.readObject();
-			
-			fis.close();
-			bis.close();
-			ois.close();
-		}  catch (IOException e) {} catch (ClassNotFoundException e) {}
+		
 		
 	}
 	

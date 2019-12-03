@@ -54,16 +54,8 @@ public class SignUpController implements Initializable{
 	}
 	
 	@FXML public void backbutton() throws Exception{
-		Parent Login = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
-		anchorPane.getChildren().add(Login);
-		
-		Login.setTranslateX(Login.getLayoutX());
-		
-		Timeline timeline = new Timeline();
-		KeyValue keyValue = new KeyValue(Login.translateXProperty(), 0);
-		KeyFrame keyFrame = new KeyFrame(Duration.millis(500), keyValue);
-		timeline.getKeyFrames().add(keyFrame);
-		timeline.play();
+		StackPane root = (StackPane) anchorPane.getScene().getRoot();
+		root.getChildren().remove(anchorPane);
 	}
 	
 	@FXML public void signup() {
@@ -93,8 +85,8 @@ public class SignUpController implements Initializable{
 				try {
 					userController.signUp(user);
 					System.out.println("만들었습니다.");
-					Parent login = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
-					anchorPane.getChildren().add(login);
+					StackPane root = (StackPane) anchorPane.getScene().getRoot();
+					root.getChildren().remove(anchorPane);
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				} catch (FileNotFoundException e) {
@@ -123,8 +115,8 @@ public class SignUpController implements Initializable{
 				try {
 					ownerController.signUp(owner);
 					System.out.println("만들었습니다.");
-					Parent login = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
-					anchorPane.getChildren().add(login);
+					StackPane root = (StackPane) anchorPane.getScene().getRoot();
+					root.getChildren().remove(anchorPane);
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				} catch (FileNotFoundException e) {

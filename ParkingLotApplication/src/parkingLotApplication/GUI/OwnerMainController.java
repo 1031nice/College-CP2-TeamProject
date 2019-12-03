@@ -1,9 +1,11 @@
 package parkingLotApplication.GUI;
 
+import java.io.*;
 import java.net.*;
 import java.util.*;
 
 import javafx.application.*;
+import javafx.collections.*;
 import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -12,17 +14,33 @@ import javafx.scene.layout.*;
 import javafx.stage.*;
 import parkingLotApplication.model.*;
 
-public class OwnerMainController implements Initializable{
+public class OwnerMainController extends AppMain implements Initializable{
 
-	@FXML ListView<ParkingLot> parkinglotList;
-	@FXML AnchorPane anchorPane;
-	@FXML AnchorPane anchorPane2;
+	@FXML ListView<String> ownerParkingLotListView;
+	@FXML AnchorPane bigAnchorPane;
+	@FXML AnchorPane smallAnchorPane;
+	
+	private ObservableList<String> ownerParkingLotList;
+	String ownerParkingLotInfo="";
+	String[] infoArr;
+
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//ParkingLotInfo에서 ParkingLotList를 가져와 오너의 아이디랑 일치한 주차장만
-		//ParkingLotListView에 띄운다.
-		//ListView vs Tableview(지역이랑 주차장이름을 가져와 2열로 만든다.) 고민중
+		//오너가 소지한 주차장들의 이름을 리스트에 나열합니다.
+		ownerParkingLotList = FXCollections.observableArrayList();
+		ownerParkingLotListView.setItems(ownerParkingLotList);
+		try {
+			//BufferedReader br = new BufferedReader(new FileReader("./src/data/ParkingLotInfo_"+AppMain.owner.getId() +".txt"));		
+			//테스트를 위한 임시 코드
+			BufferedReader br = new BufferedReader(new FileReader("./src/data/ParkingLotInfo_"+"sun" +".txt"));	
+			while((ownerParkingLotInfo = br.readLine()) != null) {
+				infoArr = ownerParkingLotInfo.split(" ");
+				ownerParkingLotList.add(infoArr[0]);			
+			}
+			br.close(); 
+		} catch (IOException e) {e.printStackTrace();}
+		
 	}
 	
 	@FXML public void addParkinglotAction() throws Exception{
@@ -30,38 +48,48 @@ public class OwnerMainController implements Initializable{
 		Parent parent = FXMLLoader.load(getClass().getResource("AddParkingLot.fxml"));
 		 popup.getContent().add(parent);
 		 popup.setAutoHide(true);
-		 popup.show(parkinglotList.getScene().getWindow());		 
+		 popup.show(ownerParkingLotListView.getScene().getWindow());		 
 	}
 	
-	@FXML public void ParkingotListAction() throws Exception{
+	@FXML public void ParkingLotListAction() throws Exception{	
 		Parent ownerMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/OwnerMain.fxml"));
-		anchorPane.getChildren().add(ownerMain);
+		bigAnchorPane.getChildren().add(ownerMain);
 	}
 	
 	@FXML public void enterParkinglotAction() throws Exception{
-		//Owner가 선택한 주차장이 가지고 있는 레이아웃 필드를 anchorpane에 띄운다.
+		//Owner가 선택한 주차장을 anchorpane에 띄운다.
 		
 	}
 
 	@FXML public void deleteParkinglotAction() {
-		//ListView에서 해당 주차장을 지운다.
+		int selectedIndex = ownerParkingLotListView.getSelectionModel().getSelectedIndex();
+		if(selectedIndex < 0) {
+			new Alert(Alert.AlertType.WARNING, "삭제할 항목을 선택하세요.", ButtonType.CLOSE).show();
+			return;
+		}
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION, " 정말 삭제하시겠습니까?", ButtonType.OK, ButtonType.CANCEL);
+		Optional<ButtonType> result = alert.showAndWait();
+		if(result.get() == ButtonType.OK) {
+			ownerParkingLotList.remove(selectedIndex);
+			//오너주차장정보 텍스트파일에서도 해당 주차장정보를 지운다.
+		}
 		
 	}
 	
 	@FXML public void changeInfoAction() throws Exception{
+		StackPane root = (StackPane) bigAnchorPane.getScene().getRoot();
 		Parent ownerChangeInfo = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/OwnerChangeInfo.fxml"));
-		anchorPane2.getChildren().add(ownerChangeInfo);
+		root.getChildren().add(ownerChangeInfo);
 	}
 
 	@FXML public void logoutAction() throws Exception{
-		Parent login = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
-		anchorPane.getChildren().add(login);
+		StackPane root = (StackPane) bigAnchorPane.getScene().getRoot();
+		Parent logout = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
+		root.getChildren().remove(bigAnchorPane);
+		root.getChildren().add(logout);
 	}
 
 	@FXML public void exitAction() {Platform.exit();}
 
-	
-
-	
 
 }
