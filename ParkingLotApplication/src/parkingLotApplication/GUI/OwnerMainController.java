@@ -57,7 +57,6 @@ public class OwnerMainController implements Initializable{
 	}
 	
 	@FXML public void enterParkinglotAction() throws Exception{
-		//Owner가 선택한 주차장을 anchorpane에 띄운다.
 		int selectedIndex = ownerParkingLotListView.getSelectionModel().getSelectedIndex();
 		if(selectedIndex < 0) {
 			new Alert(Alert.AlertType.WARNING, "입장할 주차장을 선택하세요.", ButtonType.CLOSE).show();

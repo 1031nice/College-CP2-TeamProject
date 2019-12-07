@@ -4,22 +4,30 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.net.*;
+import java.util.*;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import parkingLotApplication.model.*;
 
-public class AppMain extends Application {
+public class AppMain extends Application implements Initializable{
 
 	public static User user;
 	public static Owner owner;
 
 	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+	
+	}
+	
+	@Override
 	public void start(Stage primaryStage) throws Exception {
+		
 		//		FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
 		//		Parent load = loader.load();
 		//		loader.setControllerFactory(new Callback<Class<?>, Object>() {
@@ -92,4 +100,5 @@ public class AppMain extends Application {
 			bufferedReader.close();
 		}
 	}
+
 }
