@@ -1,9 +1,11 @@
 package parkingLotApplication.app;
 
-import java.io.*;
-import java.util.*;
-
-import parkingLotApplication.model.*;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import model.AppClient;
+import model.User;
 
 public class UserController extends AppClientController {
 

@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-import parkingLotApplication.model.AppClient;
+import model.AppClient;
 
 public abstract class AppClientController {
 

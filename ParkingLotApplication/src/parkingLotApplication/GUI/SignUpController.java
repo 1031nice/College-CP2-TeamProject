@@ -1,21 +1,23 @@
 package parkingLotApplication.GUI;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-import java.net.*;
-import java.util.*;
-
-import javafx.animation.*;
-import javafx.event.*;
-import javafx.fxml.*;
-import javafx.scene.*;
-import javafx.scene.control.*;
-import javafx.scene.input.*;
-import javafx.scene.layout.*;
-import javafx.util.*;
-import parkingLotApplication.app.*;
-import parkingLotApplication.model.*;
-import parkingLotApplication.GUI.AppMain;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import model.Owner;
+import model.User;
+import parkingLotApplication.app.OwnerController;
+import parkingLotApplication.app.UserController;
 
 public class SignUpController implements Initializable{
 

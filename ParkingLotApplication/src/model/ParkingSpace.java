@@ -1,4 +1,4 @@
-package parkingLotApplication.model;
+package model;
 
 import java.io.*;
 

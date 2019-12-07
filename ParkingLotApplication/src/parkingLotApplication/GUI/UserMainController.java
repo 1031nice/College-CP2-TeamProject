@@ -18,7 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import parkingLotApplication.model.ParkingLot;
+import model.ParkingLot;
 import javafx.scene.control.Label;
 
 public class UserMainController implements Initializable{
