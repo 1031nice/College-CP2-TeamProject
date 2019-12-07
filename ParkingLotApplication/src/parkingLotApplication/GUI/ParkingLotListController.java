@@ -47,7 +47,8 @@ public class ParkingLotListController implements Initializable {
 			return ;
 		}else {
 			AppMain.user.setParkingLotName(parkingLotList.get(parkingLotSelectedIndex));
-//			AppMain.user.setParkingLot(parkingLotFile);
+
+			//AppMain.user.setParkingLot("");
 			StackPane root = (StackPane) anchorPane.getScene().getRoot();
 			Parent userMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/UserMain.fxml"));
 			root.getChildren().remove(anchorPane);
@@ -69,7 +70,6 @@ public class ParkingLotListController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println(AppMain.user.getId());
 		parkingLotList = FXCollections.observableArrayList();
 		parkingLotListView.setItems(parkingLotList);
 		locationList = FXCollections.observableArrayList();
@@ -88,7 +88,6 @@ public class ParkingLotListController implements Initializable {
 				while((ownerIdLine = ownerIdReader.readLine()) != null) {
 					ownerIdArray = ownerIdLine.split(" ");
 					idList.add(ownerIdArray[0]);
-					System.out.println(ownerIdArray[0]);
 				}
 				ownerIdReader.close();
 				
@@ -100,7 +99,6 @@ public class ParkingLotListController implements Initializable {
 						parkingLotArray = parkingLotLine.split(" ");
 						parkingLotList.add(parkingLotArray[0]);
 						locationList.add(parkingLotArray[1]);
-						System.out.println(parkingLotArray[0] + "" +parkingLotArray[1]);
 					}
 					parkingLotReader.close();
 				}
