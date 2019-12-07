@@ -14,10 +14,12 @@ public class OwnerChangeInfoController {
 	@FXML AnchorPane anchorPane;
 
 	@FXML public void changeInfoBtn() throws Exception {
-		Parent ownerMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/OwnerMain.fxml"));
-		anchorPane.getChildren().add(ownerMain);
 		
 		//OwnerInfo 정보변경
+	}
+
+	@FXML public void cancelActionBtn() throws Exception{
+		changeInfoBtn();
 	}
 
 }

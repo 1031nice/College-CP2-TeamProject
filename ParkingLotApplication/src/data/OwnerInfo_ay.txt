@@ -1,0 +1,3 @@
+CNUparkinglot 충남대학교 0001010010 
+E5parkinglot 공대5호관 00000000 
+W1parkinglot 자연대1호관 0010000 
