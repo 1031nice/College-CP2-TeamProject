@@ -1,15 +1,12 @@
 package parkingLotApplication.GUI;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-import javafx.collections.*;
-import javafx.fxml.*;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
-import parkingLotApplication.app.*;
-import parkingLotApplication.model.*;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 
 public class AddParkingLotController implements Initializable {
 

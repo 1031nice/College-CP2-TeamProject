@@ -27,7 +27,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import parkingLotApplication.model.ParkingLot;
+import model.ParkingLot;
 
 public class ParkingLotListController implements Initializable {
 
@@ -47,6 +47,7 @@ public class ParkingLotListController implements Initializable {
 			return ;
 		}else {
 			AppMain.user.setParkingLotName(parkingLotList.get(parkingLotSelectedIndex));
+
 			//AppMain.user.setParkingLot("");
 			StackPane root = (StackPane) anchorPane.getScene().getRoot();
 			Parent userMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/UserMain.fxml"));

@@ -1,4 +1,4 @@
-package parkingLotApplication.model;
+package model;
 
 public class User extends AppClient {
 	

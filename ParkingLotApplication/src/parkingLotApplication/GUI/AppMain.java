@@ -12,8 +12,27 @@ import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import parkingLotApplication.model.*;
+import model.Owner;
+import model.User;
+
+/*
+ * 제목 수정
+ * 
+ * 앱소개: 누구나 자신의 남는 방을 세를 줄 수 있는 에어비앤비처럼 누구나 자신의 주차공간을 등록해서 서비스를 제공할 수 있는 앱
+ * 사용자는 두 부류. 하나는 주차공간을 쓰고 싶은 사람, 하나는 주차공간을 공유하고 싶은 사람
+ */
+
+/*
+ * 진행상황: fxml까지 만들었고 아직 예약 또는 반납에 따른 내부적 처리가 안됨.
+ */
+
+/*
+ * 문제점: 무엇을 Thread로 어떻게 처리하지?
+ * server와 client로 어떻게 나누지?
+ * 정보는 언제 어떻게 주고받지?
+ * 프로그램 내에서 자원의 공유
+ */
+
 
 public class AppMain extends Application implements Initializable{
 

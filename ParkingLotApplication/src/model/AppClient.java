@@ -1,6 +1,7 @@
-package parkingLotApplication.model;
+package model;
 
-import java.io.*;
+import java.io.Serializable;
+import java.net.Socket;
 
 public class AppClient implements Serializable {
 
@@ -10,6 +11,13 @@ public class AppClient implements Serializable {
 	private String _name;
 	private String  _age;
 	private String _AccountNumber;
+	public Socket socket;
+	
+	public AppClient() {}
+	
+	public AppClient(Socket socket) {
+		this.socket = socket;
+	}
 	
 	public AppClient(String id, String password, String name, String age, String accountNumber) {
 		setId(id);
