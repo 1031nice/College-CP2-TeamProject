@@ -9,9 +9,7 @@ public class ParkingLot implements Serializable  { // 주차장
 	
 	private String name;				//주차장 이름
 	private String location;			//주차장 지역(주소)
-	private int feeForTenMin;		//10분당 요금
 	private ArrayList<ParkingSpace> _spaces; 		
-	private VBox parkingLotLayout;		//실제 주차장 모습
 	
 	public ParkingLot(ArrayList<ParkingSpace> spaces) {
 		setSpaces(spaces);
@@ -28,12 +26,6 @@ public class ParkingLot implements Serializable  { // 주차장
 	public String getLocation() {
 		return location;
 	}
-	public int getFeeForTenMin() {
-		return feeForTenMin;
-	}
-	public VBox getParkingLotLayout() {
-		return parkingLotLayout;
-	}
 	
 	public void setSpaces(ArrayList<ParkingSpace> spaces) {
 		this._spaces = spaces;
@@ -43,11 +35,5 @@ public class ParkingLot implements Serializable  { // 주차장
 	}
 	public void setLocation(String location) {
 		this.location = location;
-	}
-	public void setFeeForTenMin(int feeForTenMin) {
-		this.feeForTenMin = feeForTenMin;
-	}
-	public void setParkingLotLayout(VBox parkingLotLayout) {
-		this.parkingLotLayout = parkingLotLayout;
 	}
 }

@@ -46,7 +46,7 @@ public class ParkingLotListController implements Initializable {
 			new Alert(Alert.AlertType.WARNING, "항목을 선택하세요.", ButtonType.CLOSE).show();
 			return ;
 		}else {
-			AppMain.user.setParkingLotName(parkingLotList.get(parkingLotSelectedIndex));
+			//AppMain.user.setParkingLotName(parkingLotList.get(parkingLotSelectedIndex));
 
 			//AppMain.user.setParkingLot("");
 			StackPane root = (StackPane) anchorPane.getScene().getRoot();

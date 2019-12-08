@@ -1,0 +1,8 @@
+CNUparkinglot 충남대학교 0001010010 
+E5parkinglot 공대5호관 00000000 
+W1parkinglot 자연대1호관 0010000 
+asda adasd 200 000
+dasd adas 2 00
+adasd asd 200 00000
+sd ad 200 00000
+E1 공대1호관 1000 0000

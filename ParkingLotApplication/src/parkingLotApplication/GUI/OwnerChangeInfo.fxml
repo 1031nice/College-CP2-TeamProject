@@ -8,10 +8,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parkingLotApplication.GUI.OwnerChangeInfoController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="450.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parkingLotApplication.GUI.OwnerChangeInfoController">
    <children>
-      <Button layoutX="275.0" layoutY="421.0" mnemonicParsing="false" onAction="#changeInfoBtn" prefHeight="30.0" prefWidth="50.0" text="변경" />
-      <VBox layoutX="175.0" layoutY="95.0">
+      <Button layoutX="140.0" layoutY="386.0" mnemonicParsing="false" onAction="#changeInfoBtn" prefHeight="30.0" prefWidth="50.0" text="변경" />
+      <VBox layoutX="99.0" layoutY="88.0">
          <children>
             <Label prefHeight="30.0" prefWidth="200.0" text="Change_Password">
                <font>
@@ -47,10 +47,11 @@
             <TextField fx:id="accountNumField" prefHeight="30.0" prefWidth="200.0" />
          </children>
       </VBox>
-      <Label alignment="CENTER" layoutX="164.0" layoutY="31.0" prefHeight="34.0" prefWidth="271.0" text="관리자 회원정보변경" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="88.0" layoutY="32.0" prefHeight="34.0" prefWidth="271.0" text="관리자 회원정보변경" textAlignment="CENTER">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
+      <Button layoutX="242.0" layoutY="386.0" mnemonicParsing="false" onAction="#cancelActionBtn" prefHeight="30.0" prefWidth="50.0" text="취소" />
    </children>
 </AnchorPane>

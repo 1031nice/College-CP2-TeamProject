@@ -1,11 +1,15 @@
 package parkingLotApplicationServer;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import model.AppClient;
+import parkingLotApplication.GUI.AppMain;
 
 public class Server {
 
@@ -15,7 +19,6 @@ public class Server {
 
 	public static ServerSocket serverSocket;
 	public static Socket clientSocket;
-
 
 	public static void main(String[] args) {
 		

@@ -22,7 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Popup;
 
-public class OwnerMainController extends AppMain implements Initializable{
+public class OwnerMainController implements Initializable{
 
 	@FXML ListView<String> ownerParkingLotListView;
 	@FXML AnchorPane bigAnchorPane;
@@ -31,26 +31,26 @@ public class OwnerMainController extends AppMain implements Initializable{
 	
 	private ObservableList<String> ownerParkingLotList;
 	String ownerParkingLotInfo="";
-	String[] infoArr;
+	String[] infoArr = new String[10];
 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		banner.setText(owner.getName() + "님 환영합니다!");
+		banner.setText(AppMain.owner.getName() + "님 환영합니다!");
+		
 		//오너가 소지한 주차장들의 이름을 리스트에 나열합니다.
+
 		ownerParkingLotList = FXCollections.observableArrayList();
 		ownerParkingLotListView.setItems(ownerParkingLotList);
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("./src/data/ParkingLotInfo_"+AppMain.owner.getId() +".txt"));		
-			//테스트를 위한 임시 코드
-//			BufferedReader br = new BufferedReader(new FileReader("./src/data/ParkingLotInfo_"+"sun" +".txt"));	
+			BufferedReader br = new BufferedReader(new FileReader("./src/data/ParkingLotInfo_"+AppMain.owner.getId()+".txt"));			
 			while((ownerParkingLotInfo = br.readLine()) != null) {
 				infoArr = ownerParkingLotInfo.split(" ");
-				ownerParkingLotList.add(infoArr[0]);			
+				ownerParkingLotList.add(infoArr[0] + " / 주차장 위치 : " +  infoArr[1]);			
 			}
 			br.close(); 
 		} catch (IOException e) {e.printStackTrace();}
-		
+
 	}
 	
 	@FXML public void addParkinglotAction() throws Exception{
@@ -67,7 +67,11 @@ public class OwnerMainController extends AppMain implements Initializable{
 	}
 	
 	@FXML public void enterParkinglotAction() throws Exception{
-		//Owner가 선택한 주차장을 anchorpane에 띄운다.
+		int selectedIndex = ownerParkingLotListView.getSelectionModel().getSelectedIndex();
+		if(selectedIndex < 0) {
+			new Alert(Alert.AlertType.WARNING, "입장할 주차장을 선택하세요.", ButtonType.CLOSE).show();
+			return;
+		}
 		
 	}
 
@@ -87,9 +91,8 @@ public class OwnerMainController extends AppMain implements Initializable{
 	}
 	
 	@FXML public void changeInfoAction() throws Exception{
-		StackPane root = (StackPane) bigAnchorPane.getScene().getRoot();
 		Parent ownerChangeInfo = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/OwnerChangeInfo.fxml"));
-		root.getChildren().add(ownerChangeInfo);
+		smallAnchorPane.getChildren().add(ownerChangeInfo);
 	}
 
 	@FXML public void logoutAction() throws Exception{

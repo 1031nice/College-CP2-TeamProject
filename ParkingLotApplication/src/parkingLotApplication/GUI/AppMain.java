@@ -4,9 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.net.*;
+import java.util.*;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -32,13 +34,20 @@ import model.User;
  */
 
 
-public class AppMain extends Application {
+public class AppMain extends Application implements Initializable{
 
 	public static User user;
+//	public static boolean[] parkingLot = new boolean[8];
 	public static Owner owner;
 
 	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+	
+	}
+	
+	@Override
 	public void start(Stage primaryStage) throws Exception {
+		
 		//		FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
 		//		Parent load = loader.load();
 		//		loader.setControllerFactory(new Callback<Class<?>, Object>() {
@@ -49,7 +58,7 @@ public class AppMain extends Application {
 		//		});
 		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 		Scene scene = new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("ParkingLot.css").toString());
+		scene.getStylesheets().add(getClass().getResource("ParkingLot.css").toExternalForm());
 		primaryStage.setTitle("주차장 관리 및 대여 시스템");
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -111,4 +120,5 @@ public class AppMain extends Application {
 			bufferedReader.close();
 		}
 	}
+
 }
