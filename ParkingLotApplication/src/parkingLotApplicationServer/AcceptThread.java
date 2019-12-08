@@ -21,7 +21,6 @@ public class AcceptThread implements Runnable {
 			try {
 				Server.clientSocket = serverSocket.accept();
 				System.out.println("connected client" + Server.clientSocket);
-				Server.numberOfClient++;
                 Server.appClientList.add(new AppClient(Server.clientSocket));
 			}
 			catch(IOException e) {

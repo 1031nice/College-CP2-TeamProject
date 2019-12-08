@@ -5,7 +5,6 @@ public class User extends AppClient {
 	private String _carNumber;
 	private boolean _nonperson;		//사회적 약자
 	String parkingLotName;			//user가 현재 위치하는 주차장이름
-	String parkingLotFile;			//user가 현재 위치하는 주차장파일
 		
 	public User(String id, String password, String name, String age, String accountNumber, String carNumber, boolean nonPerson) {
 		super(id, password, name, age, accountNumber);
@@ -22,9 +21,6 @@ public class User extends AppClient {
 	}
 	public String getParkingLotName() {
 		return parkingLotName;
-	}
-	public String getParkingLotFile() {
-		return parkingLotFile;
 	}
 	
 	// setters
