@@ -43,7 +43,7 @@ public class AddParkingLotController implements Initializable {
 		writer.flush();
 		writer.close(); 		
 		
-	
+		//주차장등록완료 창은 VBOX를 보여주기위 해 임시로 주석처리했습니다
 		
 		//보류 코드
 		//오너가 입력한 정보를 가지고 ParkingLot객체 생성
