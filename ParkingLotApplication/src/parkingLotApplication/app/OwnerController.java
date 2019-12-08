@@ -33,7 +33,7 @@ public class OwnerController extends AppClientController{
 		writer.flush();
 		writer.close();		
 		// 관리자 별 주차장 텍스트 파일
-		File file = new File("./src/data/" + fileName + "_" + owner.getId() + ".txt");
+		File file = new File("./src/data/ParkingLotInfo_" + owner.getId() + ".txt");
 		Writer writer2 = new FileWriter(file, true);
 		writer2.close();
 	}

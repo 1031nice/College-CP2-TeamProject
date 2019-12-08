@@ -1,12 +1,13 @@
 package parkingLotApplication.GUI;
 
+import java.io.*;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+import javafx.fxml.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 
 public class AddParkingLotController implements Initializable {
 
@@ -16,20 +17,36 @@ public class AddParkingLotController implements Initializable {
 	@FXML TextField numOfParkingSpaceField;
 	@FXML VBox addParkingLotVbox;
 	
+	Writer writer = null;
+	String ownerParkingLotInfo;
+	String parkingLotSpace = "0";
+	int numOfParkingSpace;
+	
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+	public void initialize(URL arg0, ResourceBundle arg1)  {
+
 	}
 	
-	@FXML public void addParkingLotAction() {
+	@FXML public void addParkingLotAction() throws Exception {
+		
 		//해당 정보들을 오너주차장 정보 텍스트파일에 넣는다.
+		writer  = new FileWriter("./src/data/ParkingLotInfo_" + AppMain.owner.getId() + ".txt", true);
+		numOfParkingSpace = Integer.parseInt(numOfParkingSpaceField.getText());
+		for(int i = 0; i < numOfParkingSpace-1; i++) {
+			parkingLotSpace += "0";
+		}
+		ownerParkingLotInfo =  "\n" + parkinglotNameField.getText() + " " + parkingLotLocationField.getText() + " " + feeForTenMinField.getText() + " " + parkingLotSpace;
+				
+		char[] data = ownerParkingLotInfo.toCharArray();
+		writer.write(data);		
+		writer.flush();
+		writer.close(); 		
 		
-		
-		
-		
-		//주차장목록으로 가는코드
-		
-		
+		Alert alert = new Alert(Alert.AlertType.INFORMATION, "주차장 등록이 완료되었습니다.", ButtonType.CLOSE);
+		Optional<ButtonType> result = alert.showAndWait();
+		if(result.get() == ButtonType.CLOSE) {
+			new Alert(Alert.AlertType.INFORMATION, "주차장 목록을 눌러 새로고침 해주세요.", ButtonType.CLOSE).show();
+		}
 		
 		//보류 코드
 		//오너가 입력한 정보를 가지고 ParkingLot객체 생성
