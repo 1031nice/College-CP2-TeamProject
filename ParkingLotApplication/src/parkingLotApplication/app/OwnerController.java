@@ -12,7 +12,7 @@ import model.Owner;
 public class OwnerController extends AppClientController{
 
 	public OwnerController() {
-		this.fileName = "OwnerInfo";
+		this.fileName = "ParkingLotInfo";
 	}
 	
 	@Override
