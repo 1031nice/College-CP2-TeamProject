@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -48,11 +49,14 @@
                   </Label>
                   <HBox prefHeight="30.0" prefWidth="200.0">
                      <children>
-                        <RadioButton fx:id="truebtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="true" userData="true" HBox.hgrow="ALWAYS" />
-                        <RadioButton fx:id="falsebtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="false" userData="false" HBox.hgrow="ALWAYS" />
+                        <RadioButton fx:id="truebtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="true" userData="true" HBox.hgrow="ALWAYS">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="nonperson" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton fx:id="falsebtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="false" toggleGroup="$nonperson" userData="false" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
-                  <Label prefHeight="30.0" prefWidth="200.0" text="Change_CarNumber" />
+                  <Label fx:id="changeCarNum" prefHeight="30.0" prefWidth="200.0" text="Change_CarNumber" />
                   <TextField fx:id="carNum" prefHeight="30.0" prefWidth="200.0" />
                </children>
             </VBox>

@@ -14,22 +14,22 @@
          <children>
             <HBox prefHeight="150.0" prefWidth="450.0">
                <children>
-                  <Button fx:id="p1" onAction="#p1selectSpace" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p1" HBox.hgrow="ALWAYS">
+                  <Button fx:id="p1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#p1selectSpace" style="-fx-border-color: black;" text="p1" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Button>
-                  <Button fx:id="p2" onAction="#p2selectSpace" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p2" HBox.hgrow="ALWAYS">
+                  <Button fx:id="p2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#p2selectSpace" style="-fx-border-color: black;" text="p2" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Button>
-                  <Button fx:id="p3" onAction="#p3selectSpace" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p3" HBox.hgrow="ALWAYS">
+                  <Button fx:id="p3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#p3selectSpace" style="-fx-border-color: black;" text="p3" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Button>
-                  <Button fx:id="p4" onAction="#p4selectSpace" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p4" HBox.hgrow="ALWAYS">
+                  <Button fx:id="p4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#p4selectSpace" style="-fx-border-color: black;" text="p4" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -37,22 +37,22 @@
                </children></HBox>
             <HBox layoutY="249.0" prefHeight="150.0" prefWidth="450.0">
                <children>
-                  <Button fx:id="p5" onAction="#p5selectSpace" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p5" HBox.hgrow="ALWAYS">
+                  <Button fx:id="p5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#p5selectSpace" style="-fx-border-color: black;" text="p5" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Button>
-                  <Button fx:id="p6" onAction="#p6selectSpace" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p6" HBox.hgrow="ALWAYS">
+                  <Button fx:id="p6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#p6selectSpace" style="-fx-border-color: black;" text="p6" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Button>
-                  <Button fx:id="p7" onAction="#p7selectSpace" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p7" HBox.hgrow="ALWAYS">
+                  <Button fx:id="p7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#p7selectSpace" style="-fx-border-color: black;" text="p7" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Button>
-                  <Button fx:id="p8" onAction="#p8selectSpace" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: green; -fx-border-color: black;" text="p8" HBox.hgrow="ALWAYS">
+                  <Button fx:id="p8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#p8selectSpace" style="-fx-border-color: black;" text="p8" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -91,7 +91,7 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
-            <Button  maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeInfoAction" prefHeight="50.0" text="정보변경">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeInfoAction" prefHeight="50.0" text="정보변경">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>

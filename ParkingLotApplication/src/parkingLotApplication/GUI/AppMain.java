@@ -37,6 +37,7 @@ import model.User;
 public class AppMain extends Application implements Initializable{
 
 	public static User user;
+//	public static boolean[] parkingLot = new boolean[8];
 	public static Owner owner;
 
 	@Override
@@ -57,7 +58,7 @@ public class AppMain extends Application implements Initializable{
 		//		});
 		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 		Scene scene = new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("ParkingLot.css").toString());
+		scene.getStylesheets().add(getClass().getResource("ParkingLot.css").toExternalForm());
 		primaryStage.setTitle("주차장 관리 및 대여 시스템");
 		primaryStage.setScene(scene);
 		primaryStage.show();
