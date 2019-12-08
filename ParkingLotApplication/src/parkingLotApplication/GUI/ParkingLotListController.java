@@ -31,8 +31,8 @@ import model.ParkingLot;
 
 public class ParkingLotListController implements Initializable {
 
-	@FXML ListView locationListView;
-	@FXML ListView parkingLotListView;
+	@FXML ListView<String> locationListView;
+	@FXML ListView<String> parkingLotListView;
 	@FXML AnchorPane anchorPane;
 	private ObservableList<String> locationList;
 	private ObservableList<String> parkingLotList;
@@ -68,12 +68,41 @@ public class ParkingLotListController implements Initializable {
 		System.exit(1);
 	}
 
+	@SuppressWarnings("null")
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL arg0, ResourceBundle arg1){
 		parkingLotList = FXCollections.observableArrayList();
-		parkingLotListView.setItems(parkingLotList);
 		locationList = FXCollections.observableArrayList();
 		locationListView.setItems(locationList);
+		parkingLotListView.setItems(parkingLotList);
+		try {
+			Reader fr = new FileReader("./src/data/OwnerInfo.txt");
+			BufferedReader br = new BufferedReader(fr);
+			String[] ownerInfoArr = new String[100];
+			String[] ownerIdArr = new String[100];
+ 			String line = "";
+ 			int i =0;
+			while((line = br.readLine()) != null) {
+				ownerInfoArr = line.split(" ");
+				ownerIdArr[i]=ownerInfoArr[0];
+				i++;
+			}
+			br.close(); fr.close();
+			for(String ownerId : ownerIdArr) {
+				Reader fr2 = new FileReader("./src/data/ParkingLotInfo_" + ownerId +".txt");
+				BufferedReader br2 = new BufferedReader(fr2);
+				String[] parkingLotInfoArr;
+				String line2 = "";
+				while((line2 = br2.readLine()) != null) {
+					parkingLotInfoArr = line2.split(" ");
+					locationList.add(parkingLotInfoArr[1]);
+					parkingLotList.add(parkingLotInfoArr[0]);
+				}
+				fr2.close();
+				br2.close();
+ 			}
+		} catch (FileNotFoundException e) {e.printStackTrace();}
+		catch (IOException e) {e.printStackTrace();}	
 		parkingLotListThread.start();
 	}
 	

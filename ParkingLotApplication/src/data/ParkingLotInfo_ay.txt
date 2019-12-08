@@ -5,3 +5,4 @@ asda adasd 200 000
 dasd adas 2 00
 adasd asd 200 00000
 sd ad 200 00000
+E1 공대1호관 1000 0000
