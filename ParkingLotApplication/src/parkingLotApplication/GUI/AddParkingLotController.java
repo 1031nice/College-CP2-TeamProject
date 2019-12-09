@@ -8,6 +8,7 @@ import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import model.*;
 
 public class AddParkingLotController implements Initializable {
 
@@ -42,15 +43,11 @@ public class AddParkingLotController implements Initializable {
 		writer.flush();
 		writer.close(); 		
 		
-		Alert alert = new Alert(Alert.AlertType.INFORMATION, "주차장 등록이 완료되었습니다.", ButtonType.CLOSE);
-		Optional<ButtonType> result = alert.showAndWait();
-		if(result.get() == ButtonType.CLOSE) {
-			new Alert(Alert.AlertType.INFORMATION, "주차장 목록을 눌러 새로고침 해주세요.", ButtonType.CLOSE).show();
-		}
+		//주차장등록완료 창은 VBOX를 보여주기위 해 임시로 주석처리했습니다.
 		
 		//보류 코드
 		//오너가 입력한 정보를 가지고 ParkingLot객체 생성
-		/*
+		
 		ParkingLot parkingLot = new ParkingLot();
 		
 		parkingLot.setName(parkinglotNameField.getText());	
@@ -92,24 +89,14 @@ public class AddParkingLotController implements Initializable {
 		int feeForTenMin = Integer.parseInt(feeForTenMinField.getText());
 		parkingLot.setFeeForTenMin(feeForTenMin);
 		parkingLot.setLocation(parkingLotLocationField.getText());
-		parkingLot.setRegion(regionChoiceBox.getValue());
 		
-		ParkingLotController pc = new ParkingLotController();
-		
-		try {
-			pc.addParkingLot(parkingLot);
-		} catch (ClassNotFoundException e) {
-			
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			
-			e.printStackTrace();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
+		/*
+		Alert alert = new Alert(Alert.AlertType.INFORMATION, "주차장 등록이 완료되었습니다.", ButtonType.CLOSE);
+		Optional<ButtonType> result = alert.showAndWait();
+		if(result.get() == ButtonType.CLOSE) {
+			new Alert(Alert.AlertType.INFORMATION, "주차장 목록을 눌러 새로고침 해주세요.", ButtonType.CLOSE).show();
 		*/
-		
+		}
 	}
 
-}
+
