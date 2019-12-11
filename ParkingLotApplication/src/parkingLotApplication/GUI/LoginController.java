@@ -4,6 +4,8 @@ import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import model.ParkingLot;
+import model.ParkingSpace;
 
 public class LoginController {
 
@@ -14,13 +16,18 @@ public class LoginController {
 	@FXML RadioButton owner;
 	@FXML StackPane stackPane;
 	@FXML AnchorPane anchorPane;
-	private String name;
+//	private String name;
 	
 //	public LoginController(String name) {
 //		this.name = name;
 //	}
 	
 	@FXML public void loginButtonAction() throws Exception {
+		owner.getStyleClass().add(".class");
+		if(type.equals(null)) {
+			System.out.println("사용자이신가요? 관리자이신가요?");
+			return;
+		}
 
 		String inputId = idTextField.getText();
 		String inputPassword = pwTextField.getText();

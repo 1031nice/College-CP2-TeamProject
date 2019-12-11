@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -16,9 +15,12 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.control.Label;
+import model.ParkingLot;
+import model.ParkingSpace;
+import model.User;
 
 public class UserMainController implements Initializable{
 
@@ -39,6 +41,7 @@ public class UserMainController implements Initializable{
 	ObjectInputStream ois = null;
 	String parkingLotSpace = null;
 	
+	// 하나의 변수가 계속 쓰이지만 결국 마지막으로 누른 버튼의 주차공간을 바꾸면 되니까 상관없을 듯
 	@FXML public void p1selectSpace() {parkingLotSpace = (String)p1.getText();}
 	@FXML public void p2selectSpace() {parkingLotSpace = (String)p2.getText();}
 	@FXML public void p3selectSpace() {parkingLotSpace = (String)p3.getText();}
@@ -48,17 +51,25 @@ public class UserMainController implements Initializable{
 	@FXML public void p7selectSpace() {parkingLotSpace = (String)p7.getText();}
 	@FXML public void p8selectSpace() {parkingLotSpace = (String)p8.getText();}
 	
-	
 	@FXML public void reservationAction() {
 		if(parkingLotSpace == null) {
-			new Alert(Alert.AlertType.WARNING, "주차장을 선택하여 주십시오!", ButtonType.OK).show();
+			Alert alert = new Alert(Alert.AlertType.WARNING, "주차장을 선택하여 주십시오!", ButtonType.OK );
+			Optional<ButtonType> ok = alert.showAndWait();
 		}else {
-			new Alert(Alert.AlertType.INFORMATION, parkingLotSpace + "공간을 요청중입니다.", ButtonType.OK ).show();
-//			boolean request = AppMain.user.send();
+			Alert alert = new Alert(Alert.AlertType.INFORMATION, parkingLotSpace + "공간을 요청중입니다.", ButtonType.OK );
+			Optional<ButtonType> ok = alert.showAndWait();
+			int select = Integer.parseInt(parkingLotSpace);
+			System.out.println(select + "를 선택하셨습니다");
+			AppMain.communication.receive();
+			if(AppMain.parkingLot.getSpaces()[select].getStatus() == 1)
+				System.out.println("다른 주차장을 선택해주세요!");
+			AppMain.parkingLot.spaces[select].setStatus(1);
+			AppMain.communication.send();
+//			boolean request = reservationSpace(AppMain.user);
 //			if(request) {
-//				new Alert(Alert.AlertType.CONFIRMATION, parkingLotSpace + "자리를 선택하였습니다.", ButtonType.OK).show();
+//				alert = new Alert(Alert.AlertType.CONFIRMATION, parkingLotSpace + "자리를 선택하였습니다.", ButtonType.OK);
 //			}else if(request) {
-//				new Alert(Alert.AlertType.ERROR, "이미 선택된 주차공간입니다.", ButtonType.CANCEL).show();
+//				alert = new Alert(Alert.AlertType.ERROR, "이미 선택된 주차공간입니다.", ButtonType.CANCEL);
 //			}
 		}
 	}
@@ -70,12 +81,12 @@ public class UserMainController implements Initializable{
 		}else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION, parkingLotSpace + "공간을 반환 요청중입니다.", ButtonType.OK );
 			Optional<ButtonType> ok = alert.showAndWait();
-//			boolean request = returnSpace(AppMain.user);
-//			if(request) {
-//				alert = new Alert(Alert.AlertType.CONFIRMATION, parkingLotSpace + "공간을 반환하였습니다.", ButtonType.OK);
-//			}else if(request) {
-//				alert = new Alert(Alert.AlertType.ERROR, "자리 반환을 실패하였습니다.", ButtonType.CANCEL);
-//			}
+			boolean request = returnSpace(AppMain.user);
+			if(request) {
+				alert = new Alert(Alert.AlertType.CONFIRMATION, parkingLotSpace + "공간을 반환하였습니다.", ButtonType.OK);
+			}else if(request) {
+				alert = new Alert(Alert.AlertType.ERROR, "자리 반환을 실패하였습니다.", ButtonType.CANCEL);
+			}
 		}
 	}
 	
@@ -106,16 +117,15 @@ public class UserMainController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		userName.setText(AppMain.user.getName());
-//		parkingLotName.setText(AppMain.user.getParkingLotName());	
 	}
 
-//	private boolean reservationSpace(User user) {
-//		
-//		return true;
-//	}
-//	
-//	private boolean returnSpace(User user) {
-//		
-//		return true;
-//	}
+	private boolean reservationSpace(User user) {
+		
+		return true;
+	}
+	
+	private boolean returnSpace(User user) {
+		
+		return true;
+	}
 }

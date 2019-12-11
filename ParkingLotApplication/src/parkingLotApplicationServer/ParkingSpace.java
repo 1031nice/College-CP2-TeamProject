@@ -1,4 +1,4 @@
-package model;
+package parkingLotApplicationServer;
 
 import java.io.*;
 

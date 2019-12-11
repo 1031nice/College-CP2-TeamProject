@@ -4,62 +4,61 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.net.*;
-import java.util.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.application.Application;
-import javafx.fxml.*;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Owner;
+import model.ParkingLot;
+import model.ParkingSpace;
 import model.User;
 
-/*
- * 제목 수정
- * 
- * 앱소개: 누구나 자신의 남는 방을 세를 줄 수 있는 에어비앤비처럼 누구나 자신의 주차공간을 등록해서 서비스를 제공할 수 있는 앱
- * 사용자는 두 부류. 하나는 주차공간을 쓰고 싶은 사람, 하나는 주차공간을 공유하고 싶은 사람
- */
-
-/*
- * 진행상황: fxml까지 만들었고 아직 예약 또는 반납에 따른 내부적 처리가 안됨.
- */
-
-/*
- * 문제점: 무엇을 Thread로 어떻게 처리하지?
- * server와 client로 어떻게 나누지?
- * 정보는 언제 어떻게 주고받지?
- * 프로그램 내에서 자원의 공유
- */
-
-
-public class AppMain extends Application implements Initializable{
+public class AppMain extends Application implements Initializable {
 
 	public static User user;
-//	public static boolean[] parkingLot = new boolean[8];
 	public static Owner owner;
+	public static ClientCommunication communication = new ClientCommunication();
+	public static ParkingLot parkingLot;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-	
+
+//		while(true) {
+//
+//		}
+//		ParkingSpace[] parkingSpaces = new ParkingSpace[8];
+//		for(int i=0; i<parkingSpaces.length; i++) {
+//			parkingSpaces[i] = new ParkingSpace();
+//		}
+//		AppMain.user.parkingLot = new ParkingLot("주차장1", "공대 5호관", parkingSpaces);
 	}
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+
+//		FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+//		Parent load = loader.load();
+//		loader.setControllerFactory(new Callback<Class<?>, Object>() {
+//			@Override
+//			public Object call(Class<?> arg0) {
+//				return new LoginController("Hello");
+//			}
+//		});
+		ParkingSpace[] parkingSpaces = new ParkingSpace[8];
+		for(int i=0; i<parkingSpaces.length; i++) {
+			parkingSpaces[i] = new ParkingSpace();
+		}
+		parkingLot = new ParkingLot("주차장1", "장소1", parkingSpaces);
 		
-		//		FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
-		//		Parent load = loader.load();
-		//		loader.setControllerFactory(new Callback<Class<?>, Object>() {
-		//			@Override
-		//			public Object call(Class<?> arg0) {
-		//				return new LoginController("Hello");
-		//			}
-		//		});
 		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("ParkingLot.css").toExternalForm());
-		primaryStage.setTitle("주차장 관리 및 대여 시스템");
+		primaryStage.setTitle("Sharing ParkingLot Platform");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -76,7 +75,7 @@ public class AppMain extends Application implements Initializable{
 		String[] array;
 		while((line = bufferedReader.readLine()) != null) {
 			array = line.split(" ");
-			if(array[0].equals(id)) {
+			if(array[0].compareTo(id) == 0) {
 				password = array[1];
 				reader.close();
 				bufferedReader.close();
