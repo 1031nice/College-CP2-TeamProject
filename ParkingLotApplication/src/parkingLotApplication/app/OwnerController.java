@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 import model.AppClient;
-import model.Owner;
+import z_garbage.Owner;
 
 public class OwnerController extends AppClientController{
 

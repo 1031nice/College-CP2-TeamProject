@@ -1,7 +1,10 @@
-package model;
+package z_garbage;
 
 import java.io.*;
 import java.util.ArrayList;
+
+import model.AppClient;
+import model.ParkingLot;
 
 public class Owner extends AppClient {
 	

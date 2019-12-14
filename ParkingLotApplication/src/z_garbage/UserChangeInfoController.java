@@ -1,4 +1,4 @@
-package parkingLotApplication.GUI;
+package z_garbage;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import model.User;
+import parkingLotApplication.GUI.AppMain;
 import javafx.scene.control.TextField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;

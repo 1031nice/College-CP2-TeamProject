@@ -1,4 +1,4 @@
-package parkingLotApplication.GUI;
+package z_garbage;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -21,6 +21,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Popup;
+import parkingLotApplication.GUI.AppMain;
 
 public class OwnerMainController implements Initializable{
 

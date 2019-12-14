@@ -1,4 +1,4 @@
-package parkingLotApplication.GUI;
+package z_garbage;
 
 import java.io.*;
 import java.net.URL;
@@ -9,6 +9,7 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import model.*;
+import parkingLotApplication.GUI.AppMain;
 
 public class AddParkingLotController implements Initializable {
 

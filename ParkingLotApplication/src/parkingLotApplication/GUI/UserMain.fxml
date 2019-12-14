@@ -86,16 +86,6 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#paymentAction" prefHeight="50.0" text="결제">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeInfoAction" prefHeight="50.0" text="정보변경">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </Button>
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logoutAction" prefHeight="50.0" text="로그아웃">
                <VBox.margin>
                   <Insets bottom="20.0" />

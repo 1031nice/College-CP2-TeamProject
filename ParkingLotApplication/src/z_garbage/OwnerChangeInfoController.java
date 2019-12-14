@@ -1,4 +1,4 @@
-package parkingLotApplication.GUI;
+package z_garbage;
 
 import javafx.fxml.*;
 import javafx.scene.*;

@@ -1,13 +1,5 @@
 package model;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Array;
-import java.net.Socket;
-import java.net.UnknownHostException;
-
-import parkingLotApplication.GUI.AppMain;
-
 public class User extends AppClient {
 	
 	private String _carNumber;
@@ -50,10 +42,4 @@ public class User extends AppClient {
 		this.parkingLot = parkingLot;
 	}
 
-	public boolean send() throws IOException{
-		ObjectOutputStream objOutputStream = new ObjectOutputStream(socket.getOutputStream());
-		objOutputStream.writeObject(this);
-		objOutputStream.flush();
-		return true;
-	}
 }

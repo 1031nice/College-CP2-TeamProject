@@ -10,10 +10,10 @@ import java.io.Writer;
 
 import javafx.scene.layout.StackPane;
 import model.AppClient;
-import model.Owner;
 import model.ParkingLot;
 import model.ParkingSpace;
 import model.User;
+import z_garbage.Owner;
 
 public class FileIO {
 

@@ -1,4 +1,4 @@
-package parkingLotApplication.GUI;
+package z_garbage;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -30,6 +30,7 @@ import javafx.scene.layout.StackPane;
 import model.ParkingLot;
 import model.ParkingSpace;
 import model.User;
+import parkingLotApplication.GUI.AppMain;
 
 public class ParkingLotListController implements Initializable {
 
