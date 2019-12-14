@@ -51,18 +51,14 @@ public class UserMainController implements Initializable{
 	private String parkingLotSpace = null;
 	private ObservableList<Button> buttonList = FXCollections.observableArrayList(p1,p2,p3,p4,p5,p6,p7,p8);
 	
-//	Socket s = new Socket(id,port);
-//	PrintWriter out = new PrintWriter(s.getOutputStream(),true);
-//	BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-	
-	@FXML public void p1selectSpace() {parkingLotSpace = (String)p1.getText();setButtonColor(p1,AppMain.user);}
-	@FXML public void p2selectSpace() {parkingLotSpace = (String)p2.getText();setButtonColor(p2,AppMain.user);}
-	@FXML public void p3selectSpace() {parkingLotSpace = (String)p3.getText();setButtonColor(p3,AppMain.user);}
-	@FXML public void p4selectSpace() {parkingLotSpace = (String)p4.getText();setButtonColor(p4,AppMain.user);}
-	@FXML public void p5selectSpace() {parkingLotSpace = (String)p5.getText();setButtonColor(p5,AppMain.user);}
-	@FXML public void p6selectSpace() {parkingLotSpace = (String)p6.getText();setButtonColor(p6,AppMain.user);}
-	@FXML public void p7selectSpace() {parkingLotSpace = (String)p7.getText();setButtonColor(p7,AppMain.user);}
-	@FXML public void p8selectSpace() {parkingLotSpace = (String)p8.getText();setButtonColor(p8,AppMain.user);}
+	@FXML public void p1selectSpace() {parkingLotSpace = (String)p1.getText();setButtonColor(p1,AppMain.communication.user);}
+	@FXML public void p2selectSpace() {parkingLotSpace = (String)p2.getText();setButtonColor(p2,AppMain.communication.user);}
+	@FXML public void p3selectSpace() {parkingLotSpace = (String)p3.getText();setButtonColor(p3,AppMain.communication.user);}
+	@FXML public void p4selectSpace() {parkingLotSpace = (String)p4.getText();setButtonColor(p4,AppMain.communication.user);}
+	@FXML public void p5selectSpace() {parkingLotSpace = (String)p5.getText();setButtonColor(p5,AppMain.communication.user);}
+	@FXML public void p6selectSpace() {parkingLotSpace = (String)p6.getText();setButtonColor(p6,AppMain.communication.user);}
+	@FXML public void p7selectSpace() {parkingLotSpace = (String)p7.getText();setButtonColor(p7,AppMain.communication.user);}
+	@FXML public void p8selectSpace() {parkingLotSpace = (String)p8.getText();setButtonColor(p8,AppMain.communication.user);}
 	
 	@FXML public void reservationAction() throws InterruptedException {
 		if(parkingLotSpace == null) {
@@ -97,12 +93,12 @@ public class UserMainController implements Initializable{
 		}else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION, parkingLotSpace + "공간을 반환 요청중입니다.", ButtonType.OK );
 			Optional<ButtonType> ok = alert.showAndWait();
-			boolean request = returnSpace(AppMain.communication.user);
-			if(request) {
-				alert = new Alert(Alert.AlertType.CONFIRMATION, parkingLotSpace + "공간을 반환하였습니다.", ButtonType.OK);
-			}else if(request) {
-				alert = new Alert(Alert.AlertType.ERROR, "자리 반환을 실패하였습니다.", ButtonType.CANCEL);
-			}
+//			boolean request = returnSpace(AppMain.communication.user);
+//			if(request) {
+//				alert = new Alert(Alert.AlertType.CONFIRMATION, parkingLotSpace + "공간을 반환하였습니다.", ButtonType.OK);
+//			}else if(request) {
+//				alert = new Alert(Alert.AlertType.ERROR, "자리 반환을 실패하였습니다.", ButtonType.CANCEL);
+//			}
 		}
 	}
 	
@@ -132,21 +128,21 @@ public class UserMainController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		userName.setText(AppMain.user.getName());
-		for(int i = 0; i < AppMain.user.getParkingLot().getSpaces().size();i++) {
-			if(AppMain.user.getParkingLot().getSpaces().get(i).getStatus() == 0) {
+		userName.setText(AppMain.communication.user.getName());
+		for(int i = 0; i < AppMain.communication.user.getParkingLot().getSpaces().length;i++) {
+			if(AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 0) {
 				buttonList.get(i).setStyle("-fx-background-color:green;");
-			}else if (AppMain.user.getParkingLot().getSpaces().get(i).getStatus() == 1){
+			}else if (AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1){
 				buttonList.get(i).setStyle("-fx-background-color:red;");
 			}
 		}
 	}
 	
 	public void setButtonColor(Button button, User user) {
-		for(int i = 0; i < AppMain.user.getParkingLot().getSpaces().size();i++) {
-			if(AppMain.user.getParkingLot().getSpaces().get(i).getStatus() == 0) {
+		for(int i = 0; i < AppMain.communication.user.getParkingLot().getSpaces().length;i++) {
+			if(AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 0) {
 				buttonList.get(i).setStyle("-fx-background-color:green;");
-			}else if (AppMain.user.getParkingLot().getSpaces().get(i).getStatus() == 1){
+			}else if (AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1){
 				buttonList.get(i).setStyle("-fx-background-color:red;");
 			}
 		}
@@ -154,10 +150,10 @@ public class UserMainController implements Initializable{
 	}
 	
 	public void setColor() {
-		for(int i = 0; i < AppMain.user.getParkingLot().getSpaces().size();i++) {
-			if(AppMain.user.getParkingLot().getSpaces().get(i).getStatus() == 0) {
+		for(int i = 0; i < AppMain.communication.user.getParkingLot().getSpaces().length;i++) {
+			if(AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 0) {
 				buttonList.get(i).setStyle("-fx-background-color:green;");
-			}else {
+			}else if (AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1){
 				buttonList.get(i).setStyle("-fx-background-color:red;");
 			}
 		}

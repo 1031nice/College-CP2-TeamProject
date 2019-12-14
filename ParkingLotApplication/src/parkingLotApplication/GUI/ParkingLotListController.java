@@ -47,23 +47,9 @@ public class ParkingLotListController implements Initializable {
 		if(parkingLotSelectedIndex < 0) {
 			new Alert(Alert.AlertType.WARNING, "항목을 선택하세요.", ButtonType.CLOSE).show();
 			return ;
-<<<<<<< HEAD
-<<<<<<< HEAD
-		}else {
-			AppMain.user.setParkingLot(new ParkingLot());
-=======
-=======
->>>>>>> c1570a3b6b4c8429f74861be8bfe9ab5f5993476
-		}
-		else {
 
-//			AppMain.user.getParkingLotFile()
-//
-//			AppMain.user.setParkingLot("");
-<<<<<<< HEAD
->>>>>>> c1570a3b6b4c8429f74861be8bfe9ab5f5993476
-=======
->>>>>>> c1570a3b6b4c8429f74861be8bfe9ab5f5993476
+		}else {
+			AppMain.communication.user.setParkingLot(new ParkingLot());
 			StackPane root = (StackPane) anchorPane.getScene().getRoot();
 			Parent userMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/UserMain.fxml"));
 			root.getChildren().remove(anchorPane);
@@ -72,7 +58,7 @@ public class ParkingLotListController implements Initializable {
 	}
 	
 	@FXML public void logoutButtonAction() throws IOException{
-		AppMain.user = null;
+		AppMain.communication.user = null;
 		StackPane root = (StackPane) anchorPane.getScene().getRoot();
 		Parent logout = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
 		root.getChildren().remove(anchorPane);

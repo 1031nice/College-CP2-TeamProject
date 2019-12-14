@@ -31,7 +31,7 @@ public class UserChangeInfoController {
 	String error = "";
 
 	@FXML public void changeInfo() {
-		User user = AppMain.user;
+		User user = AppMain.communication.user;
 		if(!passWord.getText().isBlank() == false) {
 			user.setPassword((String)passWord.getText());
 		}else {
@@ -60,7 +60,7 @@ public class UserChangeInfoController {
 		}
 		if(error.length() > 0) {
 			if(true) {
-				AppMain.user = user;
+				AppMain.communication.user = user;
 				user = null;
 			}else {
 				Alert alert = new Alert(Alert.AlertType.ERROR, "전송을 실패하였습니다.", ButtonType.OK );
@@ -81,7 +81,7 @@ public class UserChangeInfoController {
 	}
 
 	@FXML public void logoutAction() throws IOException {
-		AppMain.user = null;
+		AppMain.communication.user = null;
 		StackPane root = (StackPane) anchorPane.getScene().getRoot();
 		Parent logout = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
 		root.getChildren().remove(anchorPane);
