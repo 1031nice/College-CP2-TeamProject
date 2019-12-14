@@ -17,6 +17,7 @@ public class ServerCommunication {
 	public ServerCommunication(Socket socket) {
 		this.socket = socket;
 		receiveIdAndPassword();
+//		receiveInfo();
 	}
 
 	// 사용자에게 객체를 주는 thread
@@ -44,15 +45,15 @@ public class ServerCommunication {
 		Server.threadPool.submit(send);
 	}
 
-	// 사용자에게 아이디 비밀번호를 thread
+	// 사용자에게 아이디 비밀번호를 받는 thread
 	public void receiveIdAndPassword() {
 		Runnable receive = new Runnable() {
 			@Override
 			public void run() {
 				System.out.println("[서버] 사용자 아이디/비밀번호를 받는 thread 실행");
 				try {
-//					InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
-//					BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+					//					InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
+					//					BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 					DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
 					String id = dataInputStream.readUTF();
 					String pw = dataInputStream.readUTF();
@@ -63,6 +64,38 @@ public class ServerCommunication {
 							receive();
 							send();
 						}
+					}
+				} catch (Exception e) {
+				}
+			}
+		};
+		Server.threadPool.submit(receive);
+	}
+
+	// 사용자에게 회원가입 정보를 받는 thread
+	public void receiveInfo() {
+		Runnable receive = new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("[서버] 사용자 회원가입 정보를 받는 thread 실행");
+				try {
+					DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
+					String id = dataInputStream.readUTF();
+					String pw = dataInputStream.readUTF();
+					String name = dataInputStream.readUTF();
+					String age = dataInputStream.readUTF();
+					String accountNumber = dataInputStream.readUTF();
+					String carNumber = dataInputStream.readUTF();
+					String isNonPerson = dataInputStream.readUTF();
+					boolean bool = Boolean.valueOf(isNonPerson);
+					System.out.println("전송받은 id: " + id + "\n전송받은 pw: " + pw);
+					if(FileIO.findId(id)) {
+						System.out.println("이미 존재하는 아이디입니다!");
+					}
+					else {
+						FileIO.signUp(id, pw, name, age, accountNumber, carNumber, bool);
+						receive();
+						send();
 					}
 				} catch (Exception e) {
 				}

@@ -60,6 +60,33 @@ public class ClientCommunication {
 		thread.start();
 	}
 	
+	public void sendInfo(String id, String pw, String name, String age,
+			String accountNumber, String carNumber, boolean isNonPerson) {
+		Runnable send = new Runnable() {
+			@Override
+			public void run() {
+				try {
+					System.out.println("[클라이언트] 서버에게 회원가입 정보를 전송하는 thread");
+					DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
+					dataOutputStream.writeUTF(id);
+					dataOutputStream.writeUTF(pw);
+					dataOutputStream.writeUTF(name);
+					dataOutputStream.writeUTF(age);
+					dataOutputStream.writeUTF(accountNumber);
+					dataOutputStream.writeUTF(carNumber);
+					String str = String.valueOf(isNonPerson);
+					dataOutputStream.writeUTF(str);
+					dataOutputStream.flush();
+					System.out.println("[클라이언트] 전송완료");
+				} catch (Exception e) {
+				}
+			}
+		};
+		Thread thread = new Thread(send);
+		thread.start();
+	}
+
+	
 	// 서버에게 객체를 주는 Thread
 	public void send() {
 		Runnable send = new Runnable() {
@@ -82,7 +109,8 @@ public class ClientCommunication {
 		thread.start();
 	}
 	
-	public void firstReceive() {
+	// 로그인 또는 회원가입이 유효한지 확인하는 스레드
+	public void checkReceive() {
 		Runnable receive = new Runnable() {
 			@Override
 			public void run() {
