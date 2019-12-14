@@ -1,29 +1,17 @@
 package parkingLotApplicationServer;
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.Iterator;
-import java.util.Vector;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import model.AppClient;
-import model.ParkingLot;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import java.util.concurrent.*;
 
 public class Server {
-
-	// 사용자 객체를 담을 리스트
-	public static Vector<AppClient> appClientList = new Vector<AppClient>();
+	
+	public static ExecutorService threadPool; // 스레드풀
+	public static ServerSocket serverSocket;
+	
 	// 정보 주고 받는 걸 관리할 객체의 리스트
 	public static Vector<ServerCommunication> communicationList = new Vector<ServerCommunication>();
-
-	public static ExecutorService threadPool; // 스레드풀
-
-	public static ServerSocket serverSocket;
-	public static Socket clientSocket;
-
-	public static ParkingLot parkingLot;
 
 	public static void main(String[] args) {
 		
@@ -36,13 +24,14 @@ public class Server {
 			System.out.println("[서버] server socket이 설정완료");
 		} catch (IOException e) {
 			e.printStackTrace();
+			//서버종료
 			if (!serverSocket.isClosed()) {
 				stopServer();
 			}
 			return;
 		}
 
-		// 사용자를 연결 thread
+		// 사용자 연결 thread
 		Runnable connect = new Runnable() {
 			@Override
 			public void run() {
@@ -53,6 +42,7 @@ public class Server {
 						System.out.println("[서버] 클라이언트 연결 완료");
 						communicationList.add(new ServerCommunication(socket));
 					} catch (Exception e) {
+						//서버종료
 						if (!serverSocket.isClosed()) {
 							stopServer();
 						}
@@ -64,7 +54,7 @@ public class Server {
 		};
 		threadPool.submit(connect);
 	}
-
+	
 	public static void stopServer() {
 		try {
 			Iterator<ServerCommunication> iterator = communicationList.iterator();
@@ -82,4 +72,5 @@ public class Server {
 			e.printStackTrace();
 		}
 	}
+	
 }

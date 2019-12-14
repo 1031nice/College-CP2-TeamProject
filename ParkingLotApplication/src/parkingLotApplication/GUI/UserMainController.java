@@ -1,13 +1,20 @@
 package parkingLotApplication.GUI;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +25,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import model.User;
+import javafx.scene.control.Label;
+import model.ParkingLot;
+import model.ParkingSpace;
+import model.User;
 import model.ParkingLot;
 import model.ParkingSpace;
 import model.User;
@@ -36,20 +48,17 @@ public class UserMainController implements Initializable{
 	@FXML Button p7;
 	@FXML Button p8;
 	
-	FileInputStream fis = null;
-	BufferedInputStream bis = null;
-	ObjectInputStream ois = null;
-	String parkingLotSpace = null;
+	private String parkingLotSpace = null;
+	private ObservableList<Button> buttonList = FXCollections.observableArrayList(p1,p2,p3,p4,p5,p6,p7,p8);
 	
-	// 하나의 변수가 계속 쓰이지만 결국 마지막으로 누른 버튼의 주차공간을 바꾸면 되니까 상관없을 듯
-	@FXML public void p1selectSpace() {parkingLotSpace = (String)p1.getText();p1.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p2selectSpace() {parkingLotSpace = (String)p2.getText();p2.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p3selectSpace() {parkingLotSpace = (String)p3.getText();p3.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p4selectSpace() {parkingLotSpace = (String)p4.getText();p4.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p5selectSpace() {parkingLotSpace = (String)p5.getText();p5.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p6selectSpace() {parkingLotSpace = (String)p6.getText();p6.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p7selectSpace() {parkingLotSpace = (String)p7.getText();p7.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p8selectSpace() {parkingLotSpace = (String)p8.getText();p8.setStyle("-fx-background-color:yellow;");}
+	@FXML public void p1selectSpace() {parkingLotSpace = (String)p1.getText();setButtonColor(p1,AppMain.communication.user);}
+	@FXML public void p2selectSpace() {parkingLotSpace = (String)p2.getText();setButtonColor(p2,AppMain.communication.user);}
+	@FXML public void p3selectSpace() {parkingLotSpace = (String)p3.getText();setButtonColor(p3,AppMain.communication.user);}
+	@FXML public void p4selectSpace() {parkingLotSpace = (String)p4.getText();setButtonColor(p4,AppMain.communication.user);}
+	@FXML public void p5selectSpace() {parkingLotSpace = (String)p5.getText();setButtonColor(p5,AppMain.communication.user);}
+	@FXML public void p6selectSpace() {parkingLotSpace = (String)p6.getText();setButtonColor(p6,AppMain.communication.user);}
+	@FXML public void p7selectSpace() {parkingLotSpace = (String)p7.getText();setButtonColor(p7,AppMain.communication.user);}
+	@FXML public void p8selectSpace() {parkingLotSpace = (String)p8.getText();setButtonColor(p8,AppMain.communication.user);}
 	
 	@FXML public void reservationAction() throws InterruptedException {
 		if(parkingLotSpace == null) {
@@ -84,12 +93,12 @@ public class UserMainController implements Initializable{
 		}else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION, parkingLotSpace + "공간을 반환 요청중입니다.", ButtonType.OK );
 			Optional<ButtonType> ok = alert.showAndWait();
-			boolean request = returnSpace(AppMain.communication.user);
-			if(request) {
-				alert = new Alert(Alert.AlertType.CONFIRMATION, parkingLotSpace + "공간을 반환하였습니다.", ButtonType.OK);
-			}else if(request) {
-				alert = new Alert(Alert.AlertType.ERROR, "자리 반환을 실패하였습니다.", ButtonType.CANCEL);
-			}
+//			boolean request = returnSpace(AppMain.communication.user);
+//			if(request) {
+//				alert = new Alert(Alert.AlertType.CONFIRMATION, parkingLotSpace + "공간을 반환하였습니다.", ButtonType.OK);
+//			}else if(request) {
+//				alert = new Alert(Alert.AlertType.ERROR, "자리 반환을 실패하였습니다.", ButtonType.CANCEL);
+//			}
 		}
 	}
 	
@@ -119,16 +128,34 @@ public class UserMainController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-//		userName.setText(AppMain.communication.user.getName());
-	}
-
-	private boolean reservationSpace(User user) {
-		
-		return true;
+		userName.setText(AppMain.communication.user.getName());
+		for(int i = 0; i < AppMain.communication.user.getParkingLot().getSpaces().length;i++) {
+			if(AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 0) {
+				buttonList.get(i).setStyle("-fx-background-color:green;");
+			}else if (AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1){
+				buttonList.get(i).setStyle("-fx-background-color:red;");
+			}
+		}
 	}
 	
-	private boolean returnSpace(User user) {
-		
-		return true;
+	public void setButtonColor(Button button, User user) {
+		for(int i = 0; i < AppMain.communication.user.getParkingLot().getSpaces().length;i++) {
+			if(AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 0) {
+				buttonList.get(i).setStyle("-fx-background-color:green;");
+			}else if (AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1){
+				buttonList.get(i).setStyle("-fx-background-color:red;");
+			}
+		}
+		button.setStyle("-fx-background-color:yellow;");
+	}
+	
+	public void setColor() {
+		for(int i = 0; i < AppMain.communication.user.getParkingLot().getSpaces().length;i++) {
+			if(AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 0) {
+				buttonList.get(i).setStyle("-fx-background-color:green;");
+			}else if (AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1){
+				buttonList.get(i).setStyle("-fx-background-color:red;");
+			}
+		}
 	}
 }
