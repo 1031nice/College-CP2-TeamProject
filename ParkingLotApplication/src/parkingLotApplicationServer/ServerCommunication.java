@@ -111,16 +111,18 @@ public class ServerCommunication {
 					try {
 						ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
 						user = (User)objectInputStream.readObject();
+						Server.parkingLot = user.getParkingLot();
 
 						for (ServerCommunication communication : Server.communicationList) {
-							communication.user.setParkingLot(user.getParkingLot());
+							communication.user.setParkingLot(Server.parkingLot);
 							communication.send();
 						}
 
 						System.out.println("receive완료. 전달받은 객체의 정보는 아래와 같습니다.");
 						System.out.println(user.getId());
 						for(int i=0; i<user.getParkingLot().getSpaces().length; i++) {
-							System.out.println(i+1 + " 번째 공간 할당여부: " + user.getParkingLot().getSpaces()[i].getStatus());
+							System.out.println(i+1 + " 번째 공간 할당여부: " + user.getParkingLot().getSpaces()[i].getStatus()
+									+ " 사용자: " + user.getParkingLot().getSpaces()[i].toString());
 						}
 
 					} catch (Exception e) {

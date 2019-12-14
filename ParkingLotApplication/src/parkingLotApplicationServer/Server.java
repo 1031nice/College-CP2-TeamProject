@@ -5,15 +5,22 @@ import java.net.*;
 import java.util.*;
 import java.util.concurrent.*;
 
+import model.ParkingLot;
+import model.ParkingSpace;
+
 public class Server {
 	
 	public static ExecutorService threadPool; // 스레드풀
 	public static ServerSocket serverSocket;
-	
 	// 정보 주고 받는 걸 관리할 객체의 리스트
 	public static Vector<ServerCommunication> communicationList = new Vector<ServerCommunication>();
+	public static ParkingLot parkingLot = new ParkingLot();
 
 	public static void main(String[] args) {
+		ParkingSpace[] spaces = new ParkingSpace[8];
+		for(int i=0; i<spaces.length; i++)
+			spaces[i] = new ParkingSpace();
+		parkingLot.setSpaces(spaces);
 		
 		// 400개의 thread 미리 생성
 		threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 100, Executors.defaultThreadFactory());

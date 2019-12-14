@@ -9,10 +9,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.ParkingLot;
 
 public class AppMain extends Application implements Initializable {
 
 	public static ClientCommunication communication = new ClientCommunication();
+	public static ParkingLot other = new ParkingLot();
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

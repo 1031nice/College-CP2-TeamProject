@@ -93,10 +93,9 @@ public class ClientCommunication {
 					ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 					objectOutputStream.writeObject(user);
 					System.out.println("send완료. 전달받은 객체의 정보는 아래와 같습니다.");
-					System.out.println(user.getParkingLot().getName());
-					System.out.println(user.getParkingLot().getLocation());
 					for(int i=0; i<user.getParkingLot().getSpaces().length; i++) {
-						System.out.println(i+1 + " 번째 공간 할당여부: " + user.getParkingLot().getSpaces()[i].getStatus());
+						System.out.println(i+1 + " 번째 공간 할당여부: " + user.getParkingLot().getSpaces()[i].getStatus()
+								+ " 사용자: " + user.getParkingLot().getSpaces()[i].toString());
 					}
 				} catch (Exception e) {
 				}
@@ -115,10 +114,9 @@ public class ClientCommunication {
 					ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
 					user = (User)objectInputStream.readObject();
 					System.out.println("receive완료. 전달받은 객체의 정보는 아래와 같습니다.");
-					System.out.println(user.getParkingLot().getName());
-					System.out.println(user.getParkingLot().getLocation());
 					for(int i=0; i<user.getParkingLot().getSpaces().length; i++) {
-						System.out.println(i+1 + " 번째 공간 할당여부: " + user.getParkingLot().getSpaces()[i].getStatus());
+						System.out.println(i+1 + " 번째 공간 할당여부: " + user.getParkingLot().getSpaces()[i].getStatus()
+								+ " 사용자: " + user.getParkingLot().getSpaces()[i].toString());
 					}
 					if(user == null) // user에 정보가 안담겼으면
 						System.out.println("사용자의 로그인 정보가 일치하지 않습니다.");
@@ -141,12 +139,14 @@ public class ClientCommunication {
 				while(true) {
 					try {
 						ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
-						user = ((User)objectInputStream.readObject());
+						User otherUser = ((User)objectInputStream.readObject());
+						user.setParkingLot(otherUser.getParkingLot());
 						System.out.println("receive완료. 전달받은 객체의 정보는 아래와 같습니다.");
-						System.out.println(user.getParkingLot().getName());
-						System.out.println(user.getParkingLot().getLocation());
-						for(int i=0; i<user.getParkingLot().getSpaces().length; i++) {
-							System.out.println(i+1 + " 번째 공간 할당여부: " + user.getParkingLot().getSpaces()[i].getStatus());
+						System.out.println(otherUser.getParkingLot().getName());
+						System.out.println(otherUser.getParkingLot().getLocation());
+						for(int i=0; i<otherUser.getParkingLot().getSpaces().length; i++) {
+							System.out.println(i+1 + " 번째 공간 할당여부: " + otherUser.getParkingLot().getSpaces()[i].getStatus()
+									+ " 사용자: " + otherUser.getParkingLot().getSpaces()[i].toString());
 						}
 					} catch (Exception e) {
 					}

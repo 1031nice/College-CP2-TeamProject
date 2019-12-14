@@ -5,12 +5,14 @@ public class User extends AppClient {
 	private String _carNumber;
 	private boolean _nonperson;		//사회적 약자
 	public ParkingLot parkingLot;
+	private boolean using;
 //	public Socket socket;
 		
 	public User(String id, String password, String name, String age, String accountNumber, String carNumber, boolean nonPerson) {
 		super(id, password, name, age, accountNumber);
 		this.setCarNumber(carNumber);
 		this.setNonperson(nonPerson);
+		this.setUsing(false);
 //		try {
 //			socket = new Socket("192.168.218.1",10002);
 //		} catch (UnknownHostException e) {
@@ -20,6 +22,14 @@ public class User extends AppClient {
 //		}
 	}
 	
+	public boolean isUsing() {
+		return using;
+	}
+
+	public void setUsing(boolean using) {
+		this.using = using;
+	}
+
 	// getters
 	public boolean getNonperson() {
 		return _nonperson;

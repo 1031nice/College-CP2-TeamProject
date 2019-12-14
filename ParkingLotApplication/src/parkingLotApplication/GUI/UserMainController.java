@@ -5,8 +5,6 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -51,18 +49,23 @@ public class UserMainController implements Initializable{
 			Alert alert = new Alert(Alert.AlertType.WARNING, "주차장을 선택하여 주십시오!", ButtonType.OK );
 			Optional<ButtonType> ok = alert.showAndWait();
 		}else {
-			Alert alert = new Alert(Alert.AlertType.INFORMATION, parkingLotSpace + "공간을 요청중입니다.", ButtonType.OK );
+			if(AppMain.communication.user.isUsing()) {
+				Alert alert = new Alert(Alert.AlertType.INFORMATION, "한 자리만 사용하실 수 있습니다.", ButtonType.OK );
+				Optional<ButtonType> ok = alert.showAndWait();
+				return;
+			}
+			Alert alert = new Alert(Alert.AlertType.INFORMATION, "예약 요청중입니다.", ButtonType.OK );
 			Optional<ButtonType> ok = alert.showAndWait();
 			select = Integer.parseInt(parkingLotSpace);
 			System.out.println(select + "를 선택하셨습니다");
-			//			AppMain.communication.receive(); // 어떻게 send 보다 receive를 먼저 보장하지?
-			//			Thread.sleep(1000);
 			if(AppMain.communication.user.getParkingLot().getSpaces()[select-1].getStatus() == 1)
 				System.out.println("다른 주차장을 선택해주세요!");
 			else {
 				System.out.println(select + "번 주차공간이 예약되었습니다!");
 				//
-				AppMain.communication.user.getParkingLot().spaces[select-1].setStatus(1);
+				AppMain.communication.user.setUsing(true);
+				AppMain.communication.user.getParkingLot().getSpaces()[select-1].setStatus(1);
+				AppMain.communication.user.getParkingLot().getSpaces()[select-1].setId(AppMain.communication.user.getId());
 				AppMain.communication.send();
 			}
 		}
@@ -76,18 +79,21 @@ public class UserMainController implements Initializable{
 		else {
 			select = Integer.parseInt(parkingLotSpace);
 		}
-		if(AppMain.communication.user.getParkingLot().getSpaces()[select-1].getStatus() == 0){
-			Alert alert = new Alert(Alert.AlertType.INFORMATION, "자신의 주차공간이 아닙니다.", ButtonType.OK );
-			Optional<ButtonType> ok = alert.showAndWait();
-		}
-		else {
+		if((AppMain.communication.user.getParkingLot().getSpaces()[select-1].getStatus() == 1) &&
+				AppMain.communication.user.getParkingLot().getSpaces()[select-1].toString().equals(AppMain.communication.user.getId())) {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION, parkingLotSpace + "반납 요청중입니다.", ButtonType.OK );
 			Optional<ButtonType> ok = alert.showAndWait();
 			select = Integer.parseInt(parkingLotSpace);
 			System.out.println(select + "를 선택하셨습니다");
-			AppMain.communication.user.getParkingLot().spaces[select-1].setStatus(0);
+			AppMain.communication.user.setUsing(false);
+			AppMain.communication.user.getParkingLot().getSpaces()[select-1].setStatus(0);
+			AppMain.communication.user.getParkingLot().getSpaces()[select-1].setId(null);
 			AppMain.communication.send();
 			System.out.println(select + "번 주차공간이 반납되었습니다!");
+		}
+		else {
+			Alert alert = new Alert(Alert.AlertType.INFORMATION, "자신의 주차공간이 아닙니다.", ButtonType.OK );
+			Optional<ButtonType> ok = alert.showAndWait();
 		}
 	}
 
@@ -108,18 +114,6 @@ public class UserMainController implements Initializable{
 		System.exit(1);
 	}
 
-	//	@Override
-	//	public void initialize(URL arg0, ResourceBundle arg1) {
-	//		userName.setText(AppMain.communication.user.getName());
-	//		for(int i = 0; i < AppMain.communication.user.getParkingLot().getSpaces().length;i++) {
-	//			if(AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 0) {
-	//				buttonList.get(i).setStyle("-fx-background-color:green;");
-	//			}else if (AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1){
-	//				buttonList.get(i).setStyle("-fx-background-color:red;");
-	//			}
-	//		}
-	//	}
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		buttonArray[0] = p1;
@@ -135,22 +129,17 @@ public class UserMainController implements Initializable{
 	}
 
 	public void setButtonColor(Button button, User user) {
-		for(int i = 0; i < AppMain.communication.user.getParkingLot().getSpaces().length;i++) {
-			if(AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 0) {
-				buttonArray[i].setStyle("-fx-background-color:green;");
-			}else if (AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1){
-				buttonArray[i].setStyle("-fx-background-color:red;");
-			}
-		}
+		setColor();
 		button.setStyle("-fx-background-color:yellow;");
 	}
 
 	public void setColor() {
-		for(int i = 0; i < AppMain.communication.user.getParkingLot().getSpaces().length;i++) {
+		for(int i = 0; i < AppMain.communication.user.getParkingLot().getSpaces().length; i++) {
 			if(AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 0) {
-				buttonArray[i].setStyle("-fx-background-color:green;");
-			}else if (AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1){
-				buttonArray[i].setStyle("-fx-background-color:red;");
+				buttonArray[i].setStyle("-fx-background-color:green;-fx-border-color:black;-fx-border-width:3;");
+			}
+			else if (AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1){
+				buttonArray[i].setStyle("-fx-background-color:orange;-fx-border-color:black;-fx-border-width:3;");
 			}
 		}
 	}
