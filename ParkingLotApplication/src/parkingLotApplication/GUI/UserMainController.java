@@ -24,7 +24,7 @@ import model.User;
 
 public class UserMainController implements Initializable{
 
-	@FXML AnchorPane anchorPane;
+	@FXML static AnchorPane anchorPane;
 	@FXML Label userName;
 	@FXML Label parkingLotName;
 	@FXML Button p1;
@@ -51,7 +51,7 @@ public class UserMainController implements Initializable{
 	@FXML public void p7selectSpace() {parkingLotSpace = (String)p7.getText();p7.setStyle("-fx-background-color:yellow;");}
 	@FXML public void p8selectSpace() {parkingLotSpace = (String)p8.getText();p8.setStyle("-fx-background-color:yellow;");}
 	
-	@FXML public void reservationAction() {
+	@FXML public void reservationAction() throws InterruptedException {
 		if(parkingLotSpace == null) {
 			Alert alert = new Alert(Alert.AlertType.WARNING, "주차장을 선택하여 주십시오!", ButtonType.OK );
 			Optional<ButtonType> ok = alert.showAndWait();
@@ -61,9 +61,12 @@ public class UserMainController implements Initializable{
 			int select = Integer.parseInt(parkingLotSpace);
 			System.out.println(select + "를 선택하셨습니다");
 			AppMain.communication.receive(); // 어떻게 send 보다 receive를 먼저 보장하지?
-			if(AppMain.parkingLot.getSpaces()[select].getStatus() == 1)
+			Thread.sleep(1000);
+			if(AppMain.communication.user.getParkingLot().getSpaces()[select-1].getStatus() == 1)
 				System.out.println("다른 주차장을 선택해주세요!");
-			AppMain.parkingLot.spaces[select].setStatus(1);
+			else
+				System.out.println(select + "번 주차공간이 예약되었습니다!");
+			AppMain.communication.user.getParkingLot().spaces[select-1].setStatus(1);
 			AppMain.communication.send();
 //			boolean request = reservationSpace(AppMain.user);
 //			if(request) {
@@ -81,7 +84,7 @@ public class UserMainController implements Initializable{
 		}else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION, parkingLotSpace + "공간을 반환 요청중입니다.", ButtonType.OK );
 			Optional<ButtonType> ok = alert.showAndWait();
-			boolean request = returnSpace(AppMain.user);
+			boolean request = returnSpace(AppMain.communication.user);
 			if(request) {
 				alert = new Alert(Alert.AlertType.CONFIRMATION, parkingLotSpace + "공간을 반환하였습니다.", ButtonType.OK);
 			}else if(request) {
@@ -103,7 +106,7 @@ public class UserMainController implements Initializable{
 	}
 	
 	@FXML public void logoutAction() throws IOException {
-		AppMain.user = null;
+		AppMain.communication.user = null;
 		StackPane root = (StackPane) anchorPane.getScene().getRoot();
 		Parent logout = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
 		root.getChildren().remove(anchorPane);
@@ -116,7 +119,7 @@ public class UserMainController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		userName.setText(AppMain.user.getName());
+//		userName.setText(AppMain.communication.user.getName());
 	}
 
 	private boolean reservationSpace(User user) {

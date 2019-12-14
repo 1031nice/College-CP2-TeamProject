@@ -1,20 +1,21 @@
 package parkingLotApplication.GUI;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 
-import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import model.ParkingLot;
+import model.User;
 
 public class ClientCommunication {
 
 	Socket socket;
+	User user;
 
 	public ClientCommunication() {
 		init();
@@ -39,15 +40,18 @@ public class ClientCommunication {
 		thread.start();
 	}
 
-	// 서버에게 객체를 주는 Thread
-	public void send() {
+	// 서버에게 로그인 정보를 주는 Thread
+	public void sendIdAndPassword(String id, String pw) {
 		Runnable send = new Runnable() {
 			@Override
 			public void run() {
 				try {
-					ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-					objectOutputStream.writeObject(AppMain.parkingLot);
-					AppMain.flag = true;
+					System.out.println("[클라이언트] 서버에게 id와 pw를 전송하는 thread");
+					DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
+					dataOutputStream.writeUTF(id);
+					dataOutputStream.writeUTF(pw);
+					dataOutputStream.flush();
+					System.out.println("[클라이언트] 전송완료");
 				} catch (Exception e) {
 				}
 			}
@@ -55,24 +59,54 @@ public class ClientCommunication {
 		Thread thread = new Thread(send);
 		thread.start();
 	}
+	
+	// 서버에게 객체를 주는 Thread
+	public void send() {
+		Runnable send = new Runnable() {
+			@Override
+			public void run() {
+				try {
+					ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+					objectOutputStream.writeObject(user.getParkingLot());
+					System.out.println("send완료. 전달받은 객체의 정보는 아래와 같습니다.");
+					System.out.println(user.getParkingLot().getName());
+					System.out.println(user.getParkingLot().getLocation());
+					for(int i=0; i<user.getParkingLot().getSpaces().length; i++) {
+						System.out.println(i + " 번째 공간 할당여부: " + user.getParkingLot().getSpaces()[i].getStatus());
+					}
+				} catch (Exception e) {
+				}
+			}
+		};
+		Thread thread = new Thread(send);
+		thread.start();
+	}
+	
+	public void firstReceive() {
+		Runnable receive = new Runnable() {
+			@Override
+			public void run() {
+				try {
+					ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+					user = (User)objectInputStream.readObject();
+					System.out.println("receive완료. 전달받은 객체의 정보는 아래와 같습니다.");
+					System.out.println(user.getParkingLot().getName());
+					System.out.println(user.getParkingLot().getLocation());
+					for(int i=0; i<user.getParkingLot().getSpaces().length; i++) {
+						System.out.println(i + " 번째 공간 할당여부: " + user.getParkingLot().getSpaces()[i].getStatus());
+					}
+					if(user == null) // user에 정보가 안담겼으면
+						System.out.println("사용자의 로그인 정보가 일치하지 않습니다.");
+					else { // user에 정보가 담겼으면
 
-	//	 서버에게 객체를 받는 메소드
-//	public void receive() {
-//		//		while(true) {
-//		try {
-//			System.out.println("서버로부터 자리가 유효한지 확인하는 중입니다.");
-//			ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
-//			AppMain.user.setParkingLot((ParkingLot)objectInputStream.readObject());
-//			System.out.println("receive완료. 전달받은 객체의 정보는 아래와 같습니다.");
-//			System.out.println(AppMain.parkingLot.getName());
-//			System.out.println(AppMain.parkingLot.getLocation());
-//			for(int i=0; i<AppMain.parkingLot.getSpaces().length; i++) {
-//				System.out.println(i + " 번째 공간 할당여부: " + AppMain.parkingLot.getSpaces()[i].getStatus());
-//			}
-//		} catch (Exception e) {
-//			//			}
-//		}
-//	}
+					}
+				} catch (Exception e) {
+				}
+			}
+		};
+		Thread thread = new Thread(receive);
+		thread.start();
+	}
 	
 	// 서버에게 객체를 받는 스레드
 	public void receive() {
@@ -80,14 +114,13 @@ public class ClientCommunication {
 			@Override
 			public void run() {
 				try {
-					System.out.println("서버로부터 자리가 유효한지 확인하는 중입니다.");
 					ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
-					AppMain.parkingLot = (ParkingLot)objectInputStream.readObject();
+					user.setParkingLot((ParkingLot)objectInputStream.readObject());
 					System.out.println("receive완료. 전달받은 객체의 정보는 아래와 같습니다.");
-					System.out.println(AppMain.parkingLot.getName());
-					System.out.println(AppMain.parkingLot.getLocation());
-					for(int i=0; i<AppMain.parkingLot.getSpaces().length; i++) {
-						System.out.println(i + " 번째 공간 할당여부: " + AppMain.parkingLot.getSpaces()[i].getStatus());
+					System.out.println(user.getParkingLot().getName());
+					System.out.println(user.getParkingLot().getLocation());
+					for(int i=0; i<user.getParkingLot().getSpaces().length; i++) {
+						System.out.println(i + " 번째 공간 할당여부: " + user.getParkingLot().getSpaces()[i].getStatus());
 					}
 					AppMain.flag = false;
 				} catch (Exception e) {
