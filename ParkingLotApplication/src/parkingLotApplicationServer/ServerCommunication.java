@@ -17,6 +17,7 @@ public class ServerCommunication {
 	public ServerCommunication(Socket socket) {
 		this.socket = socket;
 		receiveIdAndPassword();
+		
 	}
 
 	// 사용자에게 객체를 주는 thread
@@ -29,15 +30,15 @@ public class ServerCommunication {
 				try {
 					ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 					objectOutputStream.writeObject(user);
+					objectOutputStream.flush();
 					System.out.println("send완료. 전달한 객체의 정보는 아래와 같습니다.");
-					System.out.println(user.getName());
-					for(int i=0; i<Server.parkingLot.getSpaces().length; i++) {
+					System.out.println(user.getId());
+					for(int i=0; i<user.getParkingLot().getSpaces().length; i++) {
 						System.out.println(i + " 번째 공간 할당여부: " + user.getParkingLot().getSpaces()[i].getStatus());
 					}
 				} catch (Exception e) {
-					if (!Server.serverSocket.isClosed()) {
-						Server.stopServer();
-					}
+					e.printStackTrace();
+	                  		disconnectClient(null);
 				}
 			}
 		};
@@ -81,20 +82,19 @@ public class ServerCommunication {
 					try {
 						ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
 						user = (User)objectInputStream.readObject();
-						//						for (ServerCommunication communication : Server.communicationList) {
-						//							communication.send(Server.parkingLot);
-						//						}
+						
+						for (ServerCommunication communication : Server.communicationList) {
+							communication.send(user);
+						}
+						
 						System.out.println("receive완료. 전달받은 객체의 정보는 아래와 같습니다.");
-						System.out.println(user.getName());
+						System.out.println(user.getId());
 						for(int i=0; i<user.getParkingLot().getSpaces().length; i++) {
 							System.out.println(i + " 번째 공간 할당여부: " + user.getParkingLot().getSpaces()[i].getStatus());
 						}
-						send();
+						
 					} catch (Exception e) {
-						//						if (!Server.serverSocket.isClosed()) {
-						//							Server.stopServer();
-						//						}
-						//						break;
+						 disconnectClient(e.getMessage());
 					}
 
 				}
@@ -106,14 +106,15 @@ public class ServerCommunication {
 	/**
 	 * 클라이언트와 통신이 안될 때 현재 클라이언트 제거
 	 */
-	//    private void disconnectClient(String errorMsg) {
-	//        try {
-	//        	SocketServerController.clientList.remove(Client.this);
-	//            socket.close();
-	//        } catch (IOException e) {
-	//            e.printStackTrace();
-	//        }
-	//
-	//    }
+	private void disconnectClient(String errorMsg) {
+	        try {
+	        	Server.communicationList.remove(ServerCommunication.this);
+	        	String msg = "[" + user.getId() + (errorMsg != null ? errorMsg : "클라이언트 통신 안됨");
+	        	System.out.println(msg);
+	            socket.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }	
+	    }
 
 }
