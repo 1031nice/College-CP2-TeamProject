@@ -9,16 +9,21 @@ public class ParkingLot implements Serializable  { // 주차장
 	
 	private String name;				//주차장 이름
 	private String location;			//주차장 지역(주소)
-	private ArrayList<ParkingSpace> _spaces; 		
+	public ParkingSpace[] spaces = new ParkingSpace [8]; 		
 	
-	public ParkingLot(ArrayList<ParkingSpace> spaces) {
+	// constructor
+	public ParkingLot(ParkingSpace[] spaces) {
 		setSpaces(spaces);
 	}
-	public ParkingLot() {
-		setSpaces(new ArrayList<ParkingSpace>());
+	public ParkingLot() {}
+	public ParkingLot(String name, String location, ParkingSpace[] spaces) {
+		this.name = name;
+		this.location = location;
+		this.spaces = spaces;
 	}
-	public ArrayList<ParkingSpace> getSpaces() {
-		return _spaces;
+	
+	public ParkingSpace[] getSpaces() {
+		return spaces;
 	}
 	public String getName() {
 		return name;
@@ -27,8 +32,8 @@ public class ParkingLot implements Serializable  { // 주차장
 		return location;
 	}
 	
-	public void setSpaces(ArrayList<ParkingSpace> spaces) {
-		this._spaces = spaces;
+	public void setSpaces(ParkingSpace[] spaces) {
+		this.spaces = spaces;
 	}
 	public void setName(String name) {
 		this.name = name;

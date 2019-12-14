@@ -1,98 +1,85 @@
 package parkingLotApplicationServer;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Iterator;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import model.AppClient;
-import parkingLotApplication.GUI.AppMain;
+import model.ParkingLot;
 
 public class Server {
 
+	// 사용자 객체를 담을 리스트
 	public static Vector<AppClient> appClientList = new Vector<AppClient>();
+	// 정보 주고 받는 걸 관리할 객체의 리스트
+	public static Vector<ServerCommunication> communicationList = new Vector<ServerCommunication>();
 
 	public static ExecutorService threadPool; // 스레드풀
 
 	public static ServerSocket serverSocket;
 	public static Socket clientSocket;
 
+	public static ParkingLot parkingLot;
+
 	public static void main(String[] args) {
 		
-		// 코어 개수만큼의 thread를 만들어놓고
-		threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors(), Executors.defaultThreadFactory());
+		// 400개의 thread 미리 생성
+		threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 100, Executors.defaultThreadFactory());
 
-		// server socket 생성하고
+		// server socket 생성
 		try {
-        	serverSocket = new ServerSocket(10002);
-			System.out.println("server socket이 설정되었습니다");
-        } catch (IOException e) {
-            e.printStackTrace();
-            if (!serverSocket.isClosed()) {
-            }
-            return;
-        }
-        
-		// 여기는 사용자를 연결시켜주는 thread
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        Socket socket = serverSocket.accept();  // 연결 수락
-                        appClientList.add(new AppClient(socket));
-                    } catch (Exception e) {
-                        if (!serverSocket.isClosed()) {
-                        }
-                        break;
-                    }
+			serverSocket = new ServerSocket(10002);
+			System.out.println("[서버] server socket이 설정완료");
+		} catch (IOException e) {
+			e.printStackTrace();
+			if (!serverSocket.isClosed()) {
+				stopServer();
+			}
+			return;
+		}
 
-                }
-            }
-        };
-        // 스레드 풀에서 처리
-        threadPool.submit(runnable);
-		
-//		try { // 사용자를 연결하는 thread
-//			AcceptThread acceptThread = new AcceptThread(serverSocket);
-//			new Thread(acceptThread).start();
-//			// threadPool.submit(acceptThread);
-//		}
-//		catch(Exception e) {
-//			e.printStackTrace();
-//			System.out.println("사용자를 accept하는 thread 생성에 실패했습니다");
-//		}
-//
-//		try { // 사용자 객체를 주고받는 thread
-//			SendThread sendThread = new SendThread();
-//			ReceiveThread receiveThread = new ReceiveThread();
-//			new Thread(sendThread).start();
-//			new Thread(receiveThread).start();
-//		}
-//		catch(Exception e) {
-//			e.printStackTrace();
-//		}
+		// 사용자를 연결 thread
+		Runnable connect = new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("[서버] 사용자 연결 thread를 실행");
+				while (true) {
+					try {
+						Socket socket = serverSocket.accept();
+						System.out.println("[서버] 클라이언트 연결 완료");
+						communicationList.add(new ServerCommunication(socket));
+					} catch (Exception e) {
+						if (!serverSocket.isClosed()) {
+							stopServer();
+						}
+						break;
+					}
 
+				}
+			}
+		};
+		threadPool.submit(connect);
 	}
 
-	//    public static void stopServer() {
-	//        try {
-	//            Iterator<AppClient> iterator = appClientList.iterator();
-	//            while (iterator.hasNext()) {
-	//                iterator.next().socket.close();
-	//                iterator.remove();
-	//            }
-	//            if (serverSocket != null && !serverSocket.isClosed()) {
-	//                serverSocket.close();
-	//            }
-	//            if (threadPool != null && !threadPool.isShutdown()) {
-	//            	threadPool.shutdown();
-	//            }
-	//        } catch (Exception e) {
-	//            e.printStackTrace();
-	//        }
-	//    }
+	public static void stopServer() {
+		try {
+			Iterator<ServerCommunication> iterator = communicationList.iterator();
+			while (iterator.hasNext()) {
+				iterator.next().socket.close();
+				iterator.remove();
+			}
+			if (serverSocket != null && !serverSocket.isClosed()) {
+				serverSocket.close();
+			}
+			if (threadPool != null && !threadPool.isShutdown()) {
+				threadPool.shutdown();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

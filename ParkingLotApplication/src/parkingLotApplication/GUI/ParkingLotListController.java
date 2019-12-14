@@ -28,6 +28,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import model.ParkingLot;
+import model.ParkingSpace;
+import model.User;
 
 public class ParkingLotListController implements Initializable {
 
@@ -45,10 +47,23 @@ public class ParkingLotListController implements Initializable {
 		if(parkingLotSelectedIndex < 0) {
 			new Alert(Alert.AlertType.WARNING, "항목을 선택하세요.", ButtonType.CLOSE).show();
 			return ;
+<<<<<<< HEAD
+<<<<<<< HEAD
 		}else {
-			//AppMain.user.setParkingLotName(parkingLotList.get(parkingLotSelectedIndex));
+			AppMain.user.setParkingLot(new ParkingLot());
+=======
+=======
+>>>>>>> c1570a3b6b4c8429f74861be8bfe9ab5f5993476
+		}
+		else {
 
-			//AppMain.user.setParkingLot("");
+//			AppMain.user.getParkingLotFile()
+//
+//			AppMain.user.setParkingLot("");
+<<<<<<< HEAD
+>>>>>>> c1570a3b6b4c8429f74861be8bfe9ab5f5993476
+=======
+>>>>>>> c1570a3b6b4c8429f74861be8bfe9ab5f5993476
 			StackPane root = (StackPane) anchorPane.getScene().getRoot();
 			Parent userMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/UserMain.fxml"));
 			root.getChildren().remove(anchorPane);
@@ -115,7 +130,6 @@ public class ParkingLotListController implements Initializable {
 			}
 			
 		});
-
 	}
 	
 	Thread parkingLotListThread = new Thread(new Runnable() {
@@ -132,14 +146,16 @@ public class ParkingLotListController implements Initializable {
 				}
 				ownerIdReader.close();
 				
-				for(int i = 0; i < idList.size();i++) {
+				for(int i = 1; i < idList.size(); i++) {
+					if(idList.get(i) == null)
+						continue;
 					BufferedReader parkingLotReader = new BufferedReader(new FileReader("./src/data/ParkingLotInfo_"+ idList.get(i) +".txt"));
 					String parkingLotLine = "";
 					String[] parkingLotArray;
 					while((parkingLotLine = parkingLotReader.readLine()) != null) {
 						parkingLotArray = parkingLotLine.split(" ");
 						parkingLotList.add(parkingLotArray[0]);
-						locationList.add(parkingLotArray[1]);
+//						locationList.add(parkingLotArray[1]);
 					}
 					parkingLotReader.close();
 				}

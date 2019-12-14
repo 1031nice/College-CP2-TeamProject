@@ -8,9 +8,8 @@ import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import kayParkingLotAppClient.*;
-import kayParkingLotAppServer.*;
-import model.*;
+import model.ParkingLot;
+import model.ParkingSpace;
 
 public class LoginController implements Initializable {
 
@@ -21,7 +20,7 @@ public class LoginController implements Initializable {
 	@FXML RadioButton owner;
 	@FXML StackPane stackPane;
 	@FXML AnchorPane anchorPane;
-	private String name;
+//	private String name;
 	
 //	public LoginController(String name) {
 //		this.name = name;
@@ -29,43 +28,40 @@ public class LoginController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ServerThread serverThread = new ServerThread();
-		serverThread.start();
-		
 	}
 	
 	@FXML public void loginButtonAction() throws Exception {
+		owner.getStyleClass().add(".class");
+		if(type.equals(null)) {
+			System.out.println("사용자이신가요? 관리자이신가요?");
+			return;
+		}
 
 		String inputId = idTextField.getText();
 		String inputPassword = pwTextField.getText();
 
 		if(type.getSelectedToggle().getUserData().equals("고객")) {
-			String password = AppMain.findId(inputId, "UserInfo");
-			if(inputPassword.equals(password)) {
-				AppMain.getAppClientDataFromFile(inputId, "User");
-				Parent ParkingLotList = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/ParkingLotList.fxml"));
-				stackPane.getChildren().remove(anchorPane);
-				stackPane.getChildren().add(ParkingLotList);
-				
-				ClientThread clientThread = new ClientThread(AppMain.user);
-				clientThread.start();
-			}
-			else {
-				System.out.println("사용자의 로그인 정보가 일치하지 않습니다.");
-			}
+			AppMain.communication.sendIdAndPassword(inputId, inputPassword);
+			AppMain.communication.firstReceive();
+			
+			Thread.sleep(1000);
+			Parent UserMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/UserMain.fxml"));
+			stackPane.getChildren().remove(anchorPane);
+			stackPane.getChildren().add(UserMain);
+
 		}
-		else {
-			String password = AppMain.findId(inputId, "OwnerInfo");
-			if(inputPassword.equals(password)) {
-				AppMain.getAppClientDataFromFile(inputId, "Owner");
-				Parent ownerMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/OwnerMain.fxml"));
-				stackPane.getChildren().remove(anchorPane);
-				stackPane.getChildren().add(ownerMain);
-			}
-			else {
-				System.out.println("관리자의 로그인 정보가 일치하지 않습니다.");
-			}
-		}
+//		else { // owner는 일단 생략
+//			String password = AppMain.findId(inputId, "OwnerInfo");
+//			if(inputPassword.equals(password)) {
+//				AppMain.getAppClientDataFromFile(inputId, "Owner");
+//				Parent ownerMain = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/OwnerMain.fxml"));
+//				stackPane.getChildren().remove(anchorPane);
+//				stackPane.getChildren().add(ownerMain);
+//			}
+//			else {
+//				System.out.println("관리자의 로그인 정보가 일치하지 않습니다.");
+//			}
+//		}
 	}
 
 	@FXML public void signUpButtonAction() throws Exception {

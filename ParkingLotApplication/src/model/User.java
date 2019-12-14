@@ -12,7 +12,7 @@ public class User extends AppClient {
 	
 	private String _carNumber;
 	private boolean _nonperson;		//사회적 약자
-	private ParkingLot parkingLot = null;
+	public ParkingLot parkingLot;
 //	public Socket socket;
 		
 	public User(String id, String password, String name, String age, String accountNumber, String carNumber, boolean nonPerson) {
@@ -52,7 +52,7 @@ public class User extends AppClient {
 
 	public boolean send() throws IOException{
 		ObjectOutputStream objOutputStream = new ObjectOutputStream(socket.getOutputStream());
-		objOutputStream.writeObject(AppMain.parkingLot);
+		objOutputStream.writeObject(this);
 		objOutputStream.flush();
 		return true;
 	}

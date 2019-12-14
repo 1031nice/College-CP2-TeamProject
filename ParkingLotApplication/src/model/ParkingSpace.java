@@ -3,14 +3,14 @@ package model;
 import java.io.*;
 
 public class ParkingSpace implements Serializable  { // 주차장 속 하나하나의 공간
-	
+
 	private static final int OCCUPIED = 1;
 	private static final int EMPTY = 0;
 	private static final int DEFAULT_STATUS = EMPTY;
-	
+
 	private int status = DEFAULT_STATUS;
 	private String id;
-	
+
 	public int getStatus() {
 		return status;
 	}
@@ -32,9 +32,9 @@ public class ParkingSpace implements Serializable  { // 주차장 속 하나하�
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 	@Override
-		public String toString() {
-			return id;
-		}
+	public String toString() {
+		return id;
+	}
 }

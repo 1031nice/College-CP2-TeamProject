@@ -82,7 +82,7 @@ public class SignUpController implements Initializable{
 			}
 			// 아이디가 중복되지 않았으면 User 객체 생성후 userController 객체에 전달
 			if(isIdExist == null) {
-				System.out.println("아이디가 없으니까 만들겠습니다.");
+				System.out.println("debug: 중복되는 아이디가 없습니다. 만들겠습니다.");
 				User user = new User(inputId, inputPassword, inputName, inputAge, inputAccountNumber, inputCarNumber, isNonPerson);
 				try {
 					userController.signUp(user);
@@ -106,7 +106,7 @@ public class SignUpController implements Initializable{
 		// 관리자일 경우 경우
 		else {
 			try {
-				isIdExist = AppMain.findId(inputId, "UserInfo");
+				isIdExist = AppMain.findId(inputId, "OwnerInfo");
 			} catch (IOException e1) {
 				System.out.println("아이디를 찾는 도중 오류가 발생했습니다.");
 			}

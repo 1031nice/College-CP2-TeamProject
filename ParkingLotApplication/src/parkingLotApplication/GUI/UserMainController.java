@@ -1,14 +1,20 @@
 package parkingLotApplication.GUI;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,13 +22,21 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import model.User;
 import javafx.scene.control.Label;
+import model.ParkingLot;
+import model.ParkingSpace;
+import model.User;
+import model.ParkingLot;
+import model.ParkingSpace;
+import model.User;
 
 public class UserMainController implements Initializable{
 
-	@FXML AnchorPane anchorPane;
+	@FXML static AnchorPane anchorPane;
 	@FXML Label userName;
 	@FXML Label parkingLotName;
 	@FXML Button p1;
@@ -34,31 +48,44 @@ public class UserMainController implements Initializable{
 	@FXML Button p7;
 	@FXML Button p8;
 	
-	FileInputStream fis = null;
-	BufferedInputStream bis = null;
-	ObjectInputStream ois = null;
-	String parkingLotSpace = null;
+	private String parkingLotSpace = null;
+	private ObservableList<Button> buttonList = FXCollections.observableArrayList(p1,p2,p3,p4,p5,p6,p7,p8);
 	
-	@FXML public void p1selectSpace() {parkingLotSpace = (String)p1.getText();p1.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p2selectSpace() {parkingLotSpace = (String)p2.getText();p2.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p3selectSpace() {parkingLotSpace = (String)p3.getText();p3.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p4selectSpace() {parkingLotSpace = (String)p4.getText();p4.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p5selectSpace() {parkingLotSpace = (String)p5.getText();p5.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p6selectSpace() {parkingLotSpace = (String)p6.getText();p6.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p7selectSpace() {parkingLotSpace = (String)p7.getText();p7.setStyle("-fx-background-color:yellow;");}
-	@FXML public void p8selectSpace() {parkingLotSpace = (String)p8.getText();p8.setStyle("-fx-background-color:yellow;");}
+//	Socket s = new Socket(id,port);
+//	PrintWriter out = new PrintWriter(s.getOutputStream(),true);
+//	BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 	
+	@FXML public void p1selectSpace() {parkingLotSpace = (String)p1.getText();setButtonColor(p1,AppMain.user);}
+	@FXML public void p2selectSpace() {parkingLotSpace = (String)p2.getText();setButtonColor(p2,AppMain.user);}
+	@FXML public void p3selectSpace() {parkingLotSpace = (String)p3.getText();setButtonColor(p3,AppMain.user);}
+	@FXML public void p4selectSpace() {parkingLotSpace = (String)p4.getText();setButtonColor(p4,AppMain.user);}
+	@FXML public void p5selectSpace() {parkingLotSpace = (String)p5.getText();setButtonColor(p5,AppMain.user);}
+	@FXML public void p6selectSpace() {parkingLotSpace = (String)p6.getText();setButtonColor(p6,AppMain.user);}
+	@FXML public void p7selectSpace() {parkingLotSpace = (String)p7.getText();setButtonColor(p7,AppMain.user);}
+	@FXML public void p8selectSpace() {parkingLotSpace = (String)p8.getText();setButtonColor(p8,AppMain.user);}
 	
-	@FXML public void reservationAction() {
+	@FXML public void reservationAction() throws InterruptedException {
 		if(parkingLotSpace == null) {
-			new Alert(Alert.AlertType.WARNING, "주차장을 선택하여 주십시오!", ButtonType.OK).show();
+			Alert alert = new Alert(Alert.AlertType.WARNING, "주차장을 선택하여 주십시오!", ButtonType.OK );
+			Optional<ButtonType> ok = alert.showAndWait();
 		}else {
-			new Alert(Alert.AlertType.INFORMATION, parkingLotSpace + "공간을 요청중입니다.", ButtonType.OK ).show();
-//			boolean request = AppMain.user.send();
+			Alert alert = new Alert(Alert.AlertType.INFORMATION, parkingLotSpace + "공간을 요청중입니다.", ButtonType.OK );
+			Optional<ButtonType> ok = alert.showAndWait();
+			int select = Integer.parseInt(parkingLotSpace);
+			System.out.println(select + "를 선택하셨습니다");
+			AppMain.communication.receive(); // 어떻게 send 보다 receive를 먼저 보장하지?
+			Thread.sleep(1000);
+			if(AppMain.communication.user.getParkingLot().getSpaces()[select-1].getStatus() == 1)
+				System.out.println("다른 주차장을 선택해주세요!");
+			else
+				System.out.println(select + "번 주차공간이 예약되었습니다!");
+			AppMain.communication.user.getParkingLot().spaces[select-1].setStatus(1);
+			AppMain.communication.send();
+//			boolean request = reservationSpace(AppMain.user);
 //			if(request) {
-//				new Alert(Alert.AlertType.CONFIRMATION, parkingLotSpace + "자리를 선택하였습니다.", ButtonType.OK).show();
+//				alert = new Alert(Alert.AlertType.CONFIRMATION, parkingLotSpace + "자리를 선택하였습니다.", ButtonType.OK);
 //			}else if(request) {
-//				new Alert(Alert.AlertType.ERROR, "이미 선택된 주차공간입니다.", ButtonType.CANCEL).show();
+//				alert = new Alert(Alert.AlertType.ERROR, "이미 선택된 주차공간입니다.", ButtonType.CANCEL);
 //			}
 		}
 	}
@@ -70,12 +97,12 @@ public class UserMainController implements Initializable{
 		}else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION, parkingLotSpace + "공간을 반환 요청중입니다.", ButtonType.OK );
 			Optional<ButtonType> ok = alert.showAndWait();
-//			boolean request = returnSpace(AppMain.user);
-//			if(request) {
-//				alert = new Alert(Alert.AlertType.CONFIRMATION, parkingLotSpace + "공간을 반환하였습니다.", ButtonType.OK);
-//			}else if(request) {
-//				alert = new Alert(Alert.AlertType.ERROR, "자리 반환을 실패하였습니다.", ButtonType.CANCEL);
-//			}
+			boolean request = returnSpace(AppMain.communication.user);
+			if(request) {
+				alert = new Alert(Alert.AlertType.CONFIRMATION, parkingLotSpace + "공간을 반환하였습니다.", ButtonType.OK);
+			}else if(request) {
+				alert = new Alert(Alert.AlertType.ERROR, "자리 반환을 실패하였습니다.", ButtonType.CANCEL);
+			}
 		}
 	}
 	
@@ -92,7 +119,7 @@ public class UserMainController implements Initializable{
 	}
 	
 	@FXML public void logoutAction() throws IOException {
-		AppMain.user = null;
+		AppMain.communication.user = null;
 		StackPane root = (StackPane) anchorPane.getScene().getRoot();
 		Parent logout = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/Login.fxml"));
 		root.getChildren().remove(anchorPane);
@@ -106,16 +133,33 @@ public class UserMainController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		userName.setText(AppMain.user.getName());
-//		parkingLotName.setText(AppMain.user.getParkingLotName());	
+		for(int i = 0; i < AppMain.user.getParkingLot().getSpaces().size();i++) {
+			if(AppMain.user.getParkingLot().getSpaces().get(i).getStatus() == 0) {
+				buttonList.get(i).setStyle("-fx-background-color:green;");
+			}else if (AppMain.user.getParkingLot().getSpaces().get(i).getStatus() == 1){
+				buttonList.get(i).setStyle("-fx-background-color:red;");
+			}
+		}
 	}
-
-//	private boolean reservationSpace(User user) {
-//		
-//		return true;
-//	}
-//	
-//	private boolean returnSpace(User user) {
-//		
-//		return true;
-//	}
+	
+	public void setButtonColor(Button button, User user) {
+		for(int i = 0; i < AppMain.user.getParkingLot().getSpaces().size();i++) {
+			if(AppMain.user.getParkingLot().getSpaces().get(i).getStatus() == 0) {
+				buttonList.get(i).setStyle("-fx-background-color:green;");
+			}else if (AppMain.user.getParkingLot().getSpaces().get(i).getStatus() == 1){
+				buttonList.get(i).setStyle("-fx-background-color:red;");
+			}
+		}
+		button.setStyle("-fx-background-color:yellow;");
+	}
+	
+	public void setColor() {
+		for(int i = 0; i < AppMain.user.getParkingLot().getSpaces().size();i++) {
+			if(AppMain.user.getParkingLot().getSpaces().get(i).getStatus() == 0) {
+				buttonList.get(i).setStyle("-fx-background-color:green;");
+			}else {
+				buttonList.get(i).setStyle("-fx-background-color:red;");
+			}
+		}
+	}
 }
