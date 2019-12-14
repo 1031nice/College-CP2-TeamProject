@@ -47,6 +47,7 @@ public class ClientCommunication {
 				try {
 					ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 					objectOutputStream.writeObject(AppMain.parkingLot);
+					AppMain.flag = true;
 				} catch (Exception e) {
 				}
 			}
@@ -88,9 +89,9 @@ public class ClientCommunication {
 					for(int i=0; i<AppMain.parkingLot.getSpaces().length; i++) {
 						System.out.println(i + " 번째 공간 할당여부: " + AppMain.parkingLot.getSpaces()[i].getStatus());
 					}
+					AppMain.flag = false;
 				} catch (Exception e) {
 				}
-
 			}
 		};
 		Thread thread = new Thread(receive);

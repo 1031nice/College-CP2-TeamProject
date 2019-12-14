@@ -24,6 +24,7 @@ public class AppMain extends Application implements Initializable {
 	public static Owner owner;
 	public static ClientCommunication communication = new ClientCommunication();
 	public static ParkingLot parkingLot;
+	public static boolean flag = false;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

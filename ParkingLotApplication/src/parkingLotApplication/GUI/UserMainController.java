@@ -60,7 +60,7 @@ public class UserMainController implements Initializable{
 			Optional<ButtonType> ok = alert.showAndWait();
 			int select = Integer.parseInt(parkingLotSpace);
 			System.out.println(select + "를 선택하셨습니다");
-			AppMain.communication.receive();
+			AppMain.communication.receive(); // 어떻게 send 보다 receive를 먼저 보장하지?
 			if(AppMain.parkingLot.getSpaces()[select].getStatus() == 1)
 				System.out.println("다른 주차장을 선택해주세요!");
 			AppMain.parkingLot.spaces[select].setStatus(1);
