@@ -39,14 +39,14 @@ public class UserMainController implements Initializable{
 	ObjectInputStream ois = null;
 	String parkingLotSpace = null;
 	
-	@FXML public void p1selectSpace() {parkingLotSpace = (String)p1.getText();}
-	@FXML public void p2selectSpace() {parkingLotSpace = (String)p2.getText();}
-	@FXML public void p3selectSpace() {parkingLotSpace = (String)p3.getText();}
-	@FXML public void p4selectSpace() {parkingLotSpace = (String)p4.getText();}
-	@FXML public void p5selectSpace() {parkingLotSpace = (String)p5.getText();}
-	@FXML public void p6selectSpace() {parkingLotSpace = (String)p6.getText();}
-	@FXML public void p7selectSpace() {parkingLotSpace = (String)p7.getText();}
-	@FXML public void p8selectSpace() {parkingLotSpace = (String)p8.getText();}
+	@FXML public void p1selectSpace() {parkingLotSpace = (String)p1.getText();p1.setStyle("-fx-background-color:yellow;");}
+	@FXML public void p2selectSpace() {parkingLotSpace = (String)p2.getText();p2.setStyle("-fx-background-color:yellow;");}
+	@FXML public void p3selectSpace() {parkingLotSpace = (String)p3.getText();p3.setStyle("-fx-background-color:yellow;");}
+	@FXML public void p4selectSpace() {parkingLotSpace = (String)p4.getText();p4.setStyle("-fx-background-color:yellow;");}
+	@FXML public void p5selectSpace() {parkingLotSpace = (String)p5.getText();p5.setStyle("-fx-background-color:yellow;");}
+	@FXML public void p6selectSpace() {parkingLotSpace = (String)p6.getText();p6.setStyle("-fx-background-color:yellow;");}
+	@FXML public void p7selectSpace() {parkingLotSpace = (String)p7.getText();p7.setStyle("-fx-background-color:yellow;");}
+	@FXML public void p8selectSpace() {parkingLotSpace = (String)p8.getText();p8.setStyle("-fx-background-color:yellow;");}
 	
 	
 	@FXML public void reservationAction() {

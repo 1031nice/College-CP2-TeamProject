@@ -70,11 +70,12 @@ public class ParkingLotListController implements Initializable {
 
 	@SuppressWarnings("null")
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1){
+	public void initialize(URL arg0, ResourceBundle arg1){					
 		parkingLotList = FXCollections.observableArrayList();
 		locationList = FXCollections.observableArrayList();
 		locationListView.setItems(locationList);
 		parkingLotListView.setItems(parkingLotList);
+
 //		try {
 //			Reader fr = new FileReader("./src/data/OwnerInfo.txt");
 //			BufferedReader br = new BufferedReader(fr);
@@ -103,7 +104,18 @@ public class ParkingLotListController implements Initializable {
 // 			}
 //		} catch (FileNotFoundException e) {e.printStackTrace();}
 //		catch (IOException e) {e.printStackTrace();}	
+
 		parkingLotListThread.start();
+		locationListView.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Number> arg0, Number oldValue, Number newValue) {				
+				parkingLotListView.getSelectionModel().select(newValue.intValue());
+				parkingLotListView.scrollTo(newValue.intValue());
+			}
+			
+		});
+
 	}
 	
 	Thread parkingLotListThread = new Thread(new Runnable() {

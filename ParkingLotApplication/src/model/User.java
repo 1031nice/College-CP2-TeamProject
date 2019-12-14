@@ -35,13 +35,8 @@ public class User extends AppClient {
 	public String getCarNumber() {
 		return _carNumber;
 	}
-<<<<<<< HEAD
-	public String getParkingLotName() {
-		return parkingLotName;
-=======
 	public ParkingLot getParkingLot() {
 		return parkingLot;
->>>>>>> 27650ef25874a4ac663e2fd82af781b7e972d721
 	}
 	
 	// setters

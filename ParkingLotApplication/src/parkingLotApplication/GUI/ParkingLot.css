@@ -1,6 +1,12 @@
 AnchorPane{
 	-fx-background-color: white;
 }
-.UserMainController {
+.EmptyParkingLotButton {
 	-fx-background-color: green;
+}
+.FullParkingLotButton{
+	-fx-background-color: red;
+}
+.SelectedParkingLotButton{
+	-fx-background-color: yelow;
 }
