@@ -27,7 +27,7 @@
                   <Button layoutX="227.0" layoutY="50.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="75.0" prefWidth="100.0" text="로그인" />
                </children>
             </AnchorPane>
-            <Label layoutX="81.0" layoutY="89.0" text="Sharing Parkinglot Platform">
+            <Label layoutX="120.0" layoutY="90.0" text="Sharing Parkinglot Platform">
                <font>
                   <Font size="36.0" />
                </font>

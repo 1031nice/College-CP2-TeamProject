@@ -1,6 +1,7 @@
 package parkingLotApplicationServer;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -28,7 +29,7 @@ public class Server {
 
 	public static void main(String[] args) {
 		
-		BufferedOutputStream a = new BufferedOutputStream(null);
+		BufferedReader a = new BufferedReader(null);
 
 		// 400개의 thread 미리 생성
 		threadPool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 100, Executors.defaultThreadFactory());

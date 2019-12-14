@@ -1,5 +1,9 @@
 package parkingLotApplication.GUI;
 
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
 import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -7,7 +11,7 @@ import javafx.scene.layout.*;
 import model.ParkingLot;
 import model.ParkingSpace;
 
-public class LoginController {
+public class LoginController implements Initializable {
 
 	@FXML TextField idTextField;
 	@FXML PasswordField pwTextField;
@@ -21,6 +25,13 @@ public class LoginController {
 //	public LoginController(String name) {
 //		this.name = name;
 //	}
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		ServerThread serverThread = new ServerThread();
+		serverThread.start();
+		
+	}
 	
 	@FXML public void loginButtonAction() throws Exception {
 		owner.getStyleClass().add(".class");
@@ -39,6 +50,9 @@ public class LoginController {
 				Parent ParkingLotList = FXMLLoader.load(getClass().getResource("/parkingLotApplication/GUI/ParkingLotList.fxml"));
 				stackPane.getChildren().remove(anchorPane);
 				stackPane.getChildren().add(ParkingLotList);
+				
+				ClientThread clientThread = new ClientThread(AppMain.user);
+				clientThread.start();
 			}
 			else {
 				System.out.println("사용자의 로그인 정보가 일치하지 않습니다.");
@@ -66,5 +80,6 @@ public class LoginController {
 
 	@FXML public void exitButtonAction() {
 		System.exit(1);
+		
 	}
 }

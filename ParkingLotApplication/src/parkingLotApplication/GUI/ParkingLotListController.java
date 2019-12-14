@@ -74,11 +74,41 @@ public class ParkingLotListController implements Initializable {
 
 	@SuppressWarnings("null")
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1){
+	public void initialize(URL arg0, ResourceBundle arg1){					
 		parkingLotList = FXCollections.observableArrayList();
 		locationList = FXCollections.observableArrayList();
 		locationListView.setItems(locationList);
 		parkingLotListView.setItems(parkingLotList);
+
+//		try {
+//			Reader fr = new FileReader("./src/data/OwnerInfo.txt");
+//			BufferedReader br = new BufferedReader(fr);
+//			String[] ownerInfoArr = new String[100];
+//			String[] ownerIdArr = new String[100];
+// 			String line = "";
+// 			int i =0;
+//			while((line = br.readLine()) != null) {
+//				ownerInfoArr = line.split(" ");
+//				ownerIdArr[i]=ownerInfoArr[0];
+//				i++;
+//			}
+//			br.close(); fr.close();
+//			for(String ownerId : ownerIdArr) {
+//				Reader fr2 = new FileReader("./src/data/ParkingLotInfo_" + ownerId +".txt");
+//				BufferedReader br2 = new BufferedReader(fr2);
+//				String[] parkingLotInfoArr;
+//				String line2 = "";
+//				while((line2 = br2.readLine()) != null) {
+//					parkingLotInfoArr = line2.split(" ");
+//					locationList.add(parkingLotInfoArr[1]);
+//					parkingLotList.add(parkingLotInfoArr[0]);
+//				}
+//				fr2.close();
+//				br2.close();
+// 			}
+//		} catch (FileNotFoundException e) {e.printStackTrace();}
+//		catch (IOException e) {e.printStackTrace();}	
+
 		parkingLotListThread.start();
 		locationListView.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 
