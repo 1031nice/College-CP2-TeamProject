@@ -1,12 +1,36 @@
 AnchorPane{
+	-fx-background-color:#87CEFA;
+}
+#inputPane{
+	-fx-background-radius: 8,7,6;
 	-fx-background-color: white;
 }
-.EmptyParkingLotButton {
-	-fx-background-color: green;
+Label{
+	-fx-font-family: "Segoe UI Semibold";
 }
-.FullParkingLotButton{
-	-fx-background-color: red;
+#title{
+	-fx-font-family: "Segoe UI Semibold";
+	-fx-font-weight: bold;
+    -fx-text-fill: white;
 }
-.SelectedParkingLotButton{
-	-fx-background-color: yelow;
+Button{
+	-fx-background-color: white;
+	-fx-background-radius: 8,7,6;
+	-fx-background-insets: 0,1,2;
+	-fx-text-fill: black;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+	-fx-font-family: "Segoe UI Semibold";
+}
+TextField{
+	-fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+PasswordField{
+	-fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+    -fx-font-family: "Segoe UI Semibold";
 }

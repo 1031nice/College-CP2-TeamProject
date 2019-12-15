@@ -12,8 +12,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import parkingLotApplication.app.OwnerController;
+//import parkingLotApplication.app.OwnerController;
 import parkingLotApplication.app.UserController;
+import javafx.scene.control.Label;
 
 public class SignUpController implements Initializable{
 
@@ -28,8 +29,11 @@ public class SignUpController implements Initializable{
 	@FXML RadioButton falsebtn;
 	@FXML AnchorPane anchorPane;
 	@FXML RadioButton isuser;
-
-	OwnerController ownerController = new OwnerController();
+	// CSS id
+	@FXML AnchorPane inputPane;
+	@FXML Label title;
+	
+	//OwnerController ownerController = new OwnerController();
 	UserController userController = new UserController();
 	
 	@Override

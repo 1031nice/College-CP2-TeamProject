@@ -21,7 +21,6 @@ public class UserMainController implements Initializable{
 
 	@FXML static AnchorPane anchorPane;
 	@FXML Label userName;
-	@FXML Label parkingLotName;
 	@FXML Button p1;
 	@FXML Button p2;
 	@FXML Button p3;
@@ -30,6 +29,7 @@ public class UserMainController implements Initializable{
 	@FXML Button p6;
 	@FXML Button p7;
 	@FXML Button p8;
+	//css id
 
 	private String parkingLotSpace = null;
 	Button[] buttonArray = new Button[8];
@@ -130,16 +130,16 @@ public class UserMainController implements Initializable{
 
 	public void setButtonColor(Button button, User user) {
 		setColor();
-		button.setStyle("-fx-background-color:yellow;");
+		button.setStyle("-fx-background-color: #FAFAD2;");
 	}
 
 	public void setColor() {
 		for(int i = 0; i < AppMain.communication.user.getParkingLot().getSpaces().length; i++) {
 			if(AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 0) {
-				buttonArray[i].setStyle("-fx-background-color:green;-fx-border-color:black;-fx-border-width:3;");
+				buttonArray[i].setStyle("-fx-background-color: #ADFF2F;-fx-border-color:black;-fx-border-width:3;");
 			}
 			else if (AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1){
-				buttonArray[i].setStyle("-fx-background-color:orange;-fx-border-color:black;-fx-border-width:3;");
+				buttonArray[i].setStyle("-fx-background-color: #DC143C;-fx-border-color:black;-fx-border-width:3;");
 			}
 		}
 	}

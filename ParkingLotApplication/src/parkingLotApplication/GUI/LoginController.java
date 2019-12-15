@@ -21,6 +21,9 @@ public class LoginController implements Initializable {
 	@FXML StackPane stackPane;
 	@FXML AnchorPane anchorPane;
 	//	private String name;
+	// Css id
+	@FXML AnchorPane inputPane;
+	@FXML Label title;
 
 	//	public LoginController(String name) {
 	//		this.name = name;
