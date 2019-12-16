@@ -1,6 +1,6 @@
 AnchorPane{
 	-fx-background-color:#87CEFA;
-	/*-fx-background-color: linear-gradient(to bottom, #BA55D3,#87CEFA);*/
+	-fx-background-color: linear-gradient(to bottom, #BA55D3,#87CEFA);
 }
 #inputPane{
 	-fx-background-radius: 8,7,6;
@@ -31,6 +31,11 @@ Button{
 	-fx-text-fill: black;
 	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
+#help{
+	-fx-background-color: yellow;
+	-fx-background-radius: 100,100,100;
+}
+
 TextField{
 	-fx-background-color: -fx-text-box-border, -fx-background ;
     -fx-background-insets: 0, 0 0 1 0 ;

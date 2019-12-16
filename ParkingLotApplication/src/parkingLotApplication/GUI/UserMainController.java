@@ -31,6 +31,7 @@ public class UserMainController implements Initializable{
 	@FXML Button p8;
 	//css id, name
 	@FXML Label nameLabel;
+	@FXML Button help;
 	
 	private String parkingLotSpace = null;
 	Button[] buttonArray = new Button[8];
@@ -100,6 +101,11 @@ public class UserMainController implements Initializable{
 
 	@FXML public void paymentAction() {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION, "결제되었습니다.", ButtonType.OK );
+		Optional<ButtonType> ok = alert.showAndWait();
+	}
+	
+	@FXML public void help() {
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "녹색 : 비어있는 주차공간\n적색 흰테두리 : 다른사람이 예약한 주차공간\n적색 노란테두리: 자신이 예약한 주차공간\n노란색 : 선택한 주차공간", ButtonType.OK );
 		Optional<ButtonType> ok = alert.showAndWait();
 	}
 
