@@ -67,7 +67,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label maxWidth="1.7976931348623157E308" text="고객님환영합니다." HBox.hgrow="ALWAYS">
+            <Label fx:id="nameLabel" maxWidth="1.7976931348623157E308" text="고객님 환영합니다." HBox.hgrow="ALWAYS">
                <font>
                   <Font size="24.0" />
                </font>

@@ -19,7 +19,7 @@ import model.User;
 
 public class UserMainController implements Initializable{
 
-	@FXML static AnchorPane anchorPane;
+	@FXML AnchorPane anchorPane;
 	@FXML Label userName;
 	@FXML Button p1;
 	@FXML Button p2;
@@ -29,20 +29,21 @@ public class UserMainController implements Initializable{
 	@FXML Button p6;
 	@FXML Button p7;
 	@FXML Button p8;
-	//css id
-
+	//css id, name
+	@FXML Label nameLabel;
+	
 	private String parkingLotSpace = null;
 	Button[] buttonArray = new Button[8];
 	int select = 0;
 
-	@FXML public void p1selectSpace() {parkingLotSpace = (String)p1.getText();setButtonColor(p1,AppMain.communication.user);}
-	@FXML public void p2selectSpace() {parkingLotSpace = (String)p2.getText();setButtonColor(p2,AppMain.communication.user);}
-	@FXML public void p3selectSpace() {parkingLotSpace = (String)p3.getText();setButtonColor(p3,AppMain.communication.user);}
-	@FXML public void p4selectSpace() {parkingLotSpace = (String)p4.getText();setButtonColor(p4,AppMain.communication.user);}
-	@FXML public void p5selectSpace() {parkingLotSpace = (String)p5.getText();setButtonColor(p5,AppMain.communication.user);}
-	@FXML public void p6selectSpace() {parkingLotSpace = (String)p6.getText();setButtonColor(p6,AppMain.communication.user);}
-	@FXML public void p7selectSpace() {parkingLotSpace = (String)p7.getText();setButtonColor(p7,AppMain.communication.user);}
-	@FXML public void p8selectSpace() {parkingLotSpace = (String)p8.getText();setButtonColor(p8,AppMain.communication.user);}
+	@FXML public void p1selectSpace() {parkingLotSpace = (String)p1.getText();setButtonColor(p1);}
+	@FXML public void p2selectSpace() {parkingLotSpace = (String)p2.getText();setButtonColor(p2);}
+	@FXML public void p3selectSpace() {parkingLotSpace = (String)p3.getText();setButtonColor(p3);}
+	@FXML public void p4selectSpace() {parkingLotSpace = (String)p4.getText();setButtonColor(p4);}
+	@FXML public void p5selectSpace() {parkingLotSpace = (String)p5.getText();setButtonColor(p5);}
+	@FXML public void p6selectSpace() {parkingLotSpace = (String)p6.getText();setButtonColor(p6);}
+	@FXML public void p7selectSpace() {parkingLotSpace = (String)p7.getText();setButtonColor(p7);}
+	@FXML public void p8selectSpace() {parkingLotSpace = (String)p8.getText();setButtonColor(p8);}
 
 	@FXML public void reservationAction() throws InterruptedException {
 		if(parkingLotSpace == null) {
@@ -128,18 +129,19 @@ public class UserMainController implements Initializable{
 		setColor();
 	}
 
-	public void setButtonColor(Button button, User user) {
+	public void setButtonColor(Button button) {
 		setColor();
-		button.setStyle("-fx-background-color: #FAFAD2;");
+		button.setStyle("-fx-background-color: yellow;-fx-border-color:white;-fx-border-width:5;");
 	}
 
 	public void setColor() {
 		for(int i = 0; i < AppMain.communication.user.getParkingLot().getSpaces().length; i++) {
 			if(AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 0) {
-				buttonArray[i].setStyle("-fx-background-color: #ADFF2F;-fx-border-color:black;-fx-border-width:3;");
-			}
-			else if (AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1){
-				buttonArray[i].setStyle("-fx-background-color: #DC143C;-fx-border-color:black;-fx-border-width:3;");
+				buttonArray[i].setStyle("-fx-background-color: #32CD32;-fx-border-color:white;-fx-border-width:5;");
+			}else if(AppMain.communication.user.getParkingLot().getSpaces()[i].toString().equals(AppMain.communication.user.getId()) && AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1) {
+				buttonArray[i].setStyle("-fx-background-color: #DC143C;-fx-border-color:yellow;-fx-border-width:5;");
+			}else if (AppMain.communication.user.getParkingLot().getSpaces()[i].getStatus() == 1){
+				buttonArray[i].setStyle("-fx-background-color: #DC143C;-fx-border-color:white;-fx-border-width:5;");
 			}
 		}
 	}
