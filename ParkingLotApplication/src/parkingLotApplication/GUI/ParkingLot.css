@@ -13,6 +13,7 @@ Label{
 	-fx-font-family: "Segoe UI Semibold";
 	-fx-font-weight: bold;
     -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , white , 5, 0.0 , 0 , 1 );
 }
 #userName {
 	-fx-font-family: "Segoe UI Semibold";
@@ -33,7 +34,8 @@ Button{
 }
 #help{
 	-fx-background-color: yellow;
-	-fx-background-radius: 100,100,100;
+	-fx-background-radius: 100;
+	-fx-effect: dropshadow( three-pass-box , yellow , 5, 0.0 , 0 , 1 );
 }
 
 TextField{

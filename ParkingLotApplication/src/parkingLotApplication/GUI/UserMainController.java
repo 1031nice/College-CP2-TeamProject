@@ -60,15 +60,19 @@ public class UserMainController implements Initializable{
 			Optional<ButtonType> ok = alert.showAndWait();
 			select = Integer.parseInt(parkingLotSpace);
 			System.out.println(select + "를 선택하셨습니다");
-			if(AppMain.communication.user.getParkingLot().getSpaces()[select-1].getStatus() == 1)
+			if(AppMain.communication.user.getParkingLot().getSpaces()[select-1].getStatus() == 1) {
 				System.out.println("다른 주차장을 선택해주세요!");
-			else {
+				parkingLotSpace = null;
+				setColor();
+			}else {
 				System.out.println(select + "번 주차공간이 예약되었습니다!");
 				//
 				AppMain.communication.user.setUsing(true);
 				AppMain.communication.user.getParkingLot().getSpaces()[select-1].setStatus(1);
 				AppMain.communication.user.getParkingLot().getSpaces()[select-1].setId(AppMain.communication.user.getId());
 				AppMain.communication.send();
+				parkingLotSpace = null;
+				setColor();
 			}
 		}
 	}
@@ -92,10 +96,14 @@ public class UserMainController implements Initializable{
 			AppMain.communication.user.getParkingLot().getSpaces()[select-1].setId(null);
 			AppMain.communication.send();
 			System.out.println(select + "번 주차공간이 반납되었습니다!");
+			parkingLotSpace = null;
+			setColor();
 		}
 		else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION, "자신의 주차공간이 아닙니다.", ButtonType.OK );
 			Optional<ButtonType> ok = alert.showAndWait();
+			parkingLotSpace = null;
+			setColor();
 		}
 	}
 
