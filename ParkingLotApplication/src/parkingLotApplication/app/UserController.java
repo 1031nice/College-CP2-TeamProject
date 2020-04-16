@@ -43,6 +43,7 @@ public class UserController extends AppClientController {
 
 	@Override
 	public void memberSecession() {
+		// TODO Auto-generated method stub
 		
 	}
 }

@@ -23,6 +23,7 @@ public class ClientCommunication {
 			@Override
 			public void run() {
 				try {
+					// TODO 소켓을 생성하여 socket 필드에 대입하기
 					socket = new Socket();
 					socket.connect(new InetSocketAddress("localhost", 10002));
 					System.out.println("[클라이언트] 서버와 연결완료");
